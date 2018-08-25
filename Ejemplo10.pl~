@@ -1,0 +1,6 @@
+%combina(i,i,o). i = input/argumento instanciado
+%combina(i,i,i). o = output/argumento NO instanciado
+
+combina([], Lista, Lista):-!.
+combina([X|Lista1], Lista2, [X|Lista3]):-
+    combina(Lista1, Lista2, Lista3).

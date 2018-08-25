@@ -1,0 +1,17 @@
+Consultas - Ejemplo 2
+
+
+1) Listar los animales oscuros que sean grandes.
+
+oscuro(X), grande(X), write(X), nl, fail.
+
+Notar que las búsquedas se hacen secuencialmente, de arriba hacía abajo y de izquierda
+a derecha.
+
+Primero se trata de satisfacer oscuro(X) iterando a través de cada linea de la base de
+conocimiento. Cuando encuentra la regla entonces checa si la regla se satisface probando
+cada clausula como en al inicio. Notar que, como clausula es un predicado no deterministico,
+debe interrumpir busquedas para realizar otras, las cuales son reaunidadas posteriormente
+a través de puntos de retroceso. Una vez que X toma un valor en oscuro(X) entonces
+se comineza otra busqueda con la clausula grande(X) con el parámetro X encontrado
+en la busqueda anterior. Y así sucesivamente. 
