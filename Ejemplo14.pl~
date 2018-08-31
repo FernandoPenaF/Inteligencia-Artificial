@@ -1,7 +1,0 @@
-:-dynamic antes_de/2.
-
-antes_de(ayer, hoy).
-antes_de(hoy, maniana).
-
-main:-
-
