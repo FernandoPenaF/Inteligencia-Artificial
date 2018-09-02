@@ -6,7 +6,7 @@ grado([_|Z], SUM):-
     grado(Z, ACUM),
     SUM is ACUM + 1.
 
-suma([],[],[]).
+suma([],[],[]):-!.
 suma(PolA, PolB, PolS):-
 	 grado(PolA, X),
 	 grado(PolB, Y),
@@ -15,14 +15,14 @@ suma(PolA, PolB, PolS):-
 	 	(X > Y ->
 	 		G is X - Y,
 	 		build_zeros(G,L),
-	 		append(PolB, L, New), %Método interno de prolog
+	 		combina(PolB, L, New),
 	 		suma_lista(PolA, New, PolS);
 	 		G is Y - X,
 	 		build_zeros(G,L),
-	 		append(PolA, L, New), %Método interno de prolog
+	 		combina(PolA, L, New),
 	 		suma_lista(New, PolB, PolS))).
 
-resta([],[],[]).
+resta([],[],[]):-!.
 resta(PolA, PolB, PolS):-
 	 grado(PolA, X),
 	 grado(PolB, Y),
@@ -31,11 +31,11 @@ resta(PolA, PolB, PolS):-
 	 	(X > Y ->
 	 		G is X - Y,
 	 		build_zeros(G,L),
-	 		append(PolB, L, New), %Método de prolog
+	 		combina(PolB, L, New),
 	 		resta_lista(PolA, New, PolS);
 	 		G is Y - X,
 	 		build_zeros(G,L),
-	 		append(PolA, L, New), %Método de prolog
+	 		combina(PolA, L, New),
 	 		resta_lista(New, PolB, PolS))).
 
 deriva([],[]):-!.
@@ -69,3 +69,6 @@ build_zeros(N1,[0|L]) :-
   N1 > 0, N is N1 - 1,
   build_zeros(N,L).
 
+combina([],List,List):-!.
+combina([X|Lista1],Lista2,[X|Lista3]):-
+    combina(Lista1, Lista2, Lista3).
