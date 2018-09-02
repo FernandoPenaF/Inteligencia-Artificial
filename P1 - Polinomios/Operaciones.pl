@@ -6,6 +6,9 @@ grado([_|Z], SUM):-
     grado(Z, ACUM),
     SUM is ACUM + 1.
 
+% Hay una implementación de suma y resta más fácil y corta en
+% https://stackoverflow.com/questions/26936560/multiply-two-polynomials-in-prolog
+% también con ese sale la multipliación.
 suma([],[],[]):-!.
 suma(PolA, PolB, PolS):-
 	 grado(PolA, X),
