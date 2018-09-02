@@ -15,9 +15,9 @@ deriva(Coeffs, Deriv):-
 	quita_primero(Res, Deriv).
 
 multiply_list([], _, []).
-multiply_list([X|Xs], Number, [X1|NewXs]):-
+multiply_list([X|Y], Number, [X1|L]):-
      X1 is X * Number,
-     multiply_list(Xs, Number + 1, NewXs).
+     multiply_list(Y, Number + 1, L).
 
 quita_primero([],[]).
 quita_primero([_|X],X).
