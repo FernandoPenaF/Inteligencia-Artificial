@@ -8,9 +8,16 @@ resta_listas([X|T],[Y|R],[SUM|L]):-
     SUM is X - Y,
     resta_listas(T,R,L).
 
-deriva([],[],0).
-deriva([X|Z],L, SUM):-
-    deriva(Z,L,ACUM),
-    SUM is ACUM + 1,
-    COEFF is X*SUM,
-    write(COEFF),nl,write(SUM),nl.
+deriva([],[]):-!.
+deriva([_],[0]):-!.
+deriva(Coeffs, Deriv):-
+	multiply_list(Coeffs,0,Res),
+	quita_primero(Res, Deriv).
+
+multiply_list([], _, []).
+multiply_list([X|Xs], Number, [X1|NewXs]):-
+     X1 is X * Number,
+     multiply_list(Xs, Number + 1, NewXs).
+
+quita_primero([],[]).
+quita_primero([_|X],X).
