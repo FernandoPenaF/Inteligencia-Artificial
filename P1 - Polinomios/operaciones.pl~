@@ -48,9 +48,9 @@ deriva(Coeffs, Deriv):-
 	quita_primero(Res, Deriv).
 
 evaluate([],_,0):-!.
-evaluate([X|Resto],Eval,Acum) :-
+evaluate([X|Resto],Eval,E) :-
   evaluate(Resto,Eval,Res),
-  Acum is X + Res * Eval.
+  E is X + Res * Eval.
 
 
 % Métodos auxiliares.
