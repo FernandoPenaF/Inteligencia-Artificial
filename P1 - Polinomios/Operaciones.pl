@@ -9,7 +9,8 @@ grado([_|Z], SUM):-
 % Hay una implementación de suma y resta más fácil y corta en
 % https://stackoverflow.com/questions/26936560/multiply-two-polynomials-in-prolog
 % también con ese sale la multipliación.
-suma([],[],[]):-!.
+suma(PolA,[],PolA):-!.
+suma([],PolB,PolB):-!.
 suma(PolA, PolB, PolS):-
 	 grado(PolA, X),
 	 grado(PolB, Y),
@@ -25,7 +26,8 @@ suma(PolA, PolB, PolS):-
 			combina(PolA, L, New),
 			suma_lista(New, PolB, PolS))).
 
-resta([],[],[]):-!.
+resta(PolA,[],PolA):-!.
+resta([],PolB,PolB):-!.
 resta(PolA, PolB, PolS):-
 	 grado(PolA, X),
 	 grado(PolB, Y),
@@ -52,6 +54,12 @@ evaluate([X|Resto],Eval,Acum) :-
   evaluate(Resto,Eval,Res),
   Acum is X + Res * Eval.
 
+% Falta implementar el multiplica
+compose([],_,[]):-!.
+compose([X|Resto],PolB,PolN):-
+	 compose(Resto,PolB,PNew),
+	 multiplica(PolB,PNew,R),
+	 suma([X],R,PolN).
 
 % Métodos auxiliares.
 suma_lista([],[],[]).
