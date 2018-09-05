@@ -1,4 +1,8 @@
-% Por el típo de implementación el grado
+creaPolinomio(Coeficiente,Indice,Pol):-
+    build_zeros(Indice,Res),
+    combina(Res,[Coeficiente],Pol).
+
+%Por el típo de implementación el grado
 % es el número de elementos en la lista.
 grado([],0):-!.
 grado([_],0):-!.
@@ -53,17 +57,20 @@ evaluate([],_,0):-!.
 evaluate([X|Resto],Eval,Acum) :-
   evaluate(Resto,Eval,Res),
   Acum is X + Res * Eval.
-  
+
+multiplica([],_,[]):-!.
+multiplica(_,[],[]):-!.
 multiplica(Pol1,Pol2,Res):-
     %hay que llamar al build zeros y a lo de los grados.
     grado(Pol1,Grado1),
     grado(Pol2,Grado2),
-    Max is Grado1 + Grado2 - 2,
+    Max is Grado1 + Grado2 + 1,
     build_zeros(Max,Ceros),
     recorreListas(Pol1,Pol2,Pol2,0,0,[],Max,Grado2,Ceros,Res).
 
 % Falta implementar el multiplica
 composition([],_,[]):-!.
+composition(_,[],[]):-!.
 composition([X|Resto],PolB,PolN):-
 	 composition(Resto,PolB,PNew),
 	 multiplica(PolB,PNew,R),
@@ -121,7 +128,7 @@ recorreListas([_|Cola1],[],CopiaDos,Indice1,_,ListaNums,GradoMax,GradoSegundo, P
     build_zeros(Indice1,ListaCeros),
     combina(ListaCeros,ListaNums,Respuesta),
     %se agregan ceros despues
-    Auxi is GradoMax-GradoSegundo-1,
+    Auxi is GradoMax-GradoSegundo-Aux1,
     build_zeros(Auxi,SegundosCeros),
     combina(Respuesta,SegundosCeros,PolASumar),
     suma(PolASumar,PolInicial,Res),
@@ -135,3 +142,4 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     AuxNum is Cabeza1*Cabeza2,
     combina(Temp,[AuxNum],  Res),
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
+
