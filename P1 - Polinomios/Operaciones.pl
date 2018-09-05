@@ -1,4 +1,8 @@
-% Por el típo de implementación el grado
+creaPolinomio(Coeficiente,Indice,Pol):-
+    build_zeros(Indice,Res),
+    combina(Res,[Coeficiente],Pol).
+
+%Por el típo de implementación el grado
 % es el número de elementos en la lista.
 grado([],0):-!.
 grado([_],0):-!.
@@ -54,10 +58,21 @@ evaluate([X|Resto],Eval,Acum) :-
   evaluate(Resto,Eval,Res),
   Acum is X + Res * Eval.
 
+multiplica([],_,[]):-!.
+multiplica(_,[],[]):-!.
+multiplica(Pol1,Pol2,Res):-
+    %hay que llamar al build zeros y a lo de los grados.
+    grado(Pol1,Grado1),
+    grado(Pol2,Grado2),
+    Max is Grado1 + Grado2 + 1,
+    build_zeros(Max,Ceros),
+    recorreListas(Pol1,Pol2,Pol2,0,0,[],Max,Grado2,Ceros,Res).
+
 % Falta implementar el multiplica
-compose([],_,[]):-!.
-compose([X|Resto],PolB,PolN):-
-	 compose(Resto,PolB,PNew),
+composition([],_,[]):-!.
+composition(_,[],[]):-!.
+composition([X|Resto],PolB,PolN):-
+	 composition(Resto,PolB,PNew),
 	 multiplica(PolB,PNew,R),
 	 suma([X],R,PolN).
 
@@ -89,4 +104,42 @@ build_zeros(N1,[0|L]) :-
 combina([],List,List):-!.
 combina([X|Lista1],Lista2,[X|Lista3]):-
     combina(Lista1, Lista2, Lista3).
+
+%parametros:
+%
+%forma de escribirlo
+%
+%recorreListas([12,87,-78],[-6,14,78,-2],[-6,14,78,-2],0,0,[],5,4,[0,0,0,0,0,0],Res).
+%
+%lista 1
+%lista 2
+%lista 2
+%indice inicial 0
+%indice inicial 0
+%lista de numeros mezclados
+%Grado mayor despues de multiplicar --> largo de los dos -1
+%Grado del segundo polinomio
+%Lista vacia inicial del grado mayor
+%VARIABLE DE REGRESO
+recorreListas([],_,_,_,_,_,_,_,X,X).
+recorreListas([_|Cola1],[],CopiaDos,Indice1,_,ListaNums,GradoMax,GradoSegundo, PolInicial, D):-
+    Aux1 is Indice1 +1,
+    %se agregan ceros antes
+    build_zeros(Indice1,ListaCeros),
+    combina(ListaCeros,ListaNums,Respuesta),
+    %se agregan ceros despues
+    Auxi is GradoMax-GradoSegundo-Aux1,
+    build_zeros(Auxi,SegundosCeros),
+    combina(Respuesta,SegundosCeros,PolASumar),
+    suma(PolASumar,PolInicial,Res),
+    %write("Resultado de la suma: "),nl,
+    %write(Res),nl,
+    recorreListas(Cola1,CopiaDos,CopiaDos,Aux1,0,[],GradoMax,GradoSegundo,Res, D),!.
+
+
+recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,GradoMax,GradoSegundo, PolInicial,O):-
+    Aux2 is Indice2 + 1,
+    AuxNum is Cabeza1*Cabeza2,
+    combina(Temp,[AuxNum],  Res),
+    recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
