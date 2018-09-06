@@ -147,16 +147,26 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
 
 toString([],""):-!.
 toString(Lista,Res):-
-    write("Entra"),
-    toStringAux(Lista,0,"",Res).
+
+    grado(Lista,Grado),
 
 
-toStringAux([],_,Res,Res):-!.
-toStringAux([Cabeza|Cola],Exp,Res,O):-
-    IAux is Exp +1,
+    toStringAux(Lista,0,Grado,"",Res).
+
+
+toStringAux([],_,_,Res,Res):-!.
+toStringAux([Cabeza|Cola],Exp,Grado,Res,O):-
+
+    (Grado=:=Exp,Cabeza>0 ->
+    positivoEspecial(Cabeza,Exp,Aux),
+     string_concat(Aux,Res,Res2)
+
+    ;
     formato(Cabeza,Exp,Res1),
-    string_concat(Res1,Res,Res2),
-    toStringAux(Cola,IAux,Res2,O).
+    string_concat(Res1,Res,Res2)
+    ),
+    IAux is Exp +1,
+    toStringAux(Cola,IAux,Grado,Res2,O).
 
 formato(Numero,Exponente,Res):-
     (   Numero > 0 ->
@@ -210,6 +220,28 @@ positivos(Numero,Exponente,Res):-
 
     string_concat(Numero,"x^",Res1),
         string_concat(" + ",Res1,Res2),
+        string_concat(Res2,Exponente,Res)
+    )).
+
+positivoEspecial(Numero,Exponente,Res):-
+    (   Exponente=:= 0 ->
+    string_concat("",Numero,Res);
+    %cuando el exponente no es cero
+   (    Exponente =:= 1 ->
+           (   Numero =:= 1 ->
+                   string_concat("","x",Res);
+           string_concat("",Numero,Res1),
+           string_concat(Res1, "x",Res)
+
+           )
+   );
+    %aqui el exponente es mayor que cero
+    (   Numero =:= 1 ->
+                   string_concat("","x^",Res1),
+                   string_concat(Res1,Exponente,Res);
+
+    string_concat(Numero,"x^",Res1),
+        string_concat("",Res1,Res2),
         string_concat(Res2,Exponente,Res)
     )).
 
