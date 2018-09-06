@@ -1,3 +1,22 @@
+% Malvaes Díaz, Stephanie Lizeth - 
+% Peña Flores, Luis Fernando     - 158488
+% Orduña Ferreira, Fabián        - 159001
+%
+% El presente programa implementa polinomios y sus operaciones básicas.
+% Los polinomios son representados con listas cuyos elementos representan
+% el coeficiente de la variable x^i, donde i es el "indice" de cada
+% elemento en la lista.
+% El "indice" i = 0 representa el coeficiente de x^0, i = 1 el de x^1 y así
+% sucesivamente.
+%
+% El programa fue realizado bajo el supuesto de que el usuario no debe
+% crear polinomios o dar listas de coeficientes con ceros innecesarios, es decir,
+% las listas del tipo [a, b, c, d, 0, 0] no están permitidas (a,b,c,d son reales).
+%
+% Al final del código del programa se encuentra el predicado test() 
+% con los casos de prueba solicitados por el profesor.
+
+
 creaPolinomio(Coeficiente,Grado,Pol):-
     build_zeros(Grado,Res),
     combina(Res,[Coeficiente],Pol).
@@ -44,17 +63,6 @@ resta(PolA, PolB, PolS):-
 			combina(PolA, L, New),
 			resta_lista(New, PolB, PolS))).
 
-deriva([],[]):-!.
-deriva([_],[0]):-!.
-deriva(Coeffs, Deriv):-
-	multiply_list(Coeffs,0,Res),
-	quita_primero(Res, Deriv).
-
-evalua([],_,0):-!.
-evalua([X|Resto],Eval,Acum) :-
-  evalua(Resto,Eval,Res),
-  Acum is X + Res * Eval.
-
 multiplica([],_,[]):-!.
 multiplica(_,[],[]):-!.
 multiplica([0],_,[0]):-!.
@@ -69,9 +77,20 @@ multiplica(Pol1,Pol2,Res):-
 compone([],_,[]):-!.
 compone(_,[],[]):-!.
 compone([X|Resto],PolB,PolN):-
-	 compone(Resto,PolB,PNew),
-	 multiplica(PolB,PNew,R),
-	 suma([X],R,PolN).
+   compone(Resto,PolB,PNew),
+   multiplica(PolB,PNew,R),
+   suma([X],R,PolN).
+
+evalua([],_,0):-!.
+evalua([X|Resto],Eval,Acum) :-
+  evalua(Resto,Eval,Res),
+  Acum is X + Res * Eval.
+
+deriva([],[]):-!.
+deriva([_],[0]):-!.
+deriva(Coeffs, Deriv):-
+	multiply_list(Coeffs,0,Res),
+	quita_primero(Res, Deriv).
 
 toString([],""):-!.
 toString([0],0):-!.
@@ -79,7 +98,7 @@ toString(Lista,Res):-
     grado(Lista,Grado),
     toStringAux(Lista,0,Grado,"",Res).
 
-% Métodos auxiliares para los métodos principales.
+% Métodos auxiliares usados en los métodos principales.
 suma_lista([],[],[]).
 suma_lista([X|T],[Y|R],[SUM|L]):-
     SUM is X + Y,
@@ -108,8 +127,6 @@ combina([],List,List):-!.
 combina([X|Lista1],Lista2,[X|Lista3]):-
     combina(Lista1, Lista2, Lista3).
 
-
-
 %Parámetros:
 %
 %lista 1
@@ -137,7 +154,6 @@ recorreListas([_|Cola1],[],CopiaDos,Indice1,_,ListaNums,GradoMax,GradoSegundo, P
     combina(Respuesta,SegundosCeros,PolASumar),
     suma(PolASumar,PolInicial,Res),
     recorreListas(Cola1,CopiaDos,CopiaDos,Aux1,0,[],GradoMax,GradoSegundo,Res, D),!.
-
 
 recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,GradoMax,GradoSegundo, PolInicial,O):-
     Aux2 is Indice2 + 1,
@@ -189,7 +205,6 @@ negativos(Numero,Exponente,Res):-
     string_concat(Resx,"x^",Res1),
         string_concat(Res1,Exponente,Res)
     )).
-
 
 positivos(Numero,Exponente,Res):-
     (   Exponente=:= 0 ->
@@ -265,7 +280,7 @@ test():-
     toString(Dev1,S8),
     toString(Dev2,S9),
 
-    write('Zero(x)       = '),write(S1),nl,
+    write('zero(x)       = '),write(S1),nl,
     write('p(x)            = '),write(S2),nl,
     write('q(x)            = '),write(S3),nl,
     write('p(x) + q(x)  = '),write(S4),nl,
