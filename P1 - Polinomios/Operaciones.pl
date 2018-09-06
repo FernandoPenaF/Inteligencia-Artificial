@@ -144,8 +144,71 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
 
-formato(Coeficiente,Exponente,Res):-
-    (Coeficiente =:= 0 ->
-         Res="";
-    (Coeficiente > 0 ->
-      Res = "")).
+
+toString([],""):-!.
+toString(Lista,Res):-
+    write("Entra"),
+    toStringAux(Lista,0,"",Res).
+
+
+toStringAux([],_,Res,Res):-!.
+toStringAux([Cabeza|Cola],Exp,Res,O):-
+    IAux is Exp +1,
+    formato(Cabeza,Exp,Res1),
+    string_concat(Res1,Res,Res2),
+    toStringAux(Cola,IAux,Res2,O).
+
+formato(Numero,Exponente,Res):-
+    (   Numero > 0 ->
+    positivos(Numero,Exponente,Res);
+    (   Numero < 0 ->
+    negativos(Numero,Exponente,Res);
+    Res = ""
+    )
+    ).
+
+negativos(Numero,Exponente,Res):-
+    (   Exponente=:= 0 ->
+    Num is abs(Numero),
+    string_concat(" - ",Num,Res);
+    %cuando el exponente no es cero
+   (    Exponente =:= 1 ->
+           (   Numero =:= -1 ->
+                   string_concat(""," - x",Res);
+           (   Numero =:= 0 ->
+           Res = "";
+              string_concat(Numero, "x",Res)))
+   );
+    %aqui el exponente es mayor que cero
+    (   Numero =:= -1 ->
+                   string_concat(""," - x^",Res1),
+                   string_concat(Res1,Exponente,Res);
+
+    Num is abs(Numero),
+    string_concat(" - ",Num,Resx),
+    string_concat(Resx,"x^",Res1),
+        string_concat(Res1,Exponente,Res)
+    )).
+
+
+positivos(Numero,Exponente,Res):-
+    (   Exponente=:= 0 ->
+    string_concat(" + ",Numero,Res);
+    %cuando el exponente no es cero
+   (    Exponente =:= 1 ->
+           (   Numero =:= 1 ->
+                   string_concat(""," + x",Res);
+           string_concat(" + ",Numero,Res1),
+           string_concat(Res1, "x",Res)
+
+           )
+   );
+    %aqui el exponente es mayor que cero
+    (   Numero =:= 1 ->
+                   string_concat(""," + x^",Res1),
+                   string_concat(Res1,Exponente,Res);
+
+    string_concat(Numero,"x^",Res1),
+        string_concat(" + ",Res1,Res2),
+        string_concat(Res2,Exponente,Res)
+    )).

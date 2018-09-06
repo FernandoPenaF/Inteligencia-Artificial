@@ -144,8 +144,107 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
 
-func(A,B,X):-
-    (A > B ->
-       X is A;
-    (A =:= B ->
-       X is 0; X is B)).
+
+toString([],""):-!.
+toString(Lista,Res):-
+    write("Entra"),
+    toStringAux(Lista,0,0,"",Res).
+
+
+toStringAux([],_,_,Res,Res):-!.
+toStringAux([Cabeza|Cola],Exp,Primero,Res,O):-
+    IAux is Exp +1,
+    AuxPrim is Primero + 1,
+    (   Primero =:= 0 ->
+    (   Cabeza < 0 ->
+        formato(Cabeza,Exp,Res1),
+        string_concat(Res1,Res,Res2);
+
+    % se debe de hace uno para el positivo
+    positivoEspecial(Cabeza,Exp,Res2)
+
+
+    )
+    ;
+    formato(Cabeza,Exp,Res1),
+    string_concat(Res1,Res,Res2)
+     ),
+    toStringAux(Cola,IAux,AuxPrim,Res2,O).
+
+formato(Numero,Exponente,Res):-
+    (   Numero > 0 ->
+    positivos(Numero,Exponente,Res);
+    (   Numero < 0 ->
+    negativos(Numero,Exponente,Res);
+    Res = ""
+    )
+    ).
+
+negativos(Numero,Exponente,Res):-
+    (   Exponente=:= 0 ->
+    Num is abs(Numero),
+    string_concat(" - ",Num,Res);
+    %cuando el exponente no es cero
+   (    Exponente =:= 1 ->
+           (   Numero =:= -1 ->
+                   string_concat(""," - x",Res);
+           (   Numero =:= 0 ->
+           Res = "";
+              string_concat(Numero, "x",Res)))
+   );
+    %aqui el exponente es mayor que cero
+    (   Numero =:= -1 ->
+                   string_concat(""," - x^",Res1),
+                   string_concat(Res1,Exponente,Res);
+
+    Num is abs(Numero),
+    string_concat(" - ",Num,Resx),
+    string_concat(Resx,"x^",Res1),
+        string_concat(Res1,Exponente,Res)
+    )).
+
+
+positivos(Numero,Exponente,Res):-
+    (   Exponente=:= 0 ->
+    string_concat(" + ",Numero,Res);
+    %cuando el exponente no es cero
+   (    Exponente =:= 1 ->
+           (   Numero =:= 1 ->
+                   string_concat("" , " + x",Res);
+           string_concat(" + ",Numero,Res1),
+           string_concat(Res1, "x",Res)
+
+           )
+   );
+    %aqui el exponente es mayor que cero
+    (   Numero =:= 1 ->
+                   string_concat(""," + x^",Res1),
+                   string_concat(Res1,Exponente,Res);
+
+    string_concat(Numero,"x^",Res1),
+        string_concat(" + ",Res1,Res2),
+        string_concat(Res2,Exponente,Res)
+    )).
+
+
+positivoEspecial(Numero,Exponente,Res):-
+(   Exponente=:= 0 ->
+    string_concat(" ",Numero,Res);
+    %cuando el exponente no es cero
+   (    Exponente =:= 1 ->
+           (   Numero =:= 1 ->
+                   string_concat("" , "x",Res);
+           string_concat(" + ",Numero,Res1),
+           string_concat(Res1, "x",Res)
+
+           )
+   );
+    %aqui el exponente es mayor que cero
+    (   Numero =:= 1 ->
+                   string_concat("","x^",Res1),
+                   string_concat(Res1,Exponente,Res);
+
+    string_concat(Numero,"x^",Res1),
+        string_concat(" ",Res1,Res2),
+        string_concat(Res2,Exponente,Res)
+    )).
