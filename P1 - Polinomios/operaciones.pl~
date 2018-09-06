@@ -171,7 +171,7 @@ test():-
     write('p(q(x))     = '),write(T),nl,
     write('0 - p(x)    = '),write(U),nl,
     write('p(3)        = '),write(Eval),nl,
-    write("p'(x)     = "),write(Dev1),nl,
-    write('p(x)     = '),write(Dev2),nl.
+    write("p'(x)       = "),write(Dev1),nl,
+    write("p''(x)      = "),write(Dev2),nl.
 
 

@@ -60,6 +60,8 @@ evaluate([X|Resto],Eval,Acum) :-
 
 multiplica([],_,[]):-!.
 multiplica(_,[],[]):-!.
+multiplica([0],_,[0]):-!.
+multiplica(_,[0],[0]):-!.
 multiplica(Pol1,Pol2,Res):-
     %hay que llamar al build zeros y a lo de los grados.
     grado(Pol1,Grado1),
