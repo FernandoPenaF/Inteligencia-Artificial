@@ -154,7 +154,7 @@ toString(Lista,Res):-
     toStringAux(Lista,0,Grado,"",Res).
 
 
-toStringAux([],_,Grado,Res,Res):-!.
+toStringAux([],_,_,Res,Res):-!.
 toStringAux([Cabeza|Cola],Exp,Grado,Res,O):-
 
     (Grado=:=Exp,Cabeza>0 ->

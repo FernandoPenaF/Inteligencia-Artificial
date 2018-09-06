@@ -146,6 +146,7 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
 toString([],""):-!.
+toString([0],0):-!.
 toString(Lista,Res):-
 
     grado(Lista,Grado),
