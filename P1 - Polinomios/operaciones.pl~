@@ -1,4 +1,8 @@
-% Por el típo de implementación el grado
+creaPolinomio(Coeficiente,Indice,Pol):-
+    build_zeros(Indice,Res),
+    combina(Res,[Coeficiente],Pol).
+
+%Por el típo de implementación el grado
 % es el número de elementos en la lista.
 grado([],0):-!.
 grado([_],0):-!.
@@ -140,12 +144,8 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
 
-
-%creaPolinomio(Coeficiente, Indice,POL)
-
-
-creaPolinomio(Coeficiente,Indice,Pol):-
-    build_zeros(Indice,Res),
-    combina(Res,[Coeficiente],Pol).
-
-
+func(A,B,X):-
+    (A > B ->
+       X is A;
+    (A =:= B ->
+       X is 0; X is B)).

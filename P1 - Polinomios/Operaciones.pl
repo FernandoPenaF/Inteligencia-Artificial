@@ -143,3 +143,9 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     combina(Temp,[AuxNum],  Res),
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
+
+formato(Coeficiente,Exponente,Res):-
+    (Coeficiente =:= 0 ->
+         Res="";
+    (Coeficiente > 0 ->
+      Res = "")).
