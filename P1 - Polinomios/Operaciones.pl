@@ -6,13 +6,10 @@ creaPolinomio(Coeficiente,Grado,Pol):-
 % es el número de elementos en la lista.
 grado([],0):-!.
 grado([_],0):-!.
-grado([_|Z], SUM):-
+grado([_|Z], Grado):-
     grado(Z, ACUM),
-    SUM is ACUM + 1.
+    Grado is ACUM + 1.
 
-% Hay una implementación de suma y resta más fácil y corta en
-% https://stackoverflow.com/questions/26936560/multiply-two-polynomials-in-prolog
-% también con ese sale la multipliación.
 suma(PolA,[],PolA):-!.
 suma([],PolB,PolB):-!.
 suma(PolA, PolB, PolS):-
@@ -53,9 +50,9 @@ deriva(Coeffs, Deriv):-
 	multiply_list(Coeffs,0,Res),
 	quita_primero(Res, Deriv).
 
-evaluate([],_,0):-!.
-evaluate([X|Resto],Eval,Acum) :-
-  evaluate(Resto,Eval,Res),
+evalua([],_,0):-!.
+evalua([X|Resto],Eval,Acum) :-
+  evalua(Resto,Eval,Res),
   Acum is X + Res * Eval.
 
 multiplica([],_,[]):-!.
@@ -63,22 +60,26 @@ multiplica(_,[],[]):-!.
 multiplica([0],_,[0]):-!.
 multiplica(_,[0],[0]):-!.
 multiplica(Pol1,Pol2,Res):-
-    %hay que llamar al build zeros y a lo de los grados.
     grado(Pol1,Grado1),
     grado(Pol2,Grado2),
     Max is Grado1 + Grado2 + 1,
     build_zeros(Max,Ceros),
     recorreListas(Pol1,Pol2,Pol2,0,0,[],Max,Grado2,Ceros,Res).
 
-% Falta implementar el multiplica
-composition([],_,[]):-!.
-composition(_,[],[]):-!.
-composition([X|Resto],PolB,PolN):-
-	 composition(Resto,PolB,PNew),
+compone([],_,[]):-!.
+compone(_,[],[]):-!.
+compone([X|Resto],PolB,PolN):-
+	 compone(Resto,PolB,PNew),
 	 multiplica(PolB,PNew,R),
 	 suma([X],R,PolN).
 
-% Métodos auxiliares.
+toString([],""):-!.
+toString([0],0):-!.
+toString(Lista,Res):-
+    grado(Lista,Grado),
+    toStringAux(Lista,0,Grado,"",Res).
+
+% Métodos auxiliares para los métodos principales.
 suma_lista([],[],[]).
 suma_lista([X|T],[Y|R],[SUM|L]):-
     SUM is X + Y,
@@ -107,11 +108,9 @@ combina([],List,List):-!.
 combina([X|Lista1],Lista2,[X|Lista3]):-
     combina(Lista1, Lista2, Lista3).
 
-%parametros:
-%
-%forma de escribirlo
-%
-%recorreListas([12,87,-78],[-6,14,78,-2],[-6,14,78,-2],0,0,[],5,4,[0,0,0,0,0,0],Res).
+
+
+%Parámetros:
 %
 %lista 1
 %lista 2
@@ -119,10 +118,13 @@ combina([X|Lista1],Lista2,[X|Lista3]):-
 %indice inicial 0
 %indice inicial 0
 %lista de numeros mezclados
-%Grado mayor despues de multiplicar --> largo de los dos -1
+%Grado despues de multiplicar
 %Grado del segundo polinomio
-%Lista vacia inicial del grado mayor
-%VARIABLE DE REGRESO
+%Lista vacia inicial del tamaño del grado mayor
+%Varible de output
+%
+%Posible consulta:
+%recorreListas([12,87,-78],[-6,14,78,-2],[-6,14,78,-2],0,0,[],5,4,[0,0,0,0,0,0],Res).
 recorreListas([],_,_,_,_,_,_,_,X,X).
 recorreListas([_|Cola1],[],CopiaDos,Indice1,_,ListaNums,GradoMax,GradoSegundo, PolInicial, D):-
     Aux1 is Indice1 +1,
@@ -134,8 +136,6 @@ recorreListas([_|Cola1],[],CopiaDos,Indice1,_,ListaNums,GradoMax,GradoSegundo, P
     build_zeros(Auxi,SegundosCeros),
     combina(Respuesta,SegundosCeros,PolASumar),
     suma(PolASumar,PolInicial,Res),
-    %write("Resultado de la suma: "),nl,
-    %write(Res),nl,
     recorreListas(Cola1,CopiaDos,CopiaDos,Aux1,0,[],GradoMax,GradoSegundo,Res, D),!.
 
 
@@ -145,23 +145,12 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     combina(Temp,[AuxNum],  Res),
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
-toString([],""):-!.
-toString([0],0):-!.
-toString(Lista,Res):-
-
-    grado(Lista,Grado),
-
-
-    toStringAux(Lista,0,Grado,"",Res).
-
-
 toStringAux([],_,_,Res,Res):-!.
 toStringAux([Cabeza|Cola],Exp,Grado,Res,O):-
 
     (Grado=:=Exp,Cabeza>0 ->
     positivoEspecial(Cabeza,Exp,Aux),
      string_concat(Aux,Res,Res2)
-
     ;
     formato(Cabeza,Exp,Res1),
     string_concat(Res1,Res,Res2)
@@ -183,13 +172,13 @@ negativos(Numero,Exponente,Res):-
     Num is abs(Numero),
     string_concat(" - ",Num,Res);
     %cuando el exponente no es cero
-   (    Exponente =:= 1 ->
+    (    Exponente =:= 1 ->
            (   Numero =:= -1 ->
                    string_concat(""," - x",Res);
            (   Numero =:= 0 ->
            Res = "";
               string_concat(Numero, "x",Res)))
-   );
+    );
     %aqui el exponente es mayor que cero
     (   Numero =:= -1 ->
                    string_concat(""," - x^",Res1),
@@ -206,14 +195,14 @@ positivos(Numero,Exponente,Res):-
     (   Exponente=:= 0 ->
     string_concat(" + ",Numero,Res);
     %cuando el exponente no es cero
-   (    Exponente =:= 1 ->
+    (    Exponente =:= 1 ->
            (   Numero =:= 1 ->
                    string_concat(""," + x",Res);
            string_concat(" + ",Numero,Res1),
            string_concat(Res1, "x",Res)
 
            )
-   );
+    );
     %aqui el exponente es mayor que cero
     (   Numero =:= 1 ->
                    string_concat(""," + x^",Res1),
@@ -228,14 +217,14 @@ positivoEspecial(Numero,Exponente,Res):-
     (   Exponente=:= 0 ->
     string_concat("",Numero,Res);
     %cuando el exponente no es cero
-   (    Exponente =:= 1 ->
+    (    Exponente =:= 1 ->
            (   Numero =:= 1 ->
                    string_concat("","x",Res);
            string_concat("",Numero,Res1),
            string_concat(Res1, "x",Res)
 
            )
-   );
+    );
     %aqui el exponente es mayor que cero
     (   Numero =:= 1 ->
                    string_concat("","x^",Res1),
@@ -260,9 +249,9 @@ test():-
 
     suma(P,Q,R),
     multiplica(P,Q,S),
-    composition(P,Q,T),
+    compone(P,Q,T),
     resta(Zero,P,U),
-    evaluate(P,3,Eval),
+    evalua(P,3,Eval),
     deriva(P,Dev1),
     deriva(Dev1,Dev2),
 
