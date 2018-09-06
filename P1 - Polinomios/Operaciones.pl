@@ -1,5 +1,5 @@
-creaPolinomio(Coeficiente,Indice,Pol):-
-    build_zeros(Indice,Res),
+creaPolinomio(Coeficiente,Grado,Pol):-
+    build_zeros(Grado,Res),
     combina(Res,[Coeficiente],Pol).
 
 %Por el típo de implementación el grado
@@ -60,6 +60,8 @@ evaluate([X|Resto],Eval,Acum) :-
 
 multiplica([],_,[]):-!.
 multiplica(_,[],[]):-!.
+multiplica([0],_,[0]):-!.
+multiplica(_,[0],[0]):-!.
 multiplica(Pol1,Pol2,Res):-
     %hay que llamar al build zeros y a lo de los grados.
     grado(Pol1,Grado1),
@@ -143,8 +145,6 @@ recorreListas([Cabeza1|Cola1],[Cabeza2|Cola2],CopiaDos,Indice1,Indice2,Temp,Grad
     combina(Temp,[AuxNum],  Res),
     recorreListas([Cabeza1|Cola1],Cola2,CopiaDos,Indice1,Aux2,Res,GradoMax,GradoSegundo, PolInicial,O),!.
 
-
-
 toString([],""):-!.
 toString(Lista,Res):-
     write("Entra"),
@@ -212,3 +212,34 @@ positivos(Numero,Exponente,Res):-
         string_concat(" + ",Res1,Res2),
         string_concat(Res2,Exponente,Res)
     )).
+
+test():-
+    creaPolinomio(0,0,Zero),
+    creaPolinomio(4,3,P1),
+    creaPolinomio(3,2,P2),
+    creaPolinomio(1,0,P3),
+    creaPolinomio(2,1,P4),
+    suma(P1,P2,X),suma(X,P3,Y),suma(Y,P4,P),
+
+    creaPolinomio(3,2,Q1),
+    creaPolinomio(5,0,Q2),
+    suma(Q1,Q2,Q),
+
+    suma(P,Q,R),
+    multiplica(P,Q,S),
+    composition(P,Q,T),
+    resta(Zero,P,U),
+    evaluate(P,3,Eval),
+    deriva(P,Dev1),
+    deriva(Dev1,Dev2),
+
+    write('Zero(x)     = '),write(Zero),nl,
+    write('p(x)        = '),write(P),nl,
+    write('q(x)        = '),write(Q),nl,
+    write('p(x) + q(x) = '),write(R),nl,
+    write('p(x) * q(x) = '),write(S),nl,
+    write('p(q(x))     = '),write(T),nl,
+    write('0 - p(x)    = '),write(U),nl,
+    write('p(3)        = '),write(Eval),nl,
+    write("p'(x)       = "),write(Dev1),nl,
+    write("p''(x)      = "),write(Dev2),nl.
