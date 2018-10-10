@@ -1,4 +1,3 @@
-conexion(el_rosario, tezozomoc, 1). %rojo
 conexion(tezozomoc, azcapotzalco, 1).%rojo
 conexion(azcapotzalco, ferreria, 1).%rojo
 conexion(ferreria, norte_45, 1).%rojo
