@@ -78,10 +78,29 @@ conexion(acatitla, santa_marta, 1).%morada
 conexion(santa_marta, los_reyes,1).%morada
 conexion(los_reyes,la_paz,1).%morada
 
-
-
-
-
+conexion(cuatro_caminos, panteones, 1). %azul
+conexion(panteones, tacuba, 1). %azul
+conexion(tacuba, cuitlahuac, 1). %azul
+conexion(cuitlahuac, popotla, 1). %azul
+conexion(popotla, colegio_militar, 1). %azul
+conexion(colegio_militar, normal, 1). %azul
+conexion(normal, san_cosme, 1). %azul
+conexion(san_cosme, revolucion, 1). %azul
+conexion(revolucion, hidalgo, 1). %azul
+conexion(hidalgo, bellas_artes, 1). %azul
+conexion(bellas_artes, allende, 1). %azul
+conexion(allende, zocalo, 1). %azul
+conexion(zocalo, pino_suarez, 1). %azul
+conexion(pino_suarez, san_antonio_abad, 1). %azul
+conexion(san_antonio_abad, chabacano, 1). %azul
+conexion(chabacano, viaducto, 1). %azul
+conexion(viaducto, xola, 1). %azul
+conexion(xola, villa_de_cortes, 1). %azul
+conexion(villa_de_cortes, nativitas, 1). %azul
+conexion(nativitas, portales, 1). %azul
+conexion(portales, ermita, 1). %azul
+conexion(ermita, general_anaya, 1). %azul
+conexion(general_anaya, tasqueña, 1). %azul
 
 connectedEdges(X,Y) :- conexion(X,Y,_).
 connectedEdges(X,Y) :- conexion(Y,X,_).
