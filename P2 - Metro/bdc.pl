@@ -177,6 +177,27 @@ conexion(nopalera, zapotitlan, 1). %dorada
 conexion(zapotitlan, tlaltenco, 1). %dorada
 conexion(tlaltenco, tlahuac, 1). %dorada
 
+conexion(buenavista, guerrero, 1). %gris-verde
+conexion(guerrero, garibaldi_lagunilla, 1). %gris-verde
+conexion(garibaldi_lagunilla, lagunilla, 1). %gris-verde
+conexion(lagunilla, tepito, 1). %gris-verde
+conexion(tepito, morelos, 1). %gris-verde
+conexion(morelos, san_lazaro, 1). %gris-verde
+conexion(san_lazaro, flores_magon, 1). %gris-verde
+conexion(flores_magon, romero_rubio, 1). %gris-verde
+conexion(romero_rubio, oceania, 1). %gris-verde
+conexion(oceania, deportivo_oceania, 1). %gris-verde
+conexion(deportivo_oceania, bosque_de_aragon, 1). %gris-verde
+conexion(bosque_de_aragon, villa_de_aragon, 1). %gris-verde
+conexion(villa_de_aragon, nezahualcoyotl, 1). %gris-verde
+conexion(nezahualcoyotl, impulsora, 1). %gris-verde
+conexion(impulsora, rio_de_los_remedios, 1). %gris-verde
+conexion(rio_de_los_remedios, muzquiz, 1). %gris-verde
+conexion(muzquiz, ecatepec, 1). %gris-verde
+conexion(ecatepec, olimpica, 1). %gris-verde
+conexion(olimpica, plaza_aragon, 1). %gris-verde
+conexion(plaza_aragon, ciudad_azteca, 1). %gris-verde
+
 connectedEdges(X,Y) :- conexion(X,Y,_).
 connectedEdges(X,Y) :- conexion(Y,X,_).
 
