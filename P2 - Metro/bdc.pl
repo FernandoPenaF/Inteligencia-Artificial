@@ -138,6 +138,27 @@ conexion(candelaria, fray_servando, 1). %verde claro
 conexion(fray_servando, jamaica, 1). %verde claro
 conexion(jamaica, santa_anita, 1). %verde claro
 
+conexion(garibaldi_lagunilla, bellas_artes, 1). %verde oscuro
+conexion(bellas_artes, san_juan_de_letran, 1). %verde oscuro
+conexion(san_juan_de_letran, isabel_la_catolica, 1). %verde oscuro
+conexion(isabel_la_catolica, doctores, 1). %verde oscuro
+conexion(doctores, obrera, 1). %verde oscuro
+conexion(obrera, chabacano, 1). %verde oscuro
+conexion(chabacano, la_viga, 1). %verde oscuro
+conexion(la_viga, santa_anita, 1). %verde oscuro
+conexion(santa_anita, coyuya, 1). %verde oscuro
+conexion(coyuya, iztacalco, 1). %verde oscuro
+conexion(iztacalco, apatlaco, 1). %verde oscuro
+conexion(apatlaco, aculco, 1). %verde oscuro
+conexion(aculco, escuadron_201, 1). %verde oscuro
+conexion(escuadron_201, atlalilco, 1). %verde oscuro
+conexion(atlalilco, iztapalapa, 1). %verde oscuro
+conexion(iztapalapa, cerro_de_la_estrella, 1). %verde oscuro
+conexion(cerro_de_la_estrella, uamI, 1). %verde oscuro
+conexion(uamI, constitucion_de_1917, 1). %verde oscuro
+
+%test
+%garibaldi_lagunilla,bellas_artes,san_juan_de_letran,isabel_la_catolica,doctores,obrera,chabacano,jamaica
 connectedEdges(X,Y) :- conexion(X,Y,_).
 connectedEdges(X,Y) :- conexion(Y,X,_).
 
@@ -165,6 +186,11 @@ all_paths(A, B):-
 	write(X),
 	nl,
 	fail.
+
+write_all_paths(A, B) :-
+    open('file.txt', write, Stream),
+    ( path(A, B, X), write(Stream, X), nl(Stream), fail; true ),
+    close(Stream).
 
 %F U E N T E:
 %https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
