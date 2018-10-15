@@ -102,6 +102,32 @@ conexion(portales, ermita, 1). %azul
 conexion(ermita, general_anaya, 1). %azul
 conexion(general_anaya, tasqueña, 1). %azul
 
+
+% En Etiopia - Plaza de la Transparencia se consideró
+% solamente como Etiopia
+% Analogamente, Viveros - Derechos humanos se consideró
+% solamente como Viveros
+conexion(indios_verdes, deportivo_18_de_marzo, 1). %verde
+conexion(deportivo_18_de_marzo, potrero, 1). %verde
+conexion(potrero, la_raza, 1). %verde
+conexion(la_raza, tlatelolco, 1). %verde
+conexion(tlatelolco, guerrero, 1). %verde
+conexion(guerrero, hidalgo, 1). %verde
+conexion(hidalgo, juarez, 1). %verde
+conexion(juarez, balderas, 1). %verde
+conexion(balderas, niños_heroes, 1). %verde
+conexion(niños_heroes, hospital_general, 1). %verde
+conexion(hospital_general, centro_medico, 1). %verde
+conexion(centro_medico, etiopia, 1). %verde
+conexion(etiopia, eugenia, 1). %verde
+conexion(eugenia, division_del_norte, 1). %verde
+conexion(division_del_norte, zapata, 1). %verde
+conexion(zapata, coyoacan, 1). %verde
+conexion(coyoacan, viveros, 1). %verde
+conexion(viveros, miguel_angel_de_quevedo, 1). %verde
+conexion(miguel_angel_de_quevedo, copilco, 1). %verde
+conexion(copilco, universidad, 1). %verde
+
 connectedEdges(X,Y) :- conexion(X,Y,_).
 connectedEdges(X,Y) :- conexion(Y,X,_).
 
