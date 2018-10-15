@@ -8,29 +8,48 @@ import java.util.ArrayList;
 
 public class Utils {
     
-    public static ArrayList<String> uniqueRoutes(String filename) throws FileNotFoundException, IOException{
+    public static ArrayList<Path> readUniqueRoutes(String filename) throws FileNotFoundException, IOException{
         FileReader fr = new FileReader(filename);
         BufferedReader br = new BufferedReader(fr);
         
-        ArrayList<String> routes = new ArrayList<>();
+        ArrayList<Path> routes = new ArrayList<>();
         String line;
+        String[] ans;
+        Path p;
         int i = 0;
         
         while ((line = br.readLine()) != null) {
             i++;
-            if(!routes.contains(line))
-                routes.add(line);
+            ans = line.split(" ");
+            p = new Path(Integer.valueOf(ans[1]),ans[0]);
+            if(!routes.contains(p))
+                routes.add(p);
 	}
         System.out.println("Líneas leidas: " + i);
         return routes;
+    }
+    
+    public static Path minimunLen(ArrayList<Path> paths){
+        int act, min = paths.get(0).getLen();
+        Path resp = null;
+        
+        for (Path p : paths) {
+            act = p.getLen();
+            if(act < min){
+                min = act;
+                resp = p;
+            }
+        }
+        return resp;
     }
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        ArrayList<String> s = Utils.uniqueRoutes("file.txt");
+        ArrayList<Path> s = Utils.readUniqueRoutes("file.txt");
+        Path p = Utils.minimunLen(s);
         System.out.println("Caminos únicos: " + s.size());
-    }
-    
+        System.out.println("Camino más corto: " + p.toString());
+    }   
 }

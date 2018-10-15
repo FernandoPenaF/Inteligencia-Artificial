@@ -209,8 +209,8 @@ conexion(nopalera, zapotitlan, 1). %dorada
 conexion(zapotitlan, tlaltenco, 1). %dorada
 conexion(tlaltenco, tlahuac, 1). %dorada
 
-connectedEdges(X,Y) :- conexion(X,Y,_).
-connectedEdges(X,Y) :- conexion(Y,X,_).
+connectedEdges(X,Y,L) :- conexion(X,Y,L).
+connectedEdges(X,Y,L) :- conexion(Y,X,L).
 
 %Consultas para probar conexiones
 %
@@ -218,28 +218,37 @@ connectedEdges(X,Y) :- conexion(Y,X,_).
 %connectedEdges(X,Y),write(X),nl,fail.
 %path(tacuba, norte_45,X),write(X), nl, fail.
 
-path(A,B,Path) :-
+path(A,B,Path,Len) :-
        travel(A,B,[A],Q),
-       reverse(Q,Path).
+       reverse(Q,Path),
+       pathLen(Path,Len).
 
 travel(A,B,P,[B|P]) :-
-       connectedEdges(A,B).
+       connectedEdges(A,B,_).
 
 travel(A,B,Visited,Path) :-
-       connectedEdges(A,C),
+       connectedEdges(A,C,_),
        C \== B,
        \+member(C,Visited),
        travel(C,B,[C|Visited],Path).
 
+%Notar que el camino dado a calcular
+%debe ser un camino válido.
+pathLen([_],0).
+pathLen([A,B|R],Len):-
+       connectedEdges(A,B,L),
+       pathLen([B|R],T),
+       Len is T + L.
+
 all_paths(A, B):-
-	path(A, B, X),
+	path(A, B, X, _),
 	write(X),
 	nl,
 	fail.
 
 write_all_paths(A, B) :-
     open('file.txt', write, Stream),
-    ( path(A, B, X), write(Stream, X), nl(Stream), fail; true ),
+    ( path(A, B, X, L), write(Stream, X), write(Stream," "), write(Stream, L), nl(Stream), fail; true ),
     close(Stream).
 
 %F U E N T E:
@@ -248,4 +257,4 @@ write_all_paths(A, B) :-
 %http://www.swi-prolog.org/pldoc/man?predicate=findall/3
 
 estaciones_adyacentes(X, Z):-
-       findall(Y, connectedEdges(X, Y), Z).
+       findall(Y, connectedEdges(X, Y,_), Z).
