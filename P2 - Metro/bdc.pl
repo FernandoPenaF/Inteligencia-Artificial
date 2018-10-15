@@ -128,6 +128,16 @@ conexion(viveros, miguel_angel_de_quevedo, 1). %verde
 conexion(miguel_angel_de_quevedo, copilco, 1). %verde
 conexion(copilco, universidad, 1). %verde
 
+conexion(martin_carrera, talisman, 1). %verde claro
+conexion(talisman, bondojito, 1). %verde claro
+conexion(bondojito, consulado, 1). %verde claro
+conexion(consulado, canal_del_norte, 1). %verde claro
+conexion(canal_del_norte, morelos, 1). %verde claro
+conexion(morelos, candelaria,1). %verde claro
+conexion(candelaria, fray_servando, 1). %verde claro
+conexion(fray_servando, jamaica, 1). %verde claro
+conexion(jamaica, santa_anita, 1). %verde claro
+
 connectedEdges(X,Y) :- conexion(X,Y,_).
 connectedEdges(X,Y) :- conexion(Y,X,_).
 
@@ -150,7 +160,11 @@ travel(A,B,Visited,Path) :-
        \+member(C,Visited),
        travel(C,B,[C|Visited],Path).
 
-
+all_paths(A, B):-
+	path(A, B, X),
+	write(X),
+	nl,
+	fail.
 
 %F U E N T E:
 %https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
