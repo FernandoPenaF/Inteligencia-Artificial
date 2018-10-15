@@ -157,8 +157,26 @@ conexion(iztapalapa, cerro_de_la_estrella, 1). %verde oscuro
 conexion(cerro_de_la_estrella, uamI, 1). %verde oscuro
 conexion(uamI, constitucion_de_1917, 1). %verde oscuro
 
-%test
-%garibaldi_lagunilla,bellas_artes,san_juan_de_letran,isabel_la_catolica,doctores,obrera,chabacano,jamaica
+conexion(mixcoac, insurgentes_sur, 1). %dorada
+conexion(insurgentes_sur, hospital_20_de_noviembre, 1). %dorada
+conexion(hospital_20_de_noviembre, zapata, 1). %dorada
+conexion(zapata, parque_de_los_venados, 1). %dorada
+conexion(parque_de_los_venados, eje_central, 1). %dorada
+conexion(eje_central, ermita, 1). %dorada
+conexion(ermita, mexicaltzingo, 1). %dorada
+conexion(mexicaltzingo, atlalilco, 1). %dorada
+conexion(atlalilco, culhuacan, 1). %dorada
+conexion(culhuacan, san_andres_tomatlan, 1). %dorada
+conexion(san_andres_tomatlan, lomas_estrella, 1). %dorada
+conexion(lomas_estrella, calle_11, 1). %dorada
+conexion(calle_11, periferico_oriente, 1). %dorada
+conexion(periferico_oriente, tezonco, 1). %dorada
+conexion(tezonco, olivos, 1). %dorada
+conexion(olivos, nopalera, 1). %dorada
+conexion(nopalera, zapotitlan, 1). %dorada
+conexion(zapotitlan, tlaltenco, 1). %dorada
+conexion(tlaltenco, tlahuac, 1). %dorada
+
 connectedEdges(X,Y) :- conexion(X,Y,_).
 connectedEdges(X,Y) :- conexion(Y,X,_).
 
