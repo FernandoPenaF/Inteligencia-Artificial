@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Utils {
     
@@ -29,27 +30,20 @@ public class Utils {
         return routes;
     }
     
-    public static Path minimunLen(ArrayList<Path> paths){
-        int act, min = paths.get(0).getLen();
-        Path resp = null;
-        
-        for (Path p : paths) {
-            act = p.getLen();
-            if(act < min){
-                min = act;
-                resp = p;
-            }
-        }
-        return resp;
+    public static ArrayList<Path> sortList(ArrayList<Path> paths){
+        Collections.sort(paths, (Path p1, Path p2) -> p1.getLen() - p2.getLen());
+        return paths;
     }
     
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         ArrayList<Path> s = Utils.readUniqueRoutes("file.txt");
-        Path p = Utils.minimunLen(s);
+        ArrayList<Path> sort = Utils.sortList(s);
         System.out.println("Caminos únicos: " + s.size());
-        System.out.println("Camino más corto: " + p.toString());
+        System.out.println("Camino más corto: " + sort.get(0).toString());
+        System.out.println("Camino más largo: " + sort.get(sort.size() - 1).toString());
     }   
 }
