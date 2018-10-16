@@ -22,7 +22,7 @@ public class Utils {
         while ((line = br.readLine()) != null) {
             i++;
             ans = line.split(" ");
-            p = new Path(Integer.valueOf(ans[1]),ans[0]);
+            p = new Path(Double.valueOf(ans[1]),ans[0]);
             if(!routes.contains(p))
                 routes.add(p);
 	}
@@ -31,7 +31,9 @@ public class Utils {
     }
     
     public static ArrayList<Path> sortList(ArrayList<Path> paths){
-        Collections.sort(paths, (Path p1, Path p2) -> p1.getLen() - p2.getLen());
+        Collections.sort(paths, (Path p1, Path p2) -> {
+            return p1.compareTo(p2);
+        });
         return paths;
     }
     

@@ -3,19 +3,19 @@ package utils;
 import java.util.Objects;
 
 public class Path {
-    private int len;
+    private double len;
     private String path;
 
-    public Path(int len, String path) {
+    public Path(double len, String path) {
         this.len = len;
         this.path = path;
     }
 
-    public int getLen() {
+    public double getLen() {
         return len;
     }
 
-    public void setLen(int len) {
+    public void setLen(double len) {
         this.len = len;
     }
 
@@ -29,9 +29,9 @@ public class Path {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + this.len;
-        hash = 23 * hash + Objects.hashCode(this.path);
+        int hash = 7;
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.len) ^ (Double.doubleToLongBits(this.len) >>> 32));
+        hash = 59 * hash + Objects.hashCode(this.path);
         return hash;
     }
 
@@ -47,7 +47,7 @@ public class Path {
             return false;
         }
         final Path other = (Path) obj;
-        if (this.len != other.len) {
+        if (Double.doubleToLongBits(this.len) != Double.doubleToLongBits(other.len)) {
             return false;
         }
         if (!Objects.equals(this.path, other.path)) {
@@ -55,7 +55,16 @@ public class Path {
         }
         return true;
     }
-
+    
+    public int compareTo(Path p2){
+        if(this.len < p2.getLen())
+            return -1;
+        else if(this.len > p2.getLen())
+            return 1;
+        else
+            return 0;
+    }
+    
     @Override
     public String toString() {
         return "Path{" + "len=" + len + "\npath=" + path + '}';
