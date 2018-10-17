@@ -245,9 +245,7 @@ travel(A,B,Visited,Path) :-
        travel(C,B,[C|Visited],Path).
 
 %pathLen(i,o).
-%Calcula el número de estaciones a recorrer
-%de un camino dado, i.
-%
+%Calcula la longitud de un camino dado, i.
 %Notar que el camino dado a calcular
 %debe ser un camino válido.
 pathLen([_],0).
@@ -257,7 +255,8 @@ pathLen([A,B|R],Len):-
        Len is T + L.
 
 %pathSize(i,o).
-%Calcula la longitud de un camino dado, i.
+%Calcula el número de estaciones a recorrer
+%de un camino dado, i.
 %Notar que el camino dado a calcular
 %debe ser un camino válido.
 pathSize([_],0).
