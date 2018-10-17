@@ -1,3 +1,12 @@
+%Linea 1
+%estacion(nombre,latitud,longitud).
+
+%calculaDistancia(Estacion1,Estacion2,Distancia)
+% estacion(Estacion1,Lt1,Ll1),
+% estacionEstacion2,Lt2,Ll2),
+% k is 10,
+% Distancia is (Lt1-Lt2+Ll1-Ll2) * K.
+
 %Línea 1
 conexion(observatorio, tacubaya,1.46).%rosa
 conexion(tacubaya, juanacatlan,1.4).%rosa
@@ -272,3 +281,53 @@ write_all_paths(A, B) :-
 
 estaciones_adyacentes(X, Z):-
        findall(Y, connectedEdges(X, Y,_), Z).
+
+% metodo que dada una lista, te regresa el indice de donde se encuentra
+% el menor valor.
+
+%indiceValorMenor([],0):-!.
+%indiceValorMenor([_],1):-!.
+%indiceValorMenor([Primero|Cola],Res):-
+%      indiceMenor(1,Primero,2,Cola,Res).
+%%%
+%indiceMenor(IndiceMenor,Menor,_, [],IndiceMenor):-
+%       write(Menor),!.
+% indiceMenor(IndiceMenor, Menor, IndiceActual,[DatoActual | Resto], Res):-
+%        IndiceSiguiente is IndiceActual + 1, ( Menor>DatoActual ->
+% indiceMenor(IndiceActual, DatoActual, IndiceSiguiente,Resto, Res);(
+% indiceMenor(IndiceMenor,Menor,IndiceSiguiente,Resto,Res))).
+%
+
+
+
+estacionADistanciaMenor(EstacionInicio,EstacionResultado,Distancia):-
+       estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
+       estacionMenor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
+
+
+% El siguiente predicado regresa la estación adyacente, según la lista
+% de estaciones adyacentes que recibe,que está a la menor distancia de
+% la estacion dada.
+%
+% i: Estacion de la que se quiere obtener la estación a menor distancia
+% i: Lista de las estaciones adyacentes
+% o: Nombre de la estacion con distancia menor adyacente
+% o: Distancia a la estacion adyacente
+estacionMenor(Inicio,[],Inicio,0):-!.
+estacionMenor(Inicio,[A],A, Dist):-
+       connectedEdges(Inicio,A,Dist),!.
+estacionMenor(Inicio,[Primera|Cola],Estacion,Res):-
+       estMenorAux(Inicio,Primera,Cola,Estacion,Res),!.
+
+
+estMenorAux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
+            connectedEdges(EstacionInicial,EstacionMenorActual,Distancia),!.
+estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
+       connectedEdges(EstacionInicial,EstacionMenorActual,J),
+       DistanciaActual is J,
+       connectedEdges(EstacionInicial, EstacionAPrueba,K),
+       DistanciaAComparar is K,
+        (   DistanciaActual > DistanciaAComparar ->
+        estMenorAux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
+       estMenorAux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
+                                )).
