@@ -1,11 +1,193 @@
-%Linea 1
 %estacion(nombre,latitud,longitud).
 
-%calculaDistancia(Estacion1,Estacion2,Distancia)
-% estacion(Estacion1,Lt1,Ll1),
-% estacionEstacion2,Lt2,Ll2),
-% k is 10,
-% Distancia is (Lt1-Lt2+Ll1-Ll2) * K.
+%Línea 1
+estacion(observatorio, 1, 1).
+estacion(tacubaya, 1, 1).
+estacion(juanacatlan, 1, 1).
+estacion(chapultepec, 1, 1).
+estacion(sevilla, 1, 1).
+estacion(insurgentes, 1, 1).
+estacion(cuauhtemoc, 1, 1).
+estacion(balderas, 1, 1).
+estacion(salto_del_agua, 1, 1).
+estacion(isabel_la_catolica, 1, 1).
+estacion(pino_suarez, 1, 1).
+estacion(merced, 1, 1).
+estacion(candelaria, 1, 1).
+estacion(san_lazaro, 1, 1).
+estacion(moctezuma, 1, 1).
+estacion(balbuena, 1, 1).
+estacion(boulevard_puerto_aereo, 1, 1).
+estacion(gomez_farias, 1, 1).
+estacion(zaragoza, 1, 1).
+estacion(pantitlan, 1, 1).
+
+%Línea 2
+estacion(cuatro_caminos, 1, 1).
+estacion(panteones, 1, 1).
+estacion(tacuba, 1, 1).
+estacion(cuitlahuac, 1, 1).
+estacion(popotla, 1, 1).
+estacion(colegio_militar, 1, 1).
+estacion(normal, 1, 1).
+estacion(san_cosme, 1, 1).
+estacion(revolucion, 1, 1).
+estacion(hidalgo, 1, 1).
+estacion(bellas_artes, 1, 1).
+estacion(allende, 1, 1).
+estacion(zocalo, 1, 1).
+estacion(san_antonio_abad, 1, 1).
+estacion(chabacano, 1, 1).
+estacion(viaducto, 1, 1).
+estacion(xola, 1, 1).
+estacion(villa_de_cortes, 1, 1).
+estacion(nativitas, 1, 1).
+estacion(portales, 1, 1).
+estacion(ermita, 1, 1).
+estacion(general_anaya, 1, 1).
+estacion(tasqueña, 1, 1).
+
+%Línea 3
+estacion(indios_verdes, 1, 1).
+estacion(deportivo_18_de_marzo, 1, 1).
+estacion(potrero, 1, 1).
+estacion(la_raza, 1, 1).
+estacion(tlatelolco, 1, 1).
+estacion(guerrero, 1, 1).
+estacion(juarez, 1, 1).
+estacion(niños_heroes, 1, 1).
+estacion(hospital_general, 1, 1).
+estacion(centro_medico, 1, 1).
+estacion(etiopia, 1, 1).
+estacion(eugenia, 1, 1).
+estacion(division_del_norte, 1, 1).
+estacion(zapata, 1, 1).
+estacion(coyoacan, 1, 1).
+estacion(viveros, 1, 1).
+estacion(miguel_angel_de_quevedo, 1, 1).
+estacion(copilco, 1, 1).
+estacion(universidad, 1, 1).
+
+%Línea 4
+estacion(martin_carrera, 1, 1).
+estacion(talisman, 1, 1).
+estacion(bondojito, 1, 1).
+estacion(consulado, 1, 1).
+estacion(canal_del_norte, 1, 1).
+estacion(morelos, 1, 1).
+estacion(fray_servando, 1, 1).
+estacion(jamaica, 1, 1).
+estacion(santa_anita, 1, 1).
+
+%Línea 5
+estacion(politecnico, 1, 1).
+estacion(instituto_del_petroleo, 1, 1).
+estacion(autobuses_del_norte, 1, 1).
+estacion(misterios, 1, 1).
+estacion(valle_gomez, 1, 1).
+estacion(eduardo_molina, 1, 1).
+estacion(aragon, 1, 1).
+estacion(oceania, 1, 1).
+estacion(terminal_aerea, 1, 1).
+estacion(hangares, 1, 1).
+
+%Línea 6
+estacion(el_rosario, 1, 1).
+estacion(tezozomoc, 1, 1).
+estacion(azcapotzalco, 1, 1).
+estacion(ferreria, 1, 1).
+estacion(norte_45, 1, 1).
+estacion(vallejo, 1, 1).
+estacion(lindavista, 1, 1).
+estacion(la_villa_basilica, 1, 1).
+
+%Línea 7
+estacion(aquiles_serdan, 1, 1).
+estacion(camarones, 1, 1).
+estacion(refineria, 1, 1).
+estacion(san_joaquin, 1, 1).
+estacion(polanco, 1, 1).
+estacion(auditorio, 1, 1).
+estacion(constituyentes, 1, 1).
+estacion(san_pedro_de_los_pinos, 1, 1).
+estacion(san_antonio, 1, 1).
+estacion(mixcoac, 1, 1).
+estacion(barranca_del_muerto, 1, 1).
+
+%Línea 8
+estacion(garibaldi_lagunilla, 1, 1).
+estacion(san_juan_de_letran, 1, 1).
+estacion(doctores, 1, 1).
+estacion(obrera, 1, 1).
+estacion(la_viga, 1, 1).
+estacion(coyuya, 1, 1).
+estacion(iztacalco, 1, 1).
+estacion(apatlaco, 1, 1).
+estacion(aculco, 1, 1).
+estacion(escuadron_201, 1, 1).
+estacion(atlalilco, 1, 1).
+estacion(iztapalapa, 1, 1).
+estacion(cerro_de_la_estrella, 1, 1).
+estacion(uamI, 1, 1).
+estacion(constitucion_de_1917, 1, 1).
+
+%Línea 9
+estacion(puebla, 1, 1).
+estacion(ciudad_deportiva, 1, 1).
+estacion(velodromo, 1, 1).
+estacion(mixiuhca, 1, 1).
+estacion(lazaro_cardenas, 1, 1).
+estacion(chilpancingo, 1, 1).
+estacion(patriotismo, 1, 1).
+
+%Línea A
+estacion(agricola_oriental, 1, 1).
+estacion(canal_de_san_juan, 1, 1).
+estacion(tepalcates, 1, 1).
+estacion(guelatao, 1, 1).
+estacion(peñon_viejo, 1, 1).
+estacion(acatitla, 1, 1).
+estacion(santa_marta, 1, 1).
+estacion(los_reyes, 1, 1).
+estacion(la_paz, 1, 1).
+
+%Línea B
+estacion(buenavista, 1, 1).
+estacion(lagunilla, 1, 1).
+estacion(tepito, 1, 1).
+estacion(flores_magon, 1, 1).
+estacion(romero_rubio, 1, 1).
+estacion(deportivo_oceania, 1, 1).
+estacion(bosque_de_aragon, 1, 1).
+estacion(villa_de_aragon, 1, 1).
+estacion(nezahualcoyotl, 1, 1).
+estacion(impulsora, 1, 1).
+estacion(rio_de_los_remedios, 1, 1).
+estacion(muzquiz, 1, 1).
+estacion(ecatepec, 1, 1).
+estacion(olimpica, 1, 1).
+estacion(plaza_aragon, 1, 1).
+estacion(ciudad_azteca, 1, 1).
+
+%Línea 12
+estacion(insurgentes_sur, 1, 1).
+estacion(hospital_20_de_noviembre, 1, 1).
+estacion(parque_de_los_venados, 1, 1).
+estacion(eje_central, 1, 1).
+estacion(mexicaltzingo, 1, 1).
+estacion(culhuacan, 1, 1).
+estacion(san_andres_tomatlan, 1, 1).
+estacion(lomas_estrella, 1, 1).
+estacion(calle_11, 1, 1).
+estacion(periferico_oriente, 1, 1).
+estacion(tezonco, 1, 1).
+estacion(olivos, 1, 1).
+estacion(nopalera, 1, 1).
+estacion(zapotitlan, 1, 1).
+estacion(tlaltenco, 1, 1).
+estacion(tlahuac, 1, 1).
+
+%conexion(estacionA,estacionB,distancia).
 
 %Línea 1
 conexion(observatorio, tacubaya,1.46).%rosa
@@ -221,12 +403,23 @@ conexion(tlaltenco, tlahuac, 1.47). %dorada
 connectedEdges(X,Y,L) :- conexion(X,Y,L).
 connectedEdges(X,Y,L) :- conexion(Y,X,L).
 
-%Consultas para probar conexiones
-%
-%connectedEdges(X,barranca_del_muerto),write(X),nl,fail.
-%connectedEdges(X,Y),write(X),nl,fail.
-%path(tacuba, norte_45,X),write(X), nl, fail.
+estaciones_adyacentes(X, Z):-
+       findall(Y, connectedEdges(X, Y,_), Z).
 
+%calculaDistancia(i,i,i,o)
+%Función heurística que devuelve la
+%distancia entre una estación y otra.
+%El factor de cambio K lo define el usuario.
+calculaDistancia(Estacion1,Estacion2,K,Distancia):-
+       estacion(Estacion1,Lt1,Ll1),
+       estacion(Estacion2,Lt2,Ll2),
+       Distancia is (Lt1-Lt2+Ll1-Ll2) * K.
+
+%path(i,i,o,o).
+%Encuentra el primer camino desponible
+%de A hacia B.
+%El camino se regresa en Path y la longitug
+%del camino en Len
 path(A,B,Path,Len) :-
        travel(A,B,[A],Q),
        reverse(Q,Path),
@@ -262,47 +455,26 @@ pathSize([A,B|R],Len):-
        pathSize([B|R],T),
        Len is T + 1.
 
+%path(i,i).
+%Imprime todos los caminos posibles de A hacia B
 all_paths(A, B):-
 	path(A, B, X, _),
 	write(X),
 	nl,
 	fail.
 
+%path(i,i).
+%Escribe en un archivo todos los caminos
+%posibles de A hacia B, un espacio y luego
+%la longitud respectiva del camino
 write_all_paths(A, B) :-
     open('file.txt', write, Stream),
     ( path(A, B, X, L), write(Stream, X), write(Stream," "), write(Stream, L), nl(Stream), fail; true ),
     close(Stream).
 
-%F U E N T E:
-%https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
-%https://en.wikipedia.org/wiki/Negation_as_failure
-%http://www.swi-prolog.org/pldoc/man?predicate=findall/3
-
-estaciones_adyacentes(X, Z):-
-       findall(Y, connectedEdges(X, Y,_), Z).
-
-% metodo que dada una lista, te regresa el indice de donde se encuentra
-% el menor valor.
-
-%indiceValorMenor([],0):-!.
-%indiceValorMenor([_],1):-!.
-%indiceValorMenor([Primero|Cola],Res):-
-%      indiceMenor(1,Primero,2,Cola,Res).
-%%%
-%indiceMenor(IndiceMenor,Menor,_, [],IndiceMenor):-
-%       write(Menor),!.
-% indiceMenor(IndiceMenor, Menor, IndiceActual,[DatoActual | Resto], Res):-
-%        IndiceSiguiente is IndiceActual + 1, ( Menor>DatoActual ->
-% indiceMenor(IndiceActual, DatoActual, IndiceSiguiente,Resto, Res);(
-% indiceMenor(IndiceMenor,Menor,IndiceSiguiente,Resto,Res))).
-%
-
-
-
 estacionADistanciaMenor(EstacionInicio,EstacionResultado,Distancia):-
        estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
        estacionMenor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
-
 
 % El siguiente predicado regresa la estación adyacente, según la lista
 % de estaciones adyacentes que recibe,que está a la menor distancia de
@@ -318,7 +490,6 @@ estacionMenor(Inicio,[A],A, Dist):-
 estacionMenor(Inicio,[Primera|Cola],Estacion,Res):-
        estMenorAux(Inicio,Primera,Cola,Estacion,Res),!.
 
-
 estMenorAux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
             connectedEdges(EstacionInicial,EstacionMenorActual,Distancia),!.
 estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
@@ -329,4 +500,31 @@ estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion
         (   DistanciaActual > DistanciaAComparar ->
         estMenorAux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
        estMenorAux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
-                                )).
+         )).
+
+%Consultas para la presentación
+%connectedEdges(X,barranca_del_muerto),write(X),nl,fail.
+%connectedEdges(X,Y),write(X),nl,fail.
+%path(tacuba, norte_45,X),write(X), nl, fail.
+
+%F U E N T E:
+%https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
+%https://en.wikipedia.org/wiki/Negation_as_failure
+%http://www.swi-prolog.org/pldoc/man?predicate=findall/3
+
+% OTROS MÉTODOS
+%
+% Metodo que dada una lista, te regresa el indice de donde se encuentra
+% el menor valor.
+
+%indiceValorMenor([],0):-!.
+%indiceValorMenor([_],1):-!.
+%indiceValorMenor([Primero|Cola],Res):-
+%      indiceMenor(1,Primero,2,Cola,Res).
+%
+%indiceMenor(IndiceMenor,Menor,_, [],IndiceMenor):-
+%       write(Menor),!.
+% indiceMenor(IndiceMenor, Menor, IndiceActual,[DatoActual | Resto], Res):-
+%        IndiceSiguiente is IndiceActual + 1, ( Menor>DatoActual ->
+% indiceMenor(IndiceActual, DatoActual, IndiceSiguiente,Resto, Res);(
+% indiceMenor(IndiceMenor,Menor,IndiceSiguiente,Resto,Res))).
