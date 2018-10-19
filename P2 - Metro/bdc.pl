@@ -345,7 +345,7 @@ elemEnLista(A,[_|Cola]):-
 %buscaAmplitud(Inicio,Fin,Res):-
 %       reverse(ResParcial,Res),
 %       buscaAmplitudAux(Inicio,Fin,Inicio,[Inicio],,ResParcial).
-
+%pat
 %buscaAmplitudAux(Inicio,Fin,Actual,Camino,Res
 
 
@@ -368,4 +368,29 @@ transAux([RutaActual|Resto],ListaTemp,Final):-
        append(ListaTemp,[DistanciaActual],Res),
        transAux(Resto,Res,Final).
 
+%agregaRutasAColaDePrioridad([],Cola,Cola):-!.
+agregaRutasAColaDePrioridad(Ruta,Cola,Resultado):-
+       append(Cola,[Ruta],ColaParcial),
+       ordena(ColaParcial,Resultado).
 
+
+%tal vez puede servir:   https://stackoverflow.com/questions/28070482/sort-a-list-by-the-second-atom-in-functor
+
+%https://ai.ia.agh.edu.pl/wiki/_media/pl:dydaktyka:pp:prolog-lists-advanced.pdf
+
+%insertion sort
+ordena([],[]).
+ordena([Cabeza|Cola],Resultado):-
+       ordena(Cola,ResP),
+       agregaOrden(Cabeza,ResP,Resultado).
+%aqui agrega comparando las distancias de las rutas
+agregaOrden(Elem,[],[Elem]):-!.
+agregaOrden(Elem,[X|Y],[Elem,X|Y]):-
+       pathLen(Elem,Res1),
+       pathLen(X,Res2),
+       Res1<Res2,!.
+agregaOrden(Elem,[X|Y],[X|Z]):-
+       agregaOrden(Elem,Y,Z),!.
+
+%Consulta para ordenar
+%ordena([[barranca_del_muerto,mixcoac,san_antonio,san_pedro],[barranca_del_muerto,mixcoac]],Res).
