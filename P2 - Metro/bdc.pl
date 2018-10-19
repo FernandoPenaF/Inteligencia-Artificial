@@ -351,13 +351,13 @@ elemEnLista(A,[_|Cola]):-
 
 
 %Metodos de push y pop para una cola representada como lista
-sacaDeCola([A|Resto],Resto,A).
-agregaACola(Elemento,Cola,NuevaCola):-
-       append(Cola,[Elemento],NuevaCola).
+%sacaDeCola([A|Resto],Resto,A).
+%agregaACola(Elemento,Cola,NuevaCola):-
+%       append(Cola,[Elemento],NuevaCola).
 
-agregaAColaDePrioridad(Elemento,Cola,NuevaCola):-
-       append(Cola,[Elemento],ColaParcial),
-       msort(ColaParcial,NuevaCola).
+%agregaAColaDePrioridad(Elemento,Cola,NuevaCola):-
+%       append(Cola,[Elemento],ColaParcial),
+%       msort(ColaParcial,NuevaCola).
 
 %Rutas es una lista de listas
 transformaRutasADistancia(Rutas,Distancias):-
@@ -393,4 +393,22 @@ agregaOrden(Elem,[X|Y],[X|Z]):-
        agregaOrden(Elem,Y,Z),!.
 
 %Consulta para ordenar
-%ordena([[barranca_del_muerto,mixcoac,san_antonio,san_pedro],[barranca_del_muerto,mixcoac]],Res).
+%ordena([[BarrancaDelMuerto,Mixcoac,san_antonio,san_pedro],[barranca_del_muerto,mixcoac]],Res).
+% ordena([[el_rosario,aquiles_serdan,camarones,refineria,tacuba],[mixcoac,insurgentes_sur],[tlatelolco,la_raza,potrero],[nativitas,villa_de_cortes,xola]],Res).
+% transformaRutasADistancia([[el_rosario,aquiles_serdan,camarones,refineria,tacuba],[mixcoac,insurgentes_sur],[tlatelolco,la_raza,potrero],[nativitas,villa_de_cortes,xola]],Res).
+%
+
+
+%este metodo calcula la heuristica de la situacion actual
+% i: nodo destino
+% i: lista del camino
+% o: valor calculado
+heuristica(Destino, [EstacionActual|CaminoRecorrido], ValorCalculado):-
+       pathLen([EstacionActual|CaminoRecorrido],Res1),
+       heuristicaGeografica(EstacionActual,Destino,Res2),
+       ValorCalculado is Res1 + Res2.
+
+heuristicaGeografica(EstacionOrigen,EstacionDestino,Resultado):-
+       estacion(EstacionOrigen,Val1),
+       estacion(EstacionDestino,Val2),
+       Resultado is abs(Val1 - Val2).
