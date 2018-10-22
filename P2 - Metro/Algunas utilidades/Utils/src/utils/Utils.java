@@ -85,6 +85,39 @@ public class Utils {
         return paths;
     }
     
+    public static void eliminarEstaciones(String filename) throws FileNotFoundException, IOException{
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        
+        ArrayList<ArrayList<String>> stations = new ArrayList<>();
+        HashSet <String> s = new HashSet<>();
+        String line;
+        int linea = -1;
+        
+        while ((line = br.readLine()) != null) {
+            if(line.startsWith("%")){
+                linea++;
+                stations.add(new ArrayList<>());
+                continue;
+            }
+            
+            if(!s.contains(line)){
+                s.add(line);
+                stations.get(linea).add(line);
+            }
+	}
+        
+        for (int i = 0; i < stations.size(); i++) {
+            ArrayList<String> ar = stations.get(i);
+            System.out.println("%Línea " + (i + 1));
+            for (int j = 0; j < ar.size(); j++) {
+                System.out.println(ar.get(j));
+            }
+            System.out.println("");
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      * @throws java.io.FileNotFoundException
@@ -95,6 +128,6 @@ public class Utils {
 //        System.out.println("Caminos únicos: " + s.size());
 //        System.out.println("Camino más corto: " + sort.get(0).toString());
 //        System.out.println("Camino más largo: " + sort.get(sort.size() - 1).toString());
-//        Utils.readStations("conexiones.txt");
+        Utils.eliminarEstaciones("estaciones.txt");
     }   
 }
