@@ -691,4 +691,16 @@ insertaAux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],ColaP
         insertaAux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridad,Resultado)
        ).
 
+imprime([]):-!.
+imprime([Ultimo]):-
+       write(Ultimo).
+imprime([Cabeza|Resto]):-
+       write(Cabeza),
+       nl,
+       imprime(Resto).
 
+
+dameRutaOptima(Origen,Destino):-
+       rutaAEstrella(Origen,Destino,RutaI),!,
+       reverse(RutaI,RutaDesdeInicio),
+       imprime(RutaDesdeInicio).
