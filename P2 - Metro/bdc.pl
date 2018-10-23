@@ -526,32 +526,12 @@ estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion
        estMenorAux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
                                 )).
 
-
 elemEnLista(_,[]):-
        fail,!.
 elemEnLista(A,[A|_]):-
        !.
 elemEnLista(A,[_|Cola]):-
        elemEnLista(A,Cola).
-
-
-
-%buscaAmplitud(Inicio,Fin,Res):-
-%       reverse(ResParcial,Res),
-%       buscaAmplitudAux(Inicio,Fin,Inicio,[Inicio],,ResParcial).
-%pat
-%buscaAmplitudAux(Inicio,Fin,Actual,Camino,Res
-
-
-
-%Metodos de push y pop para una cola representada como lista
-%sacaDeCola([A|Resto],Resto,A).
-%agregaACola(Elemento,Cola,NuevaCola):-
-%       append(Cola,[Elemento],NuevaCola).
-
-%agregaAColaDePrioridad(Elemento,Cola,NuevaCola):-
-%       append(Cola,[Elemento],ColaParcial),
-%       msort(ColaParcial,NuevaCola).
 
 %Rutas es una lista de listas
 transformaRutasADistancia(Rutas,Distancias):-
@@ -638,8 +618,8 @@ recorreAEstrella(Destino,[CabezaRutaActual|ColaRutaActual],ColaDePrioridad,Resul
        insertaAux(Destino,[CabezaRutaActual|ColaRutaActual],ResultadosAdyacentes,ColaDePrioridad,[CabezaColaActualizada|RestoColaActualizada]),
        %nos regresa la cola de prioridad y el ultimo argumento es una lista de listas
        %nl,nl,write("Después de agregar adyacentes. "),write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
-       write(" * * *  RECURSION ESTRELLA * * *"),nl,
-       write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
+       %write(" * * *  RECURSION ESTRELLA * * *"),nl,
+       %write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
        recorreAEstrella(Destino,CabezaColaActualizada,RestoColaActualizada,Resultado).
 
 
@@ -681,8 +661,7 @@ imprime([Cabeza|Resto]):-
        nl,
        imprime(Resto).
 
-
 dameRutaOptima(Origen,Destino,RutaDesdeInicio):-
        rutaAEstrella(Origen,Destino,RutaI),!,
        reverse(RutaI,RutaDesdeInicio),
-       imprime(RutaDesdeInicio).
+       imprime(RutaDesdeInicio),!.
