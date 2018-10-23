@@ -1,12 +1,6 @@
 %Linea 1
 %estacion(nombre,latitud,longitud).
 
-%calculaDistancia(Estacion1,Estacion2,Distancia)
-% estacion(Estacion1,Lt1,Ll1),
-% estacionEstacion2,Lt2,Ll2),
-% k is 10,
-% Distancia is (Lt1-Lt2+Ll1-Ll2) * K.
-
 %Línea 1
 estacion(observatorio,19.39833333,-99.20027778).
 estacion(tacubaya,19.40333333,-99.18722222).
@@ -82,7 +76,6 @@ estacion(bondojito,19.46472222,-99.11194444).
 estacion(consulado,19.45777778,-99.11388889).
 estacion(canal_del_norte,19.44916667,-99.11638889).
 estacion(morelos,19.44916667,-99.11638889).
-estacion(candelaria,19.43888889,-99.11833333).
 estacion(fray_servando,19.42166667,-99.12055556).
 estacion(jamaica,19.40888889,-99.12222222).
 estacion(santa_anita,19.40277778,-99.12166667).
@@ -93,7 +86,6 @@ estacion(terminal_aerea,19.43361111,-99.08777778).
 estacion(oceania,19.44555556,-99.08722222).
 estacion(aragon,19.45111111,-99.09583333).
 estacion(eduardo_molina,19.45138889,-99.10555556).
-estacion(cosulado,19.45777778,-99.11388889).
 estacion(valle_gomez,19.45861111,-99.11916667).
 estacion(misterios,19.46333333,-99.13083333).
 estacion(autobuses_del_norte,19.47888889,-99.14055556).
@@ -174,7 +166,6 @@ estacion(bosque_de_aragon,19.45805556,-99.06916667).
 estacion(deportivo_oceania,19.45111111,-99.07916667).
 estacion(romero_rubio,19.44083333,-99.09444444).
 estacion(flores_magon,19.43666667,-99.10361111).
-estacion(morelos,19.43888889,-99.11833333).
 estacion(tepito,19.4425,-99.12333333).
 estacion(lagunilla,19.44333333,-99.13138889).
 estacion(buenavista,19.44666667,-99.15333333).
@@ -243,7 +234,6 @@ conexion(portales, ermita, 0.89). %azul
 conexion(ermita, general_anaya, 0.99). %azul
 conexion(general_anaya, tasqueña, 1.5). %azul
 
-
 % Línea 3
 % En Etiopia - Plaza de la Transparencia se consideró
 % solamente como Etiopia
@@ -269,7 +259,6 @@ conexion(coyoacan, viveros, 0.98). %verde
 conexion(viveros, miguel_angel_de_quevedo, 1.02). %verde
 conexion(miguel_angel_de_quevedo, copilco, 1.25). %verde
 conexion(copilco, universidad, 1.42). %verde
-
 
 %Línea 4
 conexion(martin_carrera, talisman, 1.3). %verde claro
@@ -415,20 +404,17 @@ conexion(tlaltenco, tlahuac, 1). %dorada
 connectedEdges(X,Y,L) :- conexion(X,Y,L).
 connectedEdges(X,Y,L) :- conexion(Y,X,L).
 
-%Consultas para probar conexiones
-%
-%connectedEdges(X,barranca_del_muerto),write(X),nl,fail.
-%connectedEdges(X,Y),write(X),nl,fail.
-%path(tacuba, norte_45,X),write(X), nl, fail.
+estaciones_adyacentes(X, Z):-
+       findall(Y, connectedEdges(X, Y,_), Z).
 
 path(A,B,Path,Len) :-
        travel(A,B,[A],Q),
        reverse(Q,Path),
        pathLen(Path,Len).
 
+%esta es busqueda en profundidad
 travel(A,B,P,[B|P]) :-
        connectedEdges(A,B,_).
-%esta es busqueda en profundidad
 travel(A,B,Visited,Path) :-
        connectedEdges(A,C,_),
        C \== B,
@@ -457,47 +443,9 @@ pathSize([A,B|R],Len):-
        pathSize([B|R],T),
        Len is T + 1.
 
-all_paths(A, B):-
-	path(A, B, X, _),
-	write(X),
-	nl,
-	fail.
-
-write_all_paths(A, B) :-
-    open('file.txt', write, Stream),
-    ( path(A, B, X, L), write(Stream, X), write(Stream," "), write(Stream, L), nl(Stream), fail; true ),
-    close(Stream).
-
-%F U E N T E:
-%https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
-%https://en.wikipedia.org/wiki/Negation_as_failure
-%http://www.swi-prolog.org/pldoc/man?predicate=findall/3
-
-estaciones_adyacentes(X, Z):-
-       findall(Y, connectedEdges(X, Y,_), Z).
-
-% metodo que dada una lista, te regresa el indice de donde se encuentra
-% el menor valor.
-
-%indiceValorMenor([],0):-!.
-%indiceValorMenor([_],1):-!.
-%indiceValorMenor([Primero|Cola],Res):-
-%      indiceMenor(1,Primero,2,Cola,Res).
-%%%
-%indiceMenor(IndiceMenor,Menor,_, [],IndiceMenor):-
-%       write(Menor),!.
-% indiceMenor(IndiceMenor, Menor, IndiceActual,[DatoActual | Resto], Res):-
-%        IndiceSiguiente is IndiceActual + 1, ( Menor>DatoActual ->
-% indiceMenor(IndiceActual, DatoActual, IndiceSiguiente,Resto, Res);(
-% indiceMenor(IndiceMenor,Menor,IndiceSiguiente,Resto,Res))).
-%
-
-
-
 estacionADistanciaMenor(EstacionInicio,EstacionResultado,Distancia):-
        estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
        estacionMenor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
-
 
 % El siguiente predicado regresa la estación adyacente, según la lista
 % de estaciones adyacentes que recibe,que está a la menor distancia de
@@ -513,7 +461,6 @@ estacionMenor(Inicio,[A],A, Dist):-
 estacionMenor(Inicio,[Primera|Cola],Estacion,Res):-
        estMenorAux(Inicio,Primera,Cola,Estacion,Res),!.
 
-
 estMenorAux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
             connectedEdges(EstacionInicial,EstacionMenorActual,Distancia),!.
 estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
@@ -525,13 +472,6 @@ estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion
         estMenorAux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
        estMenorAux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
                                 )).
-
-elemEnLista(_,[]):-
-       fail,!.
-elemEnLista(A,[A|_]):-
-       !.
-elemEnLista(A,[_|Cola]):-
-       elemEnLista(A,Cola).
 
 %Rutas es una lista de listas
 transformaRutasADistancia(Rutas,Distancias):-
@@ -547,11 +487,6 @@ agregaRutasAColaDePrioridad(Destino,Ruta,Cola,Resultado):-
        append([Ruta],Cola,ColaParcial),
        ordena(Destino,ColaParcial,Resultado).
 
-
-%tal vez puede servir:   https://stackoverflow.com/questions/28070482/sort-a-list-by-the-second-atom-in-functor
-
-%https://ai.ia.agh.edu.pl/wiki/_media/pl:dydaktyka:pp:prolog-lists-advanced.pdf
-
 %insertion sort
 ordena(_,[],[]).
 ordena(Destino,[Cabeza|Cola],Resultado):-
@@ -563,15 +498,9 @@ agregaOrden(_,Elem,[],[Elem]):-!.
 agregaOrden(Destino,Elem,[X|Y],[Elem,X|Y]):-
        heuristica(Destino,Elem,Res1),
        heuristica(Destino,X,Res2),
-       Res1<Res2,!.
+       Res1 < Res2,!.
 agregaOrden(Destino,Elem,[X|Y],[X|Z]):-
        agregaOrden(Destino,Elem,Y,Z),!.
-
-%Consulta para ordenar
-%ordena([[BarrancaDelMuerto,Mixcoac,san_antonio,san_pedro],[barranca_del_muerto,mixcoac]],Res).
-% ordena([[el_rosario,aquiles_serdan,camarones,refineria,tacuba],[mixcoac,insurgentes_sur],[tlatelolco,la_raza,potrero],[nativitas,villa_de_cortes,xola]],Res).
-% transformaRutasADistancia([[el_rosario,aquiles_serdan,camarones,refineria,tacuba],[mixcoac,insurgentes_sur],[tlatelolco,la_raza,potrero],[nativitas,villa_de_cortes,xola]],Res).
-
 
 %este metodo calcula la heuristica de la situacion actual
 % i: nodo destino
@@ -588,15 +517,8 @@ heuristicaGeografica(EstacionOrigen,EstacionDestino,Resultado):-
        calculaDistancia(Coord1,Coord12,Coord2,Coord22,Resultado).
 
 
-%Para la transformación de coordenadas a kilometros
-%http://www.manualvuelo.com/NAV/NAV72.html
 calculaDistancia(Ll1,Ln1,Ll2,Ln2,Res):-
        Res is sqrt( (Ll1-Ll2)**2 + (Ln1-Ln2)**2) * 110.57. %110.57,111.70
-
-
-
-%https://norfipc.com/herramientas/convertir-grados-geograficos-minutos-segundos-decimales.php
-
 
 rutaAEstrella(Origen,Destino,Ruta):-
        estacion(Origen,_,_),
@@ -609,7 +531,6 @@ recorreAEstrella(Destino,[Destino|Resto],_,[Destino|Resto]):-!.
 % aqui lo que tiene que hacer es llamar a todos los adyacentes,
 % concatenarlos a la ruta actual
 %agregarlos a la cola de prioridad y seguir recorriendo
-
 recorreAEstrella(Destino,[CabezaRutaActual|ColaRutaActual],ColaDePrioridad,Resultado):-
        %de los resultados de ruta actual con sus adyacentes       write("Bandera 1"),nl,
        estaciones_adyacentes(CabezaRutaActual,ResultadosAdyacentes),
@@ -622,7 +543,6 @@ recorreAEstrella(Destino,[CabezaRutaActual|ColaRutaActual],ColaDePrioridad,Resul
        %write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
        recorreAEstrella(Destino,CabezaColaActualizada,RestoColaActualizada,Resultado).
 
-
 %Destino,RutaActual,ListaAdyacentes,ColaDePrioridad,Res)
 insertaAux(_,_,[],ColaDePrioridadActualizada,ColaDePrioridadActualizada):-!.
 insertaAux(Destino,[CabezaRutaActual|RestoRutaActual],[CabezaListaAdyacentes],ColaPrioridad,Resultado):-
@@ -632,8 +552,6 @@ insertaAux(Destino,[CabezaRutaActual|RestoRutaActual],[CabezaListaAdyacentes],Co
       agregaRutasAColaDePrioridad(Destino,AInsertar,ColaPrioridad,ResP),
           insertaAux(_,_,[],ResP,Resultado)
       ;insertaAux(_,_,[],ColaPrioridad,Resultado)),!.
-
-
 
 insertaAux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],ColaPrioridad,Resultado):-
        %nl,nl,nl,write(ColaPrioridad),nl,nl,nl,
@@ -661,7 +579,33 @@ imprime([Cabeza|Resto]):-
        nl,
        imprime(Resto).
 
-dameRutaOptima(Origen,Destino,RutaDesdeInicio):-
+calculaRutaOptima(Origen,Destino,RutaDesdeInicio):-
        rutaAEstrella(Origen,Destino,RutaI),!,
        reverse(RutaI,RutaDesdeInicio),
-       imprime(RutaDesdeInicio), !.
+       imprime(RutaDesdeInicio),!.
+
+all_paths(A, B):-
+	path(A, B, X, _),
+	write(X),
+	nl,
+	fail.
+
+write_all_paths(A, B) :-
+    open('file.txt', write, Stream),
+    ( path(A, B, X, L), write(Stream, X), write(Stream," "), write(Stream, L), nl(Stream), fail; true ),
+    close(Stream).
+
+
+%Consultas para probar conexiones
+%connectedEdges(X,barranca_del_muerto),write(X),nl,fail.
+%connectedEdges(X,Y),write(X),nl,fail.
+%path(tacuba, norte_45,X),write(X), nl, fail.
+
+%F U E N T E S:
+%https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
+%https://en.wikipedia.org/wiki/Negation_as_failure
+%http://www.swi-prolog.org/pldoc/man?predicate=findall/3
+%https://stackoverflow.com/questions/28070482/sort-a-list-by-the-second-atom-in-functor
+%https://ai.ia.agh.edu.pl/wiki/_media/pl:dydaktyka:pp:prolog-lists-advanced.pdf
+%https://norfipc.com/herramientas/convertir-grados-geograficos-minutos-segundos-decimales.php
+%http://www.manualvuelo.com/NAV/NAV72.html

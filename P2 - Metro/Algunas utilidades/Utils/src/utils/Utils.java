@@ -128,6 +128,6 @@ public class Utils {
 //        System.out.println("Caminos únicos: " + s.size());
 //        System.out.println("Camino más corto: " + sort.get(0).toString());
 //        System.out.println("Camino más largo: " + sort.get(sort.size() - 1).toString());
-        Utils.eliminarEstaciones("estaciones.txt");
+        Utils.readStations("conexiones.txt");
     }   
 }

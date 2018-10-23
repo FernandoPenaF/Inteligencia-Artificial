@@ -114,8 +114,8 @@ conexion(mixcoac, barranca_del_muerto,1.69).%naranja
 %Línea 8
 conexion(garibaldi_lagunilla, bellas_artes, 0.80). %verde oscuro
 conexion(bellas_artes, san_juan_de_letran, 0.65). %verde oscuro
-conexion(san_juan_de_letran, isabel_la_catolica, 0.46). %verde oscuro
-conexion(isabel_la_catolica, doctores, 0.77). %verde oscuro
+conexion(san_juan_de_letran, salto_del_agua, 0.46). %verde oscuro
+conexion(salto_del_agua, doctores, 0.77). %verde oscuro
 conexion(doctores, obrera, 0.85). %verde oscuro
 conexion(obrera, chabacano, 0.99). %verde oscuro
 conexion(chabacano, la_viga, 1.02). %verde oscuro
