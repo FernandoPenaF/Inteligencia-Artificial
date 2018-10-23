@@ -125,7 +125,6 @@ estacion(barranca_del_muerto,19.36055556,-99.19027778).
 
 %Línea 8
 estacion(garibaldi_lagunilla,19.44444444,-99.13972222).
-estacion(bellas_artes,19.43666667,-99.64444444).
 estacion(san_juan_de_letran,19.43138889,-99.14166667).
 estacion(doctores,19.42166667,-99.14333333).
 estacion(obrera,19.41361111,-99.14416667).
@@ -329,8 +328,8 @@ conexion(mixcoac, barranca_del_muerto,1.69).%naranja
 %Línea 8
 conexion(garibaldi_lagunilla, bellas_artes, 0.80). %verde oscuro
 conexion(bellas_artes, san_juan_de_letran, 0.65). %verde oscuro
-conexion(san_juan_de_letran, isabel_la_catolica, 0.46). %verde oscuro
-conexion(isabel_la_catolica, doctores, 0.77). %verde oscuro
+conexion(san_juan_de_letran, salto_del_agua, 0.46). %verde oscuro
+conexion(salto_del_agua, doctores, 0.77). %verde oscuro
 conexion(doctores, obrera, 0.85). %verde oscuro
 conexion(obrera, chabacano, 0.99). %verde oscuro
 conexion(chabacano, la_viga, 1.02). %verde oscuro
