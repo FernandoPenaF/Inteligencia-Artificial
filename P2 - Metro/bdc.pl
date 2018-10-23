@@ -582,6 +582,11 @@ imprime([Cabeza|Resto]):-
 calculaRutaOptima(Origen,Destino,RutaDesdeInicio):-
        rutaAEstrella(Origen,Destino,RutaI),!,
        reverse(RutaI,RutaDesdeInicio),
+       pathLen(RutaDesdeInicio,Len),
+       pathSize(RutaDesdeInicio,Size),
+       write("Distancia: "), write(Len),nl,
+       write("# estaciones: "), write(Size),nl,
+       %write(RutaDesdeInicio),!.
        imprime(RutaDesdeInicio),!.
 
 all_paths(A, B):-
