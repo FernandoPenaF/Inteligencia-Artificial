@@ -1,4 +1,3 @@
-%Linea 1
 %estacion(nombre,latitud,longitud).
 
 %Línea 1
@@ -187,6 +186,8 @@ estacion(nopalera,19.3,-99.04666667).
 estacion(zapotitlan,19.29666667,-99.03444444).
 estacion(tlaltenco,19.29416667,-99.02388889).
 estacion(tlahuac,19.28638889,-99.01416667).
+
+%conexcion(estacionA,estacionB,distancia).
 
 %Línea 1
 conexion(observatorio, tacubaya,1.46).%rosa
@@ -401,51 +402,51 @@ conexion(nopalera, zapotitlan, 1). %dorada
 conexion(zapotitlan, tlaltenco, 1). %dorada
 conexion(tlaltenco, tlahuac, 1). %dorada
 
-connectedEdges(X,Y,L) :- conexion(X,Y,L).
-connectedEdges(X,Y,L) :- conexion(Y,X,L).
+estaciones_conectadas(X,Y,L) :- conexion(X,Y,L).
+estaciones_conectadas(X,Y,L) :- conexion(Y,X,L).
 
 estaciones_adyacentes(X, Z):-
-       findall(Y, connectedEdges(X, Y,_), Z).
+       findall(Y, estaciones_conectadas(X, Y,_), Z).
 
-path(A,B,Path,Len) :-
-       travel(A,B,[A],Q),
+camino(A,B,Path,Len) :-
+       recorre(A,B,[A],Q),
        reverse(Q,Path),
-       pathLen(Path,Len).
+       longitud_camino(Path,Len).
 
 %esta es busqueda en profundidad
-travel(A,B,P,[B|P]) :-
-       connectedEdges(A,B,_).
-travel(A,B,Visited,Path) :-
-       connectedEdges(A,C,_),
+recorre(A,B,P,[B|P]) :-
+       estaciones_conectadas(A,B,_).
+recorre(A,B,Visited,Path) :-
+       estaciones_conectadas(A,C,_),
        C \== B,
        \+member(C,Visited),
-       travel(C,B,[C|Visited],Path).
+       recorre(C,B,[C|Visited],Path).
 
-%pathLen(i,o).
+%longitud_camino(i,o).
 %Calcula el número de estaciones a recorrer
 %de un camino dado, i.
 %
 %Notar que el camino dado a calcular
 %debe ser un camino válido.
-pathLen([_],0).
-pathLen([A,B|R],Len):-
-       connectedEdges(A,B,L),
-       pathLen([B|R],T),
+longitud_camino([_],0).
+longitud_camino([A,B|R],Len):-
+       estaciones_conectadas(A,B,L),
+       longitud_camino([B|R],T),
        Len is T + L.
 
-%pathSize(i,o).
+%largo_camino(i,o).
 %Calcula la longitud de un camino dado, i.
 %Notar que el camino dado a calcular
 %debe ser un camino válido.
-pathSize([_],0).
-pathSize([A,B|R],Len):-
-       connectedEdges(A,B,_),
-       pathSize([B|R],T),
+largo_camino([_],0).
+largo_camino([A,B|R],Len):-
+       estaciones_conectadas(A,B,_),
+       largo_camino([B|R],T),
        Len is T + 1.
 
-estacionADistanciaMenor(EstacionInicio,EstacionResultado,Distancia):-
+estacion_a_menor_distancia(EstacionInicio,EstacionResultado,Distancia):-
        estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
-       estacionMenor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
+       estacion_menor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
 
 % El siguiente predicado regresa la estación adyacente, según la lista
 % de estaciones adyacentes que recibe,que está a la menor distancia de
@@ -455,35 +456,35 @@ estacionADistanciaMenor(EstacionInicio,EstacionResultado,Distancia):-
 % i: Lista de las estaciones adyacentes
 % o: Nombre de la estacion con distancia menor adyacente
 % o: Distancia a la estacion adyacente
-estacionMenor(Inicio,[],Inicio,0):-!.
-estacionMenor(Inicio,[A],A, Dist):-
-       connectedEdges(Inicio,A,Dist),!.
-estacionMenor(Inicio,[Primera|Cola],Estacion,Res):-
-       estMenorAux(Inicio,Primera,Cola,Estacion,Res),!.
+estacion_menor(Inicio,[],Inicio,0):-!.
+estacion_menor(Inicio,[A],A, Dist):-
+       estaciones_conectadas(Inicio,A,Dist),!.
+estacion_menor(Inicio,[Primera|Cola],Estacion,Res):-
+       estacion_menor_aux(Inicio,Primera,Cola,Estacion,Res),!.
 
-estMenorAux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
-            connectedEdges(EstacionInicial,EstacionMenorActual,Distancia),!.
-estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
-       connectedEdges(EstacionInicial,EstacionMenorActual,J),
+estacion_menor_aux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
+            estaciones_conectadas(EstacionInicial,EstacionMenorActual,Distancia),!.
+estacion_menor_aux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
+       estaciones_conectadas(EstacionInicial,EstacionMenorActual,J),
        DistanciaActual is J,
-       connectedEdges(EstacionInicial, EstacionAPrueba,K),
+       estaciones_conectadas(EstacionInicial, EstacionAPrueba,K),
        DistanciaAComparar is K,
         (   DistanciaActual > DistanciaAComparar ->
-        estMenorAux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
-       estMenorAux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
+        estacion_menor_aux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
+       estacion_menor_aux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
                                 )).
 
 %Rutas es una lista de listas
-transformaRutasADistancia(Rutas,Distancias):-
-       transAux(Rutas,[],Distancias).
-transAux([],ListaTemp,ListaTemp).
-transAux([RutaActual|Resto],ListaTemp,Final):-
-       pathLen(RutaActual,DistanciaActual),
+transforma_rutas_a_distancia(Rutas,Distancias):-
+       trans_aux(Rutas,[],Distancias).
+trans_aux([],ListaTemp,ListaTemp).
+trans_aux([RutaActual|Resto],ListaTemp,Final):-
+       longitud_camino(RutaActual,DistanciaActual),
        append(ListaTemp,[DistanciaActual],Res),
-       transAux(Resto,Res,Final).
+       trans_aux(Resto,Res,Final).
 
-%agregaRutasAColaDePrioridad([],Cola,Cola):-!.
-agregaRutasAColaDePrioridad(Destino,Ruta,Cola,Resultado):-
+%agrega_rutas_a_cola_de_prioridad([],Cola,Cola):-!.
+agrega_rutas_a_cola_de_prioridad(Destino,Ruta,Cola,Resultado):-
        append([Ruta],Cola,ColaParcial),
        ordena(Destino,ColaParcial,Resultado).
 
@@ -491,84 +492,83 @@ agregaRutasAColaDePrioridad(Destino,Ruta,Cola,Resultado):-
 ordena(_,[],[]).
 ordena(Destino,[Cabeza|Cola],Resultado):-
        ordena(Destino,Cola,ResP),
-       agregaOrden(Destino,Cabeza,ResP,Resultado).
+       agrega_orden(Destino,Cabeza,ResP,Resultado).
 
 %aqui agrega comparando las distancias de las rutas
-agregaOrden(_,Elem,[],[Elem]):-!.
-agregaOrden(Destino,Elem,[X|Y],[Elem,X|Y]):-
+agrega_orden(_,Elem,[],[Elem]):-!.
+agrega_orden(Destino,Elem,[X|Y],[Elem,X|Y]):-
        heuristica(Destino,Elem,Res1),
        heuristica(Destino,X,Res2),
        Res1 < Res2,!.
-agregaOrden(Destino,Elem,[X|Y],[X|Z]):-
-       agregaOrden(Destino,Elem,Y,Z),!.
+agrega_orden(Destino,Elem,[X|Y],[X|Z]):-
+       agrega_orden(Destino,Elem,Y,Z),!.
 
 %este metodo calcula la heuristica de la situacion actual
 % i: nodo destino
 % i: lista del camino
 % o: valor calculado
 heuristica(Destino, [EstacionActual|CaminoRecorrido], ValorCalculado):-
-       pathLen([EstacionActual|CaminoRecorrido],Res1),
-       heuristicaGeografica(EstacionActual,Destino,Res2),
+       longitud_camino([EstacionActual|CaminoRecorrido],Res1),
+       heuristica_geografica(EstacionActual,Destino,Res2),
        ValorCalculado is Res1 + Res2.
 
-heuristicaGeografica(EstacionOrigen,EstacionDestino,Resultado):-
+heuristica_geografica(EstacionOrigen,EstacionDestino,Resultado):-
        estacion(EstacionOrigen,Coord1,Coord12),
        estacion(EstacionDestino,Coord2,Coord22),
-       calculaDistancia(Coord1,Coord12,Coord2,Coord22,Resultado).
+       calcula_distancia(Coord1,Coord12,Coord2,Coord22,Resultado).
 
-
-calculaDistancia(Ll1,Ln1,Ll2,Ln2,Res):-
+calcula_distancia(Ll1,Ln1,Ll2,Ln2,Res):-
        Res is sqrt( (Ll1-Ll2)**2 + (Ln1-Ln2)**2) * 110.57. %110.57,111.70
 
-rutaAEstrella(Origen,Destino,Ruta):-
+ruta_Aestrella(Origen,Destino,Ruta):-
        estacion(Origen,_,_),
        estacion(Destino,_,_),
-       recorreAEstrella(Destino,[Origen],[],Ruta).
+       recorre_Aestrella(Destino,[Origen],[],Ruta).
 
 %Destino,Ruta actual, cola de prioridad,Resultado
-recorreAEstrella(Destino,[Destino|Resto],_,[Destino|Resto]):-!.
+recorre_Aestrella(Destino,[Destino|Resto],_,[Destino|Resto]):-!.
 
 % aqui lo que tiene que hacer es llamar a todos los adyacentes,
 % concatenarlos a la ruta actual
 %agregarlos a la cola de prioridad y seguir recorriendo
-recorreAEstrella(Destino,[CabezaRutaActual|ColaRutaActual],ColaDePrioridad,Resultado):-
+recorre_Aestrella(Destino,[CabezaRutaActual|ColaRutaActual],ColaDePrioridad,Resultado):-
        %de los resultados de ruta actual con sus adyacentes       write("Bandera 1"),nl,
        estaciones_adyacentes(CabezaRutaActual,ResultadosAdyacentes),
        %write("Adyacentes a "),write(CabezaRutaActual),write(" son : "),nl,write("    "),write(ResultadosAdyacentes),
        %agregar todos a cola de prioridad, meter si no estan repetidos o si la ruta no esta repetida
-       insertaAux(Destino,[CabezaRutaActual|ColaRutaActual],ResultadosAdyacentes,ColaDePrioridad,[CabezaColaActualizada|RestoColaActualizada]),
+       inserta_aux(Destino,[CabezaRutaActual|ColaRutaActual],ResultadosAdyacentes,ColaDePrioridad,[CabezaColaActualizada|RestoColaActualizada]),
        %nos regresa la cola de prioridad y el ultimo argumento es una lista de listas
        %nl,nl,write("Después de agregar adyacentes. "),write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
        %write(" * * *  RECURSION ESTRELLA * * *"),nl,
        %write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
-       recorreAEstrella(Destino,CabezaColaActualizada,RestoColaActualizada,Resultado).
+       recorre_Aestrella(Destino,CabezaColaActualizada,RestoColaActualizada,Resultado).
 
 %Destino,RutaActual,ListaAdyacentes,ColaDePrioridad,Res)
-insertaAux(_,_,[],ColaDePrioridadActualizada,ColaDePrioridadActualizada):-!.
-insertaAux(Destino,[CabezaRutaActual|RestoRutaActual],[CabezaListaAdyacentes],ColaPrioridad,Resultado):-
+inserta_aux(_,_,[],ColaDePrioridadActualizada,ColaDePrioridadActualizada):-!.
+inserta_aux(Destino,[CabezaRutaActual|RestoRutaActual],[CabezaListaAdyacentes],ColaPrioridad,Resultado):-
       (   \+member(CabezaListaAdyacentes,[CabezaRutaActual|RestoRutaActual]) ->
       append([CabezaListaAdyacentes],[CabezaRutaActual|RestoRutaActual],AInsertar),
       %Destino,Ruta,Cola,Resultado
-      agregaRutasAColaDePrioridad(Destino,AInsertar,ColaPrioridad,ResP),
-          insertaAux(_,_,[],ResP,Resultado)
-      ;insertaAux(_,_,[],ColaPrioridad,Resultado)),!.
+      agrega_rutas_a_cola_de_prioridad(Destino,AInsertar,ColaPrioridad,ResP),
+          inserta_aux(_,_,[],ResP,Resultado)
+      ;inserta_aux(_,_,[],ColaPrioridad,Resultado)),!.
 
-insertaAux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],ColaPrioridad,Resultado):-
+inserta_aux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],ColaPrioridad,Resultado):-
        %nl,nl,nl,write(ColaPrioridad),nl,nl,nl,
        %nl,nl,write("Inserta a adyacentes"),
        (\+member(CabezaListaAdyacentes,RutaActual)->
        append([CabezaListaAdyacentes],RutaActual,AInsertar),
        %write("antes de agregar a la cola :     "),nl,nl,write(ColaPrioridad),
-       agregaRutasAColaDePrioridad(Destino,AInsertar,ColaPrioridad,ColaPrioridadActualizada),
+       agrega_rutas_a_cola_de_prioridad(Destino,AInsertar,ColaPrioridad,ColaPrioridadActualizada),
        %write("despues de agregar a la cola :     "),nl,nl,write(ColaPrioridadActualizada),
 
        % nl,nl,write("Se va a insertar : "),nl,nl,write(AInsertar),
         %DETALLE
         %nl,write("-> Cola de prioridad actual"),write([Cabeza|ColaPrioridadActualizada]),nl,
-        insertaAux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridadActualizada,Resultado);
+        inserta_aux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridadActualizada,Resultado);
        %en caso de que este en la lista
        %write("Ya estaba en lista de prioridad"),
-        insertaAux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridad,Resultado)
+        inserta_aux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridad,Resultado)
        ).
 
 imprime([]):-!.
@@ -579,38 +579,23 @@ imprime([Cabeza|Resto]):-
        nl,
        imprime(Resto).
 
-calculaRutaOptima(Origen,Destino,RutaDesdeInicio):-
-       rutaAEstrella(Origen,Destino,RutaI),!,
+calcula_ruta_optima(Origen,Destino,RutaDesdeInicio):-
+       ruta_Aestrella(Origen,Destino,RutaI),!,
        reverse(RutaI,RutaDesdeInicio),
-       pathLen(RutaDesdeInicio,Len),
-       pathSize(RutaDesdeInicio,Size),
+       longitud_camino(RutaDesdeInicio,Len),
+       largo_camino(RutaDesdeInicio,Size),
        write("Distancia: "), write(Len),nl,
        write("# estaciones: "), write(Size),nl,
        %write(RutaDesdeInicio),!.
        imprime(RutaDesdeInicio),!.
 
-all_paths(A, B):-
-	path(A, B, X, _),
+caminos(A, B):-
+	camino(A, B, X, _),
 	write(X),
 	nl,
 	fail.
 
-write_all_paths(A, B) :-
+escribe_caminos(A, B) :-
     open('file.txt', write, Stream),
-    ( path(A, B, X, L), write(Stream, X), write(Stream," "), write(Stream, L), nl(Stream), fail; true ),
+    ( camino(A, B, X, L), write(Stream, X), write(Stream," "), write(Stream, L), nl(Stream), fail; true ),
     close(Stream).
-
-
-%Consultas para probar conexiones
-%connectedEdges(X,barranca_del_muerto),write(X),nl,fail.
-%connectedEdges(X,Y),write(X),nl,fail.
-%path(tacuba, norte_45,X),write(X), nl, fail.
-
-%F U E N T E S:
-%https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
-%https://en.wikipedia.org/wiki/Negation_as_failure
-%http://www.swi-prolog.org/pldoc/man?predicate=findall/3
-%https://stackoverflow.com/questions/28070482/sort-a-list-by-the-second-atom-in-functor
-%https://ai.ia.agh.edu.pl/wiki/_media/pl:dydaktyka:pp:prolog-lists-advanced.pdf
-%https://norfipc.com/herramientas/convertir-grados-geograficos-minutos-segundos-decimales.php
-%http://www.manualvuelo.com/NAV/NAV72.html
