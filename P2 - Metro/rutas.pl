@@ -31,8 +31,7 @@ estaciones_adyacentes(X, Z) :-
        findall(Y, estaciones_conectadas(X, Y,_), Z).
 
 % longitud_ruta(i,o).
-% Calcula la longitud de un camino dado.
-%
+% Calcula la longitud de una ruta dada.
 % El camino debe ser dado en una lista y
 % dicho camino dado debe ser válido.
 %
@@ -46,8 +45,7 @@ longitud_ruta([A,B|R],Len) :-
 
 % largo_ruta(i,o).
 % Calcula el número de estaciones a recorrer
-% de un camino dado.
-%
+% de una ruta dada.
 % El camino debe ser dado en una lista y
 % dicho camino dado debe ser válido.
 %
@@ -68,13 +66,27 @@ largo_ruta([A,B|R],Len) :-
 transforma_rutas_a_distancia(Rutas,Distancias) :-
        trans_aux(Rutas,[],Distancias).
 
-%Métodos auxiliares para transforma_rutas_a_distancia(i,o).
+% trans_aux(i,o).
+% Método auxiliar que agrega la longitud de 
+% las rutas a la lista de distancias.
+%
+% i: Lista de rutas (Lista de listas)
+% i: Lista auxiliar
+% i: Lista de distancias
 trans_aux([],ListaTemp,ListaTemp).
 trans_aux([RutaActual|Resto],ListaTemp,Final) :-
        longitud_ruta(RutaActual,DistanciaActual),
        append(ListaTemp,[DistanciaActual],Res),
        trans_aux(Resto,Res,Final).
 
+% agrega_rutas_a_cola_de_prioridad(i,i,i,o).
+% Agrega, de forma ordenada, una ruta nueva
+% a la cola de rutas.
+%
+% i: Estación destino
+% i: Ruta a agregar
+% i: Cola de prioridad actual
+% o: Cola de prioridad nueva
 agrega_rutas_a_cola_de_prioridad(Destino,Ruta,Cola,Resultado) :-
        append([Ruta],Cola,ColaParcial),
        ordena(Destino,ColaParcial,Resultado).
@@ -111,7 +123,7 @@ agrega_orden(Destino,Elem,[X|Y],[X|Z]) :-
        agrega_orden(Destino,Elem,Y,Z),!.
 
 % heuristica(i,i,o).
-% Calcula la heuristica de la situacion actual
+% Calcula la heuristica de la situacion actual.
 % 
 % i: Estación destino
 % i: Lista de la ruta
@@ -122,9 +134,10 @@ heuristica(Destino, [EstacionActual|CaminoRecorrido], ValorCalculado) :-
        ValorCalculado is Res1 + Res2.
 
 % heuristica(i,i,o).
-% Calcula la heuristica de la situacion actual
-% Esta calculo determina que tan lejos se encuentra de
-% la estación destino.
+% Calcula la heuristica geográfica
+% de la situacion actual.
+% Esta calculo determina que tan lejos
+% se encuentra de la estación destino.
 % 
 % i: Estación actual
 % i: Estación destino
@@ -135,7 +148,9 @@ heuristica_geografica(EstacionOrigen,EstacionDestino,Resultado) :-
        calcula_distancia(Coord1,Coord12,Coord2,Coord22,Resultado).
 
 % calcula_distancia(i,i,i,i,o).
-% Calcula la distancia entre dos estaciones
+% Calcula la distancia geográfica entre dos estaciones.
+% Se utiliza una constante de normalización para ajustar
+% la diferencia entre las coordenadas geográficas.
 % 
 % i: Latitud de estacion A
 % i: Longitud de estacion A
@@ -146,8 +161,8 @@ calcula_distancia(Ll1,Ln1,Ll2,Ln2,Res) :-
        Res is sqrt( (Ll1-Ll2)**2 + (Ln1-Ln2)**2) * 110.57. %110.57,111.70
 
 % ruta_Aestrella(i,i,o).
-% Calcula una ruta entre dos estaciones dadas
-% Utiliza la búsqueda heurístico A*
+% Calcula una ruta entre dos estaciones dadas.
+% Utiliza la búsqueda heurístico A*.
 %
 % i: Estacion origen
 % i: Estacion destino
@@ -216,7 +231,7 @@ inserta_aux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],Cola
        ).
 
 % imprime(i).
-% imprime línea a línea el contenido
+% Imprime, línea a línea, el contenido
 % de una lista.
 %
 % i: Lista
@@ -232,7 +247,7 @@ imprime([Cabeza|Resto]) :-
 % Calcula una ruta entre dos estaciones dadas.
 % Además imprime la ruta, su longitud y su
 % número de estaciones.
-% Utiliza la búsqueda heurística A*
+% Utiliza la búsqueda heurística A*.
 %
 % i: Estacion origen
 % i: Estacion destino
