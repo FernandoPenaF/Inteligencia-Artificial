@@ -97,7 +97,7 @@ agrega_orden(_,Elem,[],[Elem]):-!.
 agrega_orden(Destino,Elem,[X|Y],[Elem,X|Y]):-
        heuristica(Destino,Elem,Res1),
        heuristica(Destino,X,Res2),
-       Res1 < Res2,!.
+       Res1 =< Res2,!.
 agrega_orden(Destino,Elem,[X|Y],[X|Z]):-
        agrega_orden(Destino,Elem,Y,Z),!.
 
