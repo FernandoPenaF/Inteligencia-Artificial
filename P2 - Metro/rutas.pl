@@ -2,7 +2,7 @@
 % Peña Flores, Luis Fernando     - 158488
 % Orduña Ferreira, Fabián        - 159001
 
-% Archivo de Prolog que implementa
+% Archivo de SWI Prolog que implementa
 % la búsqueda A* para encontrar un
 % camino óptimo en la red del Sistema
 % de Transporte Colectivo Metro.

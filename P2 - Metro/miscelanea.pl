@@ -2,18 +2,39 @@
 % Peña Flores, Luis Fernando     - 158488
 % Orduña Ferreira, Fabián        - 159001
 
-:- ensure_loaded(stcm). %Carga la base de conocimiento
+% Archivo de SWI Prolog que implementa
+% métodos interesantes para aplicar
+% a la red del Sistema Transporte
+% Colectivo Metro.
 
-% camino(i,i,o,o)
-% Encuentra un camino y la longitud 
-% de dicho camino entre dos estaciones
+% Es necesario tener cargado el archivo 'stcm.pl'
+% que contiene la base de conocimiento del programa.
+% Así como métodos auxilares del archivo 'rutas.pl'
+:- ensure_loaded(stcm). %Carga la base de conocimiento
+:- ensure_loaded(rutas). %Carga métodos auxilares principales
+
+% ruta(i,i,o,o).
+% Encuentra una ruta y la longitud 
+% de dicho ruta entre dos estaciones
 % dadas, A y B.
-camino(A,B,Path,Len) :-
+%
+% i: Estación A
+% i: Estación B
+% o: Ruta de A a B
+% o: Longitud de la ruta de A a B
+ruta(A,B,Path,Len) :-
        recorre(A,B,[A],Q),
        reverse(Q,Path),
-       longitud_camino(Path,Len).
+       longitud_ruta(Path,Len).
 
-%Método auxiliar para la regla camino/4
+% recorre(i,i,i,o).
+% Aplica búsqueda en profundidad para
+% encontrar un camino de A a B.
+%
+% i: Estación A
+% i: Estación B
+% i: Lista de estaciones visitadas
+% o: Ruta de A a B
 recorre(A,B,P,[B|P]) :-
        estaciones_conectadas(A,B,_).
 recorre(A,B,Visited,Path) :-
@@ -22,36 +43,64 @@ recorre(A,B,Visited,Path) :-
        \+member(C,Visited),
        recorre(C,B,[C|Visited],Path).
 
-caminos(A, B):-
-	camino(A, B, X, _),
+% rutas(i,i).
+% Imprime todas las rutas entre A y B.
+%
+% i: Estación A
+% i: Estación B
+rutas(A, B):-
+	ruta(A, B, X, _),
 	write(X),
 	nl,
 	fail.
 
-escribe_caminos(A, B) :-
+% escribe_rutas(i,i).
+% Escribe en un archivo todas
+% las rutas entre A y B.
+%
+% i: Estación A
+% i: Estación B
+escribe_rutas(A, B) :-
     open('file.txt', write, Stream),
-    ( camino(A, B, X, L), write(Stream, X), write(Stream," "), 
+    ( ruta(A, B, X, L), write(Stream, X), write(Stream," "), 
     	write(Stream, L), nl(Stream), fail; true ),
     close(Stream).
 
+% estacion_a_menor_distancia(i,o,o).
 % El siguiente predicado regresa la estación adyacente, según la lista
 % de estaciones adyacentes que recibe,que está a la menor distancia de
 % la estacion dada.
 %
 % i: Estacion de la que se quiere obtener la estación a menor distancia
-% i: Lista de las estaciones adyacentes
-% o: Nombre de la estacion con distancia menor adyacente
-% o: Distancia a la estacion adyacente
+% o: Nombre de la estacion adyacente a distancia menor
+% o: Distancia a dicha estacion adyacente
 estacion_a_menor_distancia(EstacionInicio,EstacionResultado,Distancia):-
        estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
        estacion_menor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
 
+% estacion_menor(i,i,o,o).
+% Dada una lista de estaciones, regresa la que tenga una
+% distancia menor y dicha distancia.
+%
+% i: Estacion actual
+% i: Lista de estaciones adyacentes
+% o: Nombre de la estacion adyacente a distancia menor
+% o: Distancia a dicha estacion adyacente
 estacion_menor(Inicio,[],Inicio,0):-!.
 estacion_menor(Inicio,[A],A, Dist):-
        estaciones_conectadas(Inicio,A,Dist),!.
 estacion_menor(Inicio,[Primera|Cola],Estacion,Res):-
        estacion_menor_aux(Inicio,Primera,Cola,Estacion,Res),!.
 
+% estacion_menor(i,i,i,o,o).
+% Método auxiliar que compara entre estaciones
+% para encontrar la de menor longitud.
+%
+% i: Estacion actual
+% i: Estacion actual con menor distancia
+% i: Lista de estaciones adyacentes
+% o: Nombre de la estacion adyacente a distancia menor
+% o: Distancia a dicha estacion adyacente
 estacion_menor_aux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
           estaciones_conectadas(EstacionInicial,EstacionMenorActual,Distancia),!.
 estacion_menor_aux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
