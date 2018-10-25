@@ -1,5 +1,17 @@
-%Linea 1
-%estacion(nombre,latitud,longitud).
+% Malvaes Díaz, Stephanie Lizeth - 135515
+% Peña Flores, Luis Fernando     - 158488
+% Orduña Ferreira, Fabián        - 159001
+
+% IMPORTANTE: El working_directory de Prolog debe estar en
+% la carpeta de este archivo para no tener problemas.
+
+% Base de conocimiento del Sistema de Transporte Colectivo Metro
+% Contiene sus estaciones y sus conexiones
+
+% Las estaciones son representadas como:
+%	estacion(nombre,latitud,longitud).
+% Las conexiones son representadas como:
+%	conexion(estacionA,estacionB,distancia).
 
 %Línea 1
 estacion(observatorio,19.39833333,-99.20027778).
@@ -32,7 +44,7 @@ estacion(popotla,19.45222222,-99.17472222).
 estacion(colegio_militar,19.44944444,-99.17222222).
 estacion(normal,19.44444444,-99.1675).
 estacion(san_cosme,19.44166667,-99.16111111).
-estacion(revolución,19.43944444,-99.15555556).
+estacion(revolucion,19.43944444,-99.15555556).
 estacion(hidalgo,19.43722222,-99.14722222).
 estacion(bellas_artes,19.43611111,-99.14194444).
 estacion(allende,19.43555556,-99.1375).
@@ -81,16 +93,16 @@ estacion(jamaica,19.40888889,-99.12222222).
 estacion(santa_anita,19.40277778,-99.12166667).
 
 %Línea 5
-estacion(hangares,19.42416667,-99.0875).
-estacion(terminal_aerea,19.43361111,-99.08777778).
-estacion(oceania,19.44555556,-99.08722222).
-estacion(aragon,19.45111111,-99.09583333).
-estacion(eduardo_molina,19.45138889,-99.10555556).
-estacion(valle_gomez,19.45861111,-99.11916667).
-estacion(misterios,19.46333333,-99.13083333).
-estacion(autobuses_del_norte,19.47888889,-99.14055556).
-estacion(instituto_del_petroleo,19.48944444,-99.14527778).
 estacion(politecnico,19.50083333,-99.14916667).
+estacion(instituto_del_petroleo,19.48944444,-99.14527778).
+estacion(autobuses_del_norte,19.47888889,-99.14055556).
+estacion(misterios,19.46333333,-99.13083333).
+estacion(valle_gomez,19.45861111,-99.11916667).
+estacion(eduardo_molina,19.45138889,-99.10555556).
+estacion(aragon,19.45111111,-99.09583333).
+estacion(oceania,19.44555556,-99.08722222).
+estacion(terminal_aerea,19.43361111,-99.08777778).
+estacion(hangares,19.42416667,-99.0875).
 
 %Línea 6
 estacion(el_rosario,19.50444444,-99.2).
@@ -133,13 +145,13 @@ estacion(uamI,19.35111111,-99.07472222).
 estacion(constitucion_de_1917,19.34583333,-99.06388889).
 
 %Línea 9
-estacion(patriotismo,19.40611111,-99.17888889).
-estacion(chilpancingo,19.40583333,-99.16861111).
-estacion(lazaro_cardenas,19.40694444,-99.145).
-estacion(mixiuhca,19.40861111,-99.11277778).
-estacion(velodromo,19.40861111,-99.10305556).
-estacion(ciudad_deportiva,19.40833333,-99.09111111).
 estacion(puebla,19.40722222,-99.0825).
+estacion(ciudad_deportiva,19.40833333,-99.09111111).
+estacion(velodromo,19.40861111,-99.10305556).
+estacion(mixiuhca,19.40861111,-99.11277778).
+estacion(lazaro_cardenas,19.40694444,-99.145).
+estacion(chilpancingo,19.40583333,-99.16861111).
+estacion(patriotismo,19.40611111,-99.17888889).
 
 %Línea A
 estacion(agricola_oriental,19.40472222,-99.07).
@@ -148,27 +160,27 @@ estacion(tepalcates,19.39138889,-99.04638889).
 estacion(guelatao,19.38527778,-99.03583333).
 estacion(peñon_viejo,19.37333333,-99.01722222).
 estacion(acatitla,19.36472222,-99.00583333).
-estacion(santa_marta,19.36,-99.995).
-estacion(los_reyes,19.35888889,-99.97694444).
-estacion(la_paz,19.35055556,-99.96083333).
+estacion(santa_marta,19.36,-98.995).
+estacion(los_reyes,19.35888889,-98.97694444).
+estacion(la_paz,19.35055556,-98.96083333).
 
 %Línea B
-estacion(ciudad_azteca,19.53472222,-99.0275).
-estacion(plaza_aragon,19.52833333,-99.03).
-estacion(olimpica,19.52138889,-99.03333333).
-estacion(ecatepec,19.51527778,-99.03611111).
-estacion(muzquiz,19.50166667,-99.04194444).
-estacion(rio_de_los_remedios,19.49083333,-99.04666667).
-estacion(impulsora,19.48583333,-99.04888889).
-estacion(nezahualcoyotl,19.47305556,-99.05444444).
-estacion(villa_de_aragon,19.46166667,-99.06166667).
-estacion(bosque_de_aragon,19.45805556,-99.06916667).
-estacion(deportivo_oceania,19.45111111,-99.07916667).
-estacion(romero_rubio,19.44083333,-99.09444444).
-estacion(flores_magon,19.43666667,-99.10361111).
-estacion(tepito,19.4425,-99.12333333).
-estacion(lagunilla,19.44333333,-99.13138889).
 estacion(buenavista,19.44666667,-99.15333333).
+estacion(lagunilla,19.44333333,-99.13138889).
+estacion(tepito,19.4425,-99.12333333).
+estacion(flores_magon,19.43666667,-99.10361111).
+estacion(romero_rubio,19.44083333,-99.09444444).
+estacion(deportivo_oceania,19.45111111,-99.07916667).
+estacion(bosque_de_aragon,19.45805556,-99.06916667).
+estacion(villa_de_aragon,19.46166667,-99.06166667).
+estacion(nezahualcoyotl,19.47305556,-99.05444444).
+estacion(impulsora,19.48583333,-99.04888889).
+estacion(rio_de_los_remedios,19.49083333,-99.04666667).
+estacion(muzquiz,19.50166667,-99.04194444).
+estacion(ecatepec,19.51527778,-99.03611111).
+estacion(olimpica,19.52138889,-99.03333333).
+estacion(plaza_aragon,19.52833333,-99.03).
+estacion(ciudad_azteca,19.53472222,-99.0275).
 
 %Línea 12
 estacion(insurgentes_sur,19.37361111,-99.17888889).
@@ -178,7 +190,7 @@ estacion(eje_central,19.36138889,-99.15138889).
 estacion(mexicaltzingo,19.35777778,-99.12166667).
 estacion(culhuacan,19.33694444,-99.10888889).
 estacion(san_andres_tomatlan,19.32833333,-99.105).
-estacion(lomas_estrellas,19.32222222,-99.09611111).
+estacion(lomas_estrella,19.32222222,-99.09611111).
 estacion(calle_11,19.32055556,-99.08583333).
 estacion(periferico_oriente,19.31777778,-99.07472222).
 estacion(tezonco,19.30611111,-99.065).
@@ -309,8 +321,8 @@ conexion(san_joaquin, polanco,1.35).%naranja
 conexion(polanco, auditorio,0.9).%naranja
 conexion(auditorio, constituyentes,1.56).%naranja
 conexion(constituyentes, tacubaya, 1.13).%naranja
-conexion(san_pedro_de_los_pinos,tacubaya,1.27).%naranja
-conexion(san_pedro_de_los_pinos,san_antonio,0.71).%naranja
+conexion(tacubaya, san_pedro_de_los_pinos,1.27).%naranja
+conexion(san_pedro_de_los_pinos, san_antonio,0.71).%naranja
 conexion(san_antonio, mixcoac,0.99).%naranja
 conexion(mixcoac, barranca_del_muerto,1.69).%naranja
 
@@ -400,219 +412,3 @@ conexion(olivos, nopalera, 1). %dorada
 conexion(nopalera, zapotitlan, 1). %dorada
 conexion(zapotitlan, tlaltenco, 1). %dorada
 conexion(tlaltenco, tlahuac, 1). %dorada
-
-connectedEdges(X,Y,L) :- conexion(X,Y,L).
-connectedEdges(X,Y,L) :- conexion(Y,X,L).
-
-estaciones_adyacentes(X, Z):-
-       findall(Y, connectedEdges(X, Y,_), Z).
-
-path(A,B,Path,Len) :-
-       travel(A,B,[A],Q),
-       reverse(Q,Path),
-       pathLen(Path,Len).
-
-%esta es busqueda en profundidad
-travel(A,B,P,[B|P]) :-
-       connectedEdges(A,B,_).
-travel(A,B,Visited,Path) :-
-       connectedEdges(A,C,_),
-       C \== B,
-       \+member(C,Visited),
-       travel(C,B,[C|Visited],Path).
-
-%pathLen(i,o).
-%Calcula el número de estaciones a recorrer
-%de un camino dado, i.
-%
-%Notar que el camino dado a calcular
-%debe ser un camino válido.
-pathLen([_],0).
-pathLen([A,B|R],Len):-
-       connectedEdges(A,B,L),
-       pathLen([B|R],T),
-       Len is T + L.
-
-%pathSize(i,o).
-%Calcula la longitud de un camino dado, i.
-%Notar que el camino dado a calcular
-%debe ser un camino válido.
-pathSize([_],0).
-pathSize([A,B|R],Len):-
-       connectedEdges(A,B,_),
-       pathSize([B|R],T),
-       Len is T + 1.
-
-estacionADistanciaMenor(EstacionInicio,EstacionResultado,Distancia):-
-       estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
-       estacionMenor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
-
-% El siguiente predicado regresa la estación adyacente, según la lista
-% de estaciones adyacentes que recibe,que está a la menor distancia de
-% la estacion dada.
-%
-% i: Estacion de la que se quiere obtener la estación a menor distancia
-% i: Lista de las estaciones adyacentes
-% o: Nombre de la estacion con distancia menor adyacente
-% o: Distancia a la estacion adyacente
-estacionMenor(Inicio,[],Inicio,0):-!.
-estacionMenor(Inicio,[A],A, Dist):-
-       connectedEdges(Inicio,A,Dist),!.
-estacionMenor(Inicio,[Primera|Cola],Estacion,Res):-
-       estMenorAux(Inicio,Primera,Cola,Estacion,Res),!.
-
-estMenorAux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
-            connectedEdges(EstacionInicial,EstacionMenorActual,Distancia),!.
-estMenorAux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
-       connectedEdges(EstacionInicial,EstacionMenorActual,J),
-       DistanciaActual is J,
-       connectedEdges(EstacionInicial, EstacionAPrueba,K),
-       DistanciaAComparar is K,
-        (   DistanciaActual > DistanciaAComparar ->
-        estMenorAux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
-       estMenorAux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
-                                )).
-
-%Rutas es una lista de listas
-transformaRutasADistancia(Rutas,Distancias):-
-       transAux(Rutas,[],Distancias).
-transAux([],ListaTemp,ListaTemp).
-transAux([RutaActual|Resto],ListaTemp,Final):-
-       pathLen(RutaActual,DistanciaActual),
-       append(ListaTemp,[DistanciaActual],Res),
-       transAux(Resto,Res,Final).
-
-%agregaRutasAColaDePrioridad([],Cola,Cola):-!.
-agregaRutasAColaDePrioridad(Destino,Ruta,Cola,Resultado):-
-       append([Ruta],Cola,ColaParcial),
-       ordena(Destino,ColaParcial,Resultado).
-
-%insertion sort
-ordena(_,[],[]).
-ordena(Destino,[Cabeza|Cola],Resultado):-
-       ordena(Destino,Cola,ResP),
-       agregaOrden(Destino,Cabeza,ResP,Resultado).
-
-%aqui agrega comparando las distancias de las rutas
-agregaOrden(_,Elem,[],[Elem]):-!.
-agregaOrden(Destino,Elem,[X|Y],[Elem,X|Y]):-
-       heuristica(Destino,Elem,Res1),
-       heuristica(Destino,X,Res2),
-       Res1 < Res2,!.
-agregaOrden(Destino,Elem,[X|Y],[X|Z]):-
-       agregaOrden(Destino,Elem,Y,Z),!.
-
-%este metodo calcula la heuristica de la situacion actual
-% i: nodo destino
-% i: lista del camino
-% o: valor calculado
-heuristica(Destino, [EstacionActual|CaminoRecorrido], ValorCalculado):-
-       pathLen([EstacionActual|CaminoRecorrido],Res1),
-       heuristicaGeografica(EstacionActual,Destino,Res2),
-       ValorCalculado is Res1 + Res2.
-
-heuristicaGeografica(EstacionOrigen,EstacionDestino,Resultado):-
-       estacion(EstacionOrigen,Coord1,Coord12),
-       estacion(EstacionDestino,Coord2,Coord22),
-       calculaDistancia(Coord1,Coord12,Coord2,Coord22,Resultado).
-
-
-calculaDistancia(Ll1,Ln1,Ll2,Ln2,Res):-
-       Res is sqrt( (Ll1-Ll2)**2 + (Ln1-Ln2)**2) * 110.57. %110.57,111.70
-
-rutaAEstrella(Origen,Destino,Ruta):-
-       estacion(Origen,_,_),
-       estacion(Destino,_,_),
-       recorreAEstrella(Destino,[Origen],[],Ruta).
-
-%Destino,Ruta actual, cola de prioridad,Resultado
-recorreAEstrella(Destino,[Destino|Resto],_,[Destino|Resto]):-!.
-
-% aqui lo que tiene que hacer es llamar a todos los adyacentes,
-% concatenarlos a la ruta actual
-%agregarlos a la cola de prioridad y seguir recorriendo
-recorreAEstrella(Destino,[CabezaRutaActual|ColaRutaActual],ColaDePrioridad,Resultado):-
-       %de los resultados de ruta actual con sus adyacentes       write("Bandera 1"),nl,
-       estaciones_adyacentes(CabezaRutaActual,ResultadosAdyacentes),
-       %write("Adyacentes a "),write(CabezaRutaActual),write(" son : "),nl,write("    "),write(ResultadosAdyacentes),
-       %agregar todos a cola de prioridad, meter si no estan repetidos o si la ruta no esta repetida
-       insertaAux(Destino,[CabezaRutaActual|ColaRutaActual],ResultadosAdyacentes,ColaDePrioridad,[CabezaColaActualizada|RestoColaActualizada]),
-       %nos regresa la cola de prioridad y el ultimo argumento es una lista de listas
-       %nl,nl,write("Después de agregar adyacentes. "),write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
-       %write(" * * *  RECURSION ESTRELLA * * *"),nl,
-       %write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
-       recorreAEstrella(Destino,CabezaColaActualizada,RestoColaActualizada,Resultado).
-
-%Destino,RutaActual,ListaAdyacentes,ColaDePrioridad,Res)
-insertaAux(_,_,[],ColaDePrioridadActualizada,ColaDePrioridadActualizada):-!.
-insertaAux(Destino,[CabezaRutaActual|RestoRutaActual],[CabezaListaAdyacentes],ColaPrioridad,Resultado):-
-      (   \+member(CabezaListaAdyacentes,[CabezaRutaActual|RestoRutaActual]) ->
-      append([CabezaListaAdyacentes],[CabezaRutaActual|RestoRutaActual],AInsertar),
-      %Destino,Ruta,Cola,Resultado
-      agregaRutasAColaDePrioridad(Destino,AInsertar,ColaPrioridad,ResP),
-          insertaAux(_,_,[],ResP,Resultado)
-      ;insertaAux(_,_,[],ColaPrioridad,Resultado)),!.
-
-insertaAux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],ColaPrioridad,Resultado):-
-       %nl,nl,nl,write(ColaPrioridad),nl,nl,nl,
-       %nl,nl,write("Inserta a adyacentes"),
-       (\+member(CabezaListaAdyacentes,RutaActual)->
-       append([CabezaListaAdyacentes],RutaActual,AInsertar),
-       %write("antes de agregar a la cola :     "),nl,nl,write(ColaPrioridad),
-       agregaRutasAColaDePrioridad(Destino,AInsertar,ColaPrioridad,ColaPrioridadActualizada),
-       %write("despues de agregar a la cola :     "),nl,nl,write(ColaPrioridadActualizada),
-
-       % nl,nl,write("Se va a insertar : "),nl,nl,write(AInsertar),
-        %DETALLE
-        %nl,write("-> Cola de prioridad actual"),write([Cabeza|ColaPrioridadActualizada]),nl,
-        insertaAux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridadActualizada,Resultado);
-       %en caso de que este en la lista
-       %write("Ya estaba en lista de prioridad"),
-        insertaAux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridad,Resultado)
-       ).
-
-imprime([]):-!.
-imprime([Ultimo]):-
-       write(Ultimo).
-imprime([Cabeza|Resto]):-
-       write(Cabeza),
-       nl,
-       imprime(Resto).
-
-calculaRutaOptima(Origen,Destino,RutaDesdeInicio):-
-       rutaAEstrella(Origen,Destino,RutaI),!,
-       reverse(RutaI,RutaDesdeInicio),
-       pathLen(RutaDesdeInicio,Len),
-       pathSize(RutaDesdeInicio,Size),
-       write("Distancia: "), write(Len),nl,
-       write("# estaciones: "), write(Size),nl,
-       %write(RutaDesdeInicio),!.
-       imprime(RutaDesdeInicio),!.
-
-all_paths(A, B):-
-	path(A, B, X, _),
-	write(X),
-	nl,
-	fail.
-
-write_all_paths(A, B) :-
-    open('file.txt', write, Stream),
-    ( path(A, B, X, L), write(Stream, X), write(Stream," "), write(Stream, L), nl(Stream), fail; true ),
-    close(Stream).
-
-
-%Consultas para probar conexiones
-%connectedEdges(X,barranca_del_muerto),write(X),nl,fail.
-%connectedEdges(X,Y),write(X),nl,fail.
-%path(tacuba, norte_45,X),write(X), nl, fail.
-
-%F U E N T E S:
-%https://stackoverflow.com/questions/40072311/directed-graph-in-prolog
-%https://en.wikipedia.org/wiki/Negation_as_failure
-%http://www.swi-prolog.org/pldoc/man?predicate=findall/3
-%https://stackoverflow.com/questions/28070482/sort-a-list-by-the-second-atom-in-functor
-%https://ai.ia.agh.edu.pl/wiki/_media/pl:dydaktyka:pp:prolog-lists-advanced.pdf
-%https://norfipc.com/herramientas/convertir-grados-geograficos-minutos-segundos-decimales.php
-%http://www.manualvuelo.com/NAV/NAV72.html
-
-

@@ -2,6 +2,11 @@
 % Peña Flores, Luis Fernando     - 158488
 % Orduña Ferreira, Fabián        - 159001
 
+% IMPORTANTE: El working_directory de Prolog debe estar en
+% la carpeta de este archivo para no tener problemas.
+% En caso contrario, el archivo proyecto.pl contiene todo junto
+% para su correcta ejecución.
+
 % Archivo de SWI Prolog que implementa
 % la búsqueda A* para encontrar un
 % camino óptimo en la red del Sistema
@@ -67,7 +72,7 @@ transforma_rutas_a_distancia(Rutas,Distancias) :-
        trans_aux(Rutas,[],Distancias).
 
 % trans_aux(i,o).
-% Método auxiliar que agrega la longitud de 
+% Método auxiliar que agrega la longitud de
 % las rutas a la lista de distancias.
 %
 % i: Lista de rutas (Lista de listas)
@@ -124,7 +129,7 @@ agrega_orden(Destino,Elem,[X|Y],[X|Z]) :-
 
 % heuristica(i,i,o).
 % Calcula la heuristica de la situacion actual.
-% 
+%
 % i: Estación destino
 % i: Lista de la ruta
 % o: Valor heurístico
@@ -138,7 +143,7 @@ heuristica(Destino, [EstacionActual|CaminoRecorrido], ValorCalculado) :-
 % de la situacion actual.
 % Esta calculo determina que tan lejos
 % se encuentra de la estación destino.
-% 
+%
 % i: Estación actual
 % i: Estación destino
 % o: Valor heurístico geográfico
@@ -151,7 +156,7 @@ heuristica_geografica(EstacionOrigen,EstacionDestino,Resultado) :-
 % Calcula la distancia geográfica entre dos estaciones.
 % Se utiliza una constante de normalización para ajustar
 % la diferencia entre las coordenadas geográficas.
-% 
+%
 % i: Latitud de estacion A
 % i: Longitud de estacion A
 % i: Latitud de estacion B

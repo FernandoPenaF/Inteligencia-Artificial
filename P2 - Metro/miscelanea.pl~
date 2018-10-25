@@ -4,8 +4,6 @@
 
 % IMPORTANTE: El working_directory de Prolog debe estar en
 % la carpeta de este archivo para no tener problemas.
-% En caso contrario, el archivo proyecto.pl contiene todo junto
-% para su correcta ejecución.
 
 % Archivo de SWI Prolog que implementa
 % mÃ©todos interesantes para aplicar

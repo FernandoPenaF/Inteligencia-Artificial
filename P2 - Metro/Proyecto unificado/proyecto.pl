@@ -1,11 +1,6 @@
-% Malvaes D�az, Stephanie Lizeth - 135515
-% Pe�a Flores, Luis Fernando     - 158488
-% Ordu�a Ferreira, Fabi�n        - 159001
-
-% IMPORTANTE: El working_directory de Prolog debe estar en
-% la carpeta de este archivo para no tener problemas.
-% En caso contrario, el archivo proyecto.pl contiene todo junto
-% para su correcta ejecuci�n.
+% Malvaes Díaz, Stephanie Lizeth - 135515
+% Peña Flores, Luis Fernando     - 158488
+% Orduña Ferreira, Fabián        - 159001
 
 % Base de conocimiento del Sistema de Transporte Colectivo Metro
 % Contiene sus estaciones y sus conexiones
@@ -15,7 +10,7 @@
 % Las conexiones son representadas como:
 %	conexion(estacionA,estacionB,distancia).
 
-%L�nea 1
+%Línea 1
 estacion(observatorio,19.39833333,-99.20027778).
 estacion(tacubaya,19.40333333,-99.18722222).
 estacion(juanacatlan,19.41277778,-99.18222222).
@@ -37,7 +32,7 @@ estacion(gomez_farias,19.41638889,-99.09027778).
 estacion(zaragoza,19.41222222,-99.0825).
 estacion(pantitlan,19.41527778,-99.07222222).
 
-%L�nea 2
+%Línea 2
 estacion(cuatro_caminos,19.45972222,-99.21583333).
 estacion(panteones,19.45888889,-99.20305556).
 estacion(tacuba,19.45944444,-99.18916667).
@@ -62,7 +57,7 @@ estacion(ermita,19.36194444,-99.14305556).
 estacion(general_anaya,19.35333333,-99.145).
 estacion(tasque�a,19.34416667,-99.14277778).
 
-%L�nea 3
+%Línea 3
 estacion(indios_verdes,19.49527778,-99.11944444).
 estacion(deportivo_18_de_marzo,19.48361111,-99.12666667).
 estacion(potrero,19.47694444,-99.13222222).
@@ -83,7 +78,7 @@ estacion(miguel_angel_de_quevedo,19.34638889,-99.18111111).
 estacion(copilco,19.33583333,-99.17666667).
 estacion(universidad,19.32444444,-99.17388889).
 
-%L�nea 4
+%Línea 4
 estacion(martin_carrera,19.485,-99.10444444).
 estacion(talisman,19.47416667,-99.10805556).
 estacion(bondojito,19.46472222,-99.11194444).
@@ -94,7 +89,7 @@ estacion(fray_servando,19.42166667,-99.12055556).
 estacion(jamaica,19.40888889,-99.12222222).
 estacion(santa_anita,19.40277778,-99.12166667).
 
-%L�nea 5
+%Línea 5
 estacion(politecnico,19.50083333,-99.14916667).
 estacion(instituto_del_petroleo,19.48944444,-99.14527778).
 estacion(autobuses_del_norte,19.47888889,-99.14055556).
@@ -106,7 +101,7 @@ estacion(oceania,19.44555556,-99.08722222).
 estacion(terminal_aerea,19.43361111,-99.08777778).
 estacion(hangares,19.42416667,-99.0875).
 
-%L�nea 6
+%Línea 6
 estacion(el_rosario,19.50444444,-99.2).
 estacion(tezozomoc,19.495,-99.19638889).
 estacion(azcapotzalco,19.49111111,-99.18638889).
@@ -116,7 +111,7 @@ estacion(vallejo,19.49055556,-99.15583333).
 estacion(lindavista,19.48777778,-99.13472222).
 estacion(la_villa_basilica,19.48138889,-99.11805556).
 
-%L�nea 7
+%Línea 7
 estacion(aquiles_serdan,19.49055556,-99.195).
 estacion(camarones,19.47916667,-99.19).
 estacion(refineria,19.47,-99.19055556).
@@ -129,7 +124,7 @@ estacion(san_antonio,19.38472222,-99.18638889).
 estacion(mixcoac,19.37583333,-99.1875).
 estacion(barranca_del_muerto,19.36055556,-99.19027778).
 
-%L�nea 8
+%Línea 8
 estacion(garibaldi_lagunilla,19.44444444,-99.13972222).
 estacion(san_juan_de_letran,19.43138889,-99.14166667).
 estacion(doctores,19.42166667,-99.14333333).
@@ -146,7 +141,7 @@ estacion(cerro_de_la_estrella,19.35611111,-99.08555556).
 estacion(uamI,19.35111111,-99.07472222).
 estacion(constitucion_de_1917,19.34583333,-99.06388889).
 
-%L�nea 9
+%Línea 9
 estacion(puebla,19.40722222,-99.0825).
 estacion(ciudad_deportiva,19.40833333,-99.09111111).
 estacion(velodromo,19.40861111,-99.10305556).
@@ -155,7 +150,7 @@ estacion(lazaro_cardenas,19.40694444,-99.145).
 estacion(chilpancingo,19.40583333,-99.16861111).
 estacion(patriotismo,19.40611111,-99.17888889).
 
-%L�nea A
+%Línea A
 estacion(agricola_oriental,19.40472222,-99.07).
 estacion(canal_de_san_juan,19.39861111,-99.05944444).
 estacion(tepalcates,19.39138889,-99.04638889).
@@ -166,7 +161,7 @@ estacion(santa_marta,19.36,-98.995).
 estacion(los_reyes,19.35888889,-98.97694444).
 estacion(la_paz,19.35055556,-98.96083333).
 
-%L�nea B
+%Línea B
 estacion(buenavista,19.44666667,-99.15333333).
 estacion(lagunilla,19.44333333,-99.13138889).
 estacion(tepito,19.4425,-99.12333333).
@@ -184,7 +179,7 @@ estacion(olimpica,19.52138889,-99.03333333).
 estacion(plaza_aragon,19.52833333,-99.03).
 estacion(ciudad_azteca,19.53472222,-99.0275).
 
-%L�nea 12
+%Línea 12
 estacion(insurgentes_sur,19.37361111,-99.17888889).
 estacion(hospital_20_de_noviembre,19.37194444,-99.17111111).
 estacion(parque_de_los_venados,19.37083333,-99.15861111).
@@ -202,7 +197,7 @@ estacion(zapotitlan,19.29666667,-99.03444444).
 estacion(tlaltenco,19.29416667,-99.02388889).
 estacion(tlahuac,19.28638889,-99.01416667).
 
-%L�nea 1
+%Línea 1
 conexion(observatorio, tacubaya,1.46).%rosa
 conexion(tacubaya, juanacatlan,1.4).%rosa
 conexion(juanacatlan,chapultepec,1.16).%rosa
@@ -223,7 +218,7 @@ conexion(boulevard_puerto_aereo,gomez_farias,0.76).%rosa
 conexion(gomez_farias, zaragoza, 1.06).%rosa
 conexion(zaragoza, pantitlan,1.32).%rosa
 
-%L�nea 2
+%Línea 2
 conexion(cuatro_caminos, panteones, 1.74). %azul
 conexion(panteones, tacuba, 1.64). %azul
 conexion(tacuba, cuitlahuac, 0.84). %azul
@@ -248,10 +243,10 @@ conexion(portales, ermita, 0.89). %azul
 conexion(ermita, general_anaya, 0.99). %azul
 conexion(general_anaya, tasque�a, 1.5). %azul
 
-% L�nea 3
-% En Etiopia - Plaza de la Transparencia se consider�
+% Línea 3
+% En Etiopia - Plaza de la Transparencia se consideró
 % solamente como Etiopia
-% Analogamente, Viveros - Derechos humanos se consider�
+% Analogamente, Viveros - Derechos humanos se consideró
 % solamente como Viveros
 conexion(indios_verdes, deportivo_18_de_marzo, 1.42). %verde
 conexion(deportivo_18_de_marzo, potrero, 1.08). %verde
@@ -274,7 +269,7 @@ conexion(viveros, miguel_angel_de_quevedo, 1.02). %verde
 conexion(miguel_angel_de_quevedo, copilco, 1.25). %verde
 conexion(copilco, universidad, 1.42). %verde
 
-%L�nea 4
+%Línea 4
 conexion(martin_carrera, talisman, 1.3). %verde claro
 conexion(talisman, bondojito, 1.2). %verde claro
 conexion(bondojito, consulado, 0.94). %verde claro
@@ -285,7 +280,7 @@ conexion(candelaria, fray_servando, 0.93). %verde claro
 conexion(fray_servando, jamaica, 1.33). %verde claro
 conexion(jamaica, santa_anita, 0.83). %verde claro
 
-%L�nea 5
+%Línea 5
 conexion(politecnico, instituto_del_petroleo,1.32).%amarilla
 conexion(instituto_del_petroleo, autobuses_del_norte,1.35).%amarilla
 conexion(autobuses_del_norte, la_raza,1.17).%amarilla
@@ -299,7 +294,7 @@ conexion(oceania, terminal_aerea,1.42).%amarilla
 conexion(terminal_aerea, hangares, 1.18).%amarilla
 conexion(hangares, pantitlan,1.69).%amarilla
 
-%L�nea 6
+%Línea 6
 % Se toma solo como ferreria la estacion ferreria / arena ciudad de
 % mexico
 conexion(el_rosario, tezozomoc, 1.16). %rojo
@@ -313,7 +308,7 @@ conexion(lindavista, deportivo_18_de_marzo, 1.05).%rojo
 conexion(deportivo_18_de_marzo, la_villa_basilica, 0.85).%rojo
 conexion(la_villa_basilica, martin_carrera, 1.29).%rojo
 
-%L�nea 7
+%Línea 7
 conexion(el_rosario, aquiles_serdan, 1.82).%naranja
 conexion(aquiles_serdan, camarones, 1.24).%naranja
 conexion(camarones, refineria, 1.11).%naranja
@@ -328,7 +323,7 @@ conexion(san_pedro_de_los_pinos, san_antonio,0.71).%naranja
 conexion(san_antonio, mixcoac,0.99).%naranja
 conexion(mixcoac, barranca_del_muerto,1.69).%naranja
 
-%L�nea 8
+%Línea 8
 conexion(garibaldi_lagunilla, bellas_artes, 0.80). %verde oscuro
 conexion(bellas_artes, san_juan_de_letran, 0.65). %verde oscuro
 conexion(san_juan_de_letran, salto_del_agua, 0.46). %verde oscuro
@@ -348,7 +343,7 @@ conexion(iztapalapa, cerro_de_la_estrella, 1.91). %verde oscuro
 conexion(cerro_de_la_estrella, uamI, 1.25). %verde oscuro
 conexion(uamI, constitucion_de_1917, 1.27). %verde oscuro
 
-%L�nea 9
+%Línea 9
 conexion(pantitlan, puebla,1.55).%cafe
 conexion(puebla, ciudad_deportiva, 0.93).%cafe
 conexion(ciudad_deportiva, velodromo, 1.26).%cafe
@@ -361,7 +356,7 @@ conexion(centro_medico,chilpancingo,1.4).%cafe
 conexion(chilpancingo, patriotismo, 1.1).%cafe
 conexion(patriotismo, tacubaya,1.05).%cafe
 
-%L�nea A
+%Línea A
 conexion(pantitlan, agricola_oriental,1.58).%morada
 conexion(agricola_oriental, canal_de_san_juan,1.23).%morada
 conexion(canal_de_san_juan,tepalcates,1.6).%morada
@@ -372,7 +367,7 @@ conexion(acatitla, santa_marta, 1.24).%morada
 conexion(santa_marta, los_reyes,1.93).%morada
 conexion(los_reyes,la_paz,2.11).%morada
 
-%L�nea B
+%Línea B
 conexion(buenavista, guerrero, 0.49). %gris-verde
 conexion(guerrero, garibaldi_lagunilla, 0.64). %gris-verde
 conexion(garibaldi_lagunilla, lagunilla, 0.76). %gris-verde
@@ -394,7 +389,7 @@ conexion(ecatepec, olimpica, 0.70). %gris-verde
 conexion(olimpica, plaza_aragon, 0.86). %gris-verde
 conexion(plaza_aragon, ciudad_azteca, 0.74). %gris-verde
 
-%L�nea 12
+%Línea 12
 conexion(mixcoac, insurgentes_sur, 1). %dorada
 conexion(insurgentes_sur, hospital_20_de_noviembre, 1). %dorada
 conexion(hospital_20_de_noviembre, zapata, 1). %dorada
@@ -414,3 +409,354 @@ conexion(olivos, nopalera, 1). %dorada
 conexion(nopalera, zapotitlan, 1). %dorada
 conexion(zapotitlan, tlaltenco, 1). %dorada
 conexion(tlaltenco, tlahuac, 1). %dorada
+
+% estaciones_conectadas(i,i,o).
+% Averigua si existen un predicado que cumpla
+% conexion(i,i,o) valido.
+%
+% i: Estación A
+% i: Estación B
+% o: Distancia de A a B
+estaciones_conectadas(X,Y,L) :- conexion(X,Y,L).
+estaciones_conectadas(X,Y,L) :- conexion(Y,X,L).
+
+% estaciones_adyacentes(i,o).
+% Regresa una lista con las estaciones adyacentes
+% de una estación dada, X.
+%
+% i: Estación A
+% o: Lista de estaciones adyacentes a A
+estaciones_adyacentes(X, Z) :-
+       findall(Y, estaciones_conectadas(X, Y,_), Z).
+
+% longitud_ruta(i,o).
+% Calcula la longitud de una ruta dada.
+% El camino debe ser dado en una lista y
+% dicho camino dado debe ser válido.
+%
+% i: Lista con la ruta
+% o: Largo de la ruta
+longitud_ruta([_],0) :-!.
+longitud_ruta([A,B|R],Len) :-
+       estaciones_conectadas(A,B,L),
+       longitud_ruta([B|R],T),
+       Len is T + L.
+
+% largo_ruta(i,o).
+% Calcula el número de estaciones a recorrer
+% de una ruta dada.
+% El camino debe ser dado en una lista y
+% dicho camino dado debe ser válido.
+%
+% i: Lista con la ruta
+% o: Número de estaciones en de la ruta
+largo_ruta([_],0) :-!.
+largo_ruta([A,B|R],Len) :-
+       estaciones_conectadas(A,B,_),
+       largo_ruta([B|R],T),
+       Len is T + 1.
+
+% transforma_rutas_a_distancia(i,o).
+% Dada una lista de rutas regresa una
+% lista con la longitud de las rutas en cuestión.
+%
+% i: Lista de rutas (Lista de listas)
+% o: Lista de distancias
+transforma_rutas_a_distancia(Rutas,Distancias) :-
+       trans_aux(Rutas,[],Distancias).
+
+% trans_aux(i,o).
+% Método auxiliar que agrega la longitud de
+% las rutas a la lista de distancias.
+%
+% i: Lista de rutas (Lista de listas)
+% i: Lista auxiliar
+% i: Lista de distancias
+trans_aux([],ListaTemp,ListaTemp).
+trans_aux([RutaActual|Resto],ListaTemp,Final) :-
+       longitud_ruta(RutaActual,DistanciaActual),
+       append(ListaTemp,[DistanciaActual],Res),
+       trans_aux(Resto,Res,Final).
+
+% agrega_rutas_a_cola_de_prioridad(i,i,i,o).
+% Agrega, de forma ordenada, una ruta nueva
+% a la cola de rutas.
+%
+% i: Estación destino
+% i: Ruta a agregar
+% i: Cola de prioridad actual
+% o: Cola de prioridad nueva
+agrega_rutas_a_cola_de_prioridad(Destino,Ruta,Cola,Resultado) :-
+       append([Ruta],Cola,ColaParcial),
+       ordena(Destino,ColaParcial,Resultado).
+
+% ordena(i,i,o).
+% Dada una estación destino y una lista de estaciones
+% regresa una lista de las estaciones dadas ordenadas
+% según la función heuristica
+% Se utiliza el algoritmo de Insertion Sort
+%
+% i: Estación destino
+% i: Lista de estaciones
+% o: Lista de estaciones ordenadas
+ordena(_,[],[]).
+ordena(Destino,[Cabeza|Cola],Resultado) :-
+       ordena(Destino,Cola,ResP),
+       agrega_orden(Destino,Cabeza,ResP,Resultado).
+
+% ordena(i,i,i,o).
+% Dada una estación destino y una lista de estaciones
+% aplica el algoritmo Insertion Sort para ordenar las
+% estaciones.
+%
+% i: Estación destino
+% i: Lista de estaciones
+% i: Lista restante
+% o: Lista de estaciones ordenadas
+agrega_orden(_,Elem,[],[Elem]) :-!.
+agrega_orden(Destino,Elem,[X|Y],[Elem,X|Y]) :-
+       heuristica(Destino,Elem,Res1),
+       heuristica(Destino,X,Res2),
+       Res1 =< Res2,!.
+agrega_orden(Destino,Elem,[X|Y],[X|Z]) :-
+       agrega_orden(Destino,Elem,Y,Z),!.
+
+% heuristica(i,i,o).
+% Calcula la heuristica de la situacion actual.
+%
+% i: Estación destino
+% i: Lista de la ruta
+% o: Valor heurístico
+heuristica(Destino, [EstacionActual|CaminoRecorrido], ValorCalculado) :-
+       longitud_ruta([EstacionActual|CaminoRecorrido],Res1),
+       heuristica_geografica(EstacionActual,Destino,Res2),
+       ValorCalculado is Res1 + Res2.
+
+% heuristica(i,i,o).
+% Calcula la heuristica geográfica
+% de la situacion actual.
+% Esta calculo determina que tan lejos
+% se encuentra de la estación destino.
+%
+% i: Estación actual
+% i: Estación destino
+% o: Valor heurístico geográfico
+heuristica_geografica(EstacionOrigen,EstacionDestino,Resultado) :-
+       estacion(EstacionOrigen,Coord1,Coord12),
+       estacion(EstacionDestino,Coord2,Coord22),
+       calcula_distancia(Coord1,Coord12,Coord2,Coord22,Resultado).
+
+% calcula_distancia(i,i,i,i,o).
+% Calcula la distancia geográfica entre dos estaciones.
+% Se utiliza una constante de normalización para ajustar
+% la diferencia entre las coordenadas geográficas.
+%
+% i: Latitud de estacion A
+% i: Longitud de estacion A
+% i: Latitud de estacion B
+% i: Longitud de estacion B
+% o: Distancia entre las estaciones
+calcula_distancia(Ll1,Ln1,Ll2,Ln2,Res) :-
+       Res is sqrt( (Ll1-Ll2)**2 + (Ln1-Ln2)**2) * 110.57. %110.57,111.70
+
+% ruta_Aestrella(i,i,o).
+% Calcula una ruta entre dos estaciones dadas.
+% Utiliza la búsqueda heurístico A*.
+%
+% i: Estacion origen
+% i: Estacion destino
+% o: Ruta entre estación origen y estación destino
+ruta_Aestrella(Origen,Destino,Ruta) :-
+       estacion(Origen,_,_),
+       estacion(Destino,_,_),
+       recorre_Aestrella(Destino,[Origen],[],Ruta).
+
+% recorre_Aestrella(i,i,i,o).
+% Dadas las estaciones adyacentes de una estación
+% se concatenan a la ruta actual y se agregan a la cola de
+% prioridad antes de seguir aplicando la búsqueda A*.
+%
+% i: Estacion destino
+% i: Ruta actual
+% i: Cola de prioridad
+% o: Ruta propuesta entre estación origen y estación destino
+recorre_Aestrella(Destino,[Destino|Resto],_,[Destino|Resto]) :-!.
+recorre_Aestrella(Destino,[CabezaRutaActual|ColaRutaActual],ColaDePrioridad,Resultado) :-
+       %de los resultados de ruta actual con sus adyacentes       write("Bandera 1"),nl,
+       estaciones_adyacentes(CabezaRutaActual,ResultadosAdyacentes),
+       %write("Adyacentes a "),write(CabezaRutaActual),write(" son : "),nl,write("    "),write(ResultadosAdyacentes),
+       %agregar todos a cola de prioridad, meter si no estan repetidos o si la ruta no esta repetida
+       inserta_aux(Destino,[CabezaRutaActual|ColaRutaActual],ResultadosAdyacentes,ColaDePrioridad,[CabezaColaActualizada|RestoColaActualizada]),
+       %nos regresa la cola de prioridad y el ultimo argumento es una lista de listas
+       %nl,nl,write("Después de agregar adyacentes. "),write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
+       %write(" * * *  RECURSION ESTRELLA * * *"),nl,
+       %write([CabezaColaActualizada|RestoColaActualizada]),nl,nl,
+       recorre_Aestrella(Destino,CabezaColaActualizada,RestoColaActualizada,Resultado).
+
+% inserta_aux(i,i,i,i,o).
+% Método auxiliar que agrega las estaciones
+% adyacentes a la cola de prioridad en caso
+% de que aún no se encuentren en ella.
+%
+% i: Estacion destino
+% i: Ruta actual
+% i: Lista de estaciones adyacentes
+% i: Cola de prioridad
+% o: Cola de prioridad actualizada
+inserta_aux(_,_,[],ColaDePrioridadActualizada,ColaDePrioridadActualizada) :-!.
+inserta_aux(Destino,[CabezaRutaActual|RestoRutaActual],[CabezaListaAdyacentes],ColaPrioridad,Resultado):-
+      (   \+member(CabezaListaAdyacentes,[CabezaRutaActual|RestoRutaActual]) ->
+      append([CabezaListaAdyacentes],[CabezaRutaActual|RestoRutaActual],AInsertar),
+      %Destino,Ruta,Cola,Resultado
+      agrega_rutas_a_cola_de_prioridad(Destino,AInsertar,ColaPrioridad,ResP),
+          inserta_aux(_,_,[],ResP,Resultado)
+      ;inserta_aux(_,_,[],ColaPrioridad,Resultado)),!.
+inserta_aux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],ColaPrioridad,Resultado) :-
+       %nl,nl,nl,write(ColaPrioridad),nl,nl,nl,
+       %nl,nl,write("Inserta a adyacentes"),
+       (\+member(CabezaListaAdyacentes,RutaActual)->
+       append([CabezaListaAdyacentes],RutaActual,AInsertar),
+       %write("antes de agregar a la cola :     "),nl,nl,write(ColaPrioridad),
+       agrega_rutas_a_cola_de_prioridad(Destino,AInsertar,ColaPrioridad,ColaPrioridadActualizada),
+       %write("despues de agregar a la cola :     "),nl,nl,write(ColaPrioridadActualizada),
+
+       % nl,nl,write("Se va a insertar : "),nl,nl,write(AInsertar),
+        %DETALLE
+        %nl,write("-> Cola de prioridad actual"),write([Cabeza|ColaPrioridadActualizada]),nl,
+        inserta_aux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridadActualizada,Resultado);
+       %en caso de que este en la lista
+       %write("Ya estaba en lista de prioridad"),
+        inserta_aux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridad,Resultado)
+       ).
+
+% imprime(i).
+% Imprime, línea a línea, el contenido
+% de una lista.
+%
+% i: Lista
+imprime([]) :-!.
+imprime([Ultimo]) :-
+       write(Ultimo).
+imprime([Cabeza|Resto]) :-
+       write(Cabeza),
+       nl,
+       imprime(Resto).
+
+% calcula_ruta_optima(i,i,o).
+% Calcula una ruta entre dos estaciones dadas.
+% Además imprime la ruta, su longitud y su
+% número de estaciones.
+% Utiliza la búsqueda heurística A*.
+%
+% i: Estacion origen
+% i: Estacion destino
+% o: Ruta entre estación origen y estación destino
+calcula_ruta_optima(Origen,Destino,RutaDesdeInicio) :-
+       ruta_Aestrella(Origen,Destino,RutaI),!,
+       reverse(RutaI,RutaDesdeInicio),
+       longitud_ruta(RutaDesdeInicio,Len),
+       largo_ruta(RutaDesdeInicio,Size),
+       write("Distancia: "), write(Len),nl,
+       write("# estaciones: "), write(Size),nl,
+       %write(RutaDesdeInicio),!.
+       imprime(RutaDesdeInicio),!.
+
+% ruta(i,i,o,o).
+% Encuentra una ruta y la longitud
+% de dicho ruta entre dos estaciones
+% dadas, A y B.
+%
+% i: EstaciÃ³n A
+% i: EstaciÃ³n B
+% o: Ruta de A a B
+% o: Longitud de la ruta de A a B
+ruta(A,B,Path,Len) :-
+       recorre(A,B,[A],Q),
+       reverse(Q,Path),
+       longitud_ruta(Path,Len).
+
+% recorre(i,i,i,o).
+% Aplica bÃºsqueda en profundidad para
+% encontrar un camino de A a B.
+%
+% i: EstaciÃ³n A
+% i: EstaciÃ³n B
+% i: Lista de estaciones visitadas
+% o: Ruta de A a B
+recorre(A,B,P,[B|P]) :-
+       estaciones_conectadas(A,B,_).
+recorre(A,B,Visited,Path) :-
+       estaciones_conectadas(A,C,_),
+       C \== B,
+       \+member(C,Visited),
+       recorre(C,B,[C|Visited],Path).
+
+% rutas(i,i).
+% Imprime todas las rutas entre A y B.
+%
+% i: EstaciÃ³n A
+% i: EstaciÃ³n B
+rutas(A, B):-
+	ruta(A, B, X, _),
+	write(X),
+	nl,
+	fail.
+
+% escribe_rutas(i,i).
+% Escribe en un archivo todas
+% las rutas entre A y B.
+%
+% i: EstaciÃ³n A
+% i: EstaciÃ³n B
+escribe_rutas(A, B) :-
+    open('file.txt', write, Stream),
+    ( ruta(A, B, X, L), write(Stream, X), write(Stream," "),
+	write(Stream, L), nl(Stream), fail; true ),
+    close(Stream).
+
+% estacion_a_menor_distancia(i,o,o).
+% El siguiente predicado regresa la estaciÃ³n adyacente, segÃºn la lista
+% de estaciones adyacentes que recibe,que estÃ¡ a la menor distancia de
+% la estacion dada.
+%
+% i: Estacion de la que se quiere obtener la estaciÃ³n a menor distancia
+% o: Nombre de la estacion adyacente a distancia menor
+% o: Distancia a dicha estacion adyacente
+estacion_a_menor_distancia(EstacionInicio,EstacionResultado,Distancia):-
+       estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
+       estacion_menor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
+
+% estacion_menor(i,i,o,o).
+% Dada una lista de estaciones, regresa la que tenga una
+% distancia menor y dicha distancia.
+%
+% i: Estacion actual
+% i: Lista de estaciones adyacentes
+% o: Nombre de la estacion adyacente a distancia menor
+% o: Distancia a dicha estacion adyacente
+estacion_menor(Inicio,[],Inicio,0):-!.
+estacion_menor(Inicio,[A],A, Dist):-
+       estaciones_conectadas(Inicio,A,Dist),!.
+estacion_menor(Inicio,[Primera|Cola],Estacion,Res):-
+       estacion_menor_aux(Inicio,Primera,Cola,Estacion,Res),!.
+
+% estacion_menor(i,i,i,o,o).
+% MÃ©todo auxiliar que compara entre estaciones
+% para encontrar la de menor longitud.
+%
+% i: Estacion actual
+% i: Estacion actual con menor distancia
+% i: Lista de estaciones adyacentes
+% o: Nombre de la estacion adyacente a distancia menor
+% o: Distancia a dicha estacion adyacente
+estacion_menor_aux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
+          estaciones_conectadas(EstacionInicial,EstacionMenorActual,Distancia),!.
+estacion_menor_aux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
+      estaciones_conectadas(EstacionInicial,EstacionMenorActual,J),
+      DistanciaActual is J,
+      estaciones_conectadas(EstacionInicial, EstacionAPrueba,K),
+      DistanciaAComparar is K,
+      (   DistanciaActual > DistanciaAComparar ->
+      estacion_menor_aux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
+      estacion_menor_aux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
+                              )).
