@@ -2,13 +2,13 @@
 % Peña Flores, Luis Fernando     - 158488
 % Orduña Ferreira, Fabián        - 159001
 
-%Base de conocimiento del Sistema de Transporte Colectivo Metro
-%Contiene sus estaciones y sus conexiones
+% Base de conocimiento del Sistema de Transporte Colectivo Metro
+% Contiene sus estaciones y sus conexiones
 
-%Las estaciones son representadas como:
-%estacion(nombre,latitud,longitud).
-%Las conexiones son representadas como:
-%%conexion(estacionA,estacionB,distancia).
+% Las estaciones son representadas como:
+% 	estacion(nombre,latitud,longitud).
+% Las conexiones son representadas como:
+% 	conexion(estacionA,estacionB,distancia).
 
 %Línea 1
 estacion(observatorio,19.39833333,-99.20027778).
@@ -157,16 +157,9 @@ estacion(tepalcates,19.39138889,-99.04638889).
 estacion(guelatao,19.38527778,-99.03583333).
 estacion(peñon_viejo,19.37333333,-99.01722222).
 estacion(acatitla,19.36472222,-99.00583333).
-%estacion(santa_marta,19.36,-99.995).
-%estacion(los_reyes,19.35888889,-99.97694444).
-
 estacion(santa_marta,19.36,-98.995).
 estacion(los_reyes,19.35888889,-98.97694444).
 estacion(la_paz,19.35055556,-98.96083333).
-%estacion(la_paz,19.35055556,-99.96083333).
-%estacion(la_paz,19.35055556,-99.96313333).
-
-
 
 %Línea B
 estacion(buenavista,19.44666667,-99.15333333).
