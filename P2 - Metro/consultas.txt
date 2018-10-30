@@ -1,0 +1,36 @@
+Consultas de SWI-Prolog para la STCM
+Consultar miscelanea.pl
+(Se recomienda ejecutar en el siguiente orden)
+
+//Motivación
+working_directory(X,X).
+escribe_rutas(barranca_del_muerto, camarones).
+
+//Funcionalidad básica
+estacion(tlatelolco, _, _).
+estacion(ferriz, _, _).
+estacion(X,_,_), write(X), nl, fail.
+
+estaciones_conectadas(iztacalco, apatlaco, _), !.
+estaciones_conectadas(canal_del_norte, niños_heroes, _), !.
+estaciones_conectadas(consulado, eduardo_molina, Len), !.
+estaciones_conectadas(revolucion, tlahuac, Len), !.
+
+estaciones_adyacentes(pantitlan, Lista).
+estaciones_adyacentes(ciudad_azteca, Lista).
+
+estacion_a_menor_distancia(chabacano, Estacion, Len).
+
+ruta(patriotismo, balderas, Ruta, Len), !.
+
+longitud_ruta([patriotismo, tacubaya, juanacatlan, chapultepec, sevilla, insurgentes, cuauhtemoc, balderas], Len).
+longitud_ruta([balbuena, tepito, potrero, azcapotzalco], Len).
+
+largo_ruta([patriotismo, tacubaya, juanacatlan, chapultepec, sevilla, insurgentes, cuauhtemoc, balderas], Len).
+largo_ruta([balbuena, tepito, potrero, azcapotzalco], Len).
+
+ruta_Aestrella(la_paz, vallejo, Ruta). //Ruta está en orden inverso
+calcula_ruta_optima(la_paz, vallejo, Ruta).
+
+//Conclusion
+calcula_ruta_optima(barranca_del_muerto, camarones, Ruta).
