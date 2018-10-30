@@ -123,11 +123,11 @@ public class Utils {
      * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-//        ArrayList<Path> s = Utils.readUniqueRoutes("file.txt");
-//        ArrayList<Path> sort = Utils.sortList(s);
-//        System.out.println("Caminos únicos: " + s.size());
-//        System.out.println("Camino más corto: " + sort.get(0).toString());
-//        System.out.println("Camino más largo: " + sort.get(sort.size() - 1).toString());
-        Utils.readStations("conexiones.txt");
+        ArrayList<Path> s = Utils.readUniqueRoutes("file.txt");
+        ArrayList<Path> sort = Utils.sortList(s);
+        System.out.println("Caminos únicos: " + s.size() + "\n");
+        System.out.println("Camino más corto:\n" + sort.get(0).toString() + "\n");
+        System.out.println("Camino más largo:\n" + sort.get(sort.size() - 1).toString() + "\n");
+//        Utils.readStations("conexiones.txt");
     }   
 }
