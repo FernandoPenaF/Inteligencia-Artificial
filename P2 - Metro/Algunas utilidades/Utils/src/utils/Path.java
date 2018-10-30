@@ -67,6 +67,6 @@ public class Path {
     
     @Override
     public String toString() {
-        return "Path{" + "len=" + len + "\npath=" + path + '}';
+        return "Len = " + len + "\npath = " + path;
     }
 }
