@@ -19,17 +19,18 @@ estaciones_conectadas(revolucion, tlahuac, Len), !.
 estaciones_adyacentes(pantitlan, Lista).
 estaciones_adyacentes(ciudad_azteca, Lista).
 
+estacion_a_menor_distancia(pantitlan, Estacion, Len)
 estacion_a_menor_distancia(chabacano, Estacion, Len).
 
 ruta(patriotismo, balderas, Ruta, Len), !.
 
-longitud_ruta([patriotismo, tacubaya, juanacatlan, chapultepec, sevilla, insurgentes, cuauhtemoc, balderas], Len).
-longitud_ruta([balbuena, tepito, potrero, azcapotzalco], Len).
+longitud_ruta([patriotismo, tacubaya, juanacatlan, chapultepec, sevilla, insurgentes, cuauhtemoc, balderas], Len), !.
+longitud_ruta([balbuena, tepito, potrero, azcapotzalco], Len), !.
 
-largo_ruta([patriotismo, tacubaya, juanacatlan, chapultepec, sevilla, insurgentes, cuauhtemoc, balderas], Len).
-largo_ruta([balbuena, tepito, potrero, azcapotzalco], Len).
+largo_ruta([patriotismo, tacubaya, juanacatlan, chapultepec, sevilla, insurgentes, cuauhtemoc, balderas], Len), !.
+largo_ruta([balbuena, tepito, potrero, azcapotzalco], Len), !.
 
-ruta_Aestrella(la_paz, vallejo, Ruta). //Ruta está en orden inverso
+ruta_Aestrella(la_paz, vallejo, Ruta), write(Ruta), !. //Ruta está en orden inverso
 calcula_ruta_optima(la_paz, vallejo, Ruta).
 
 //Conclusion
