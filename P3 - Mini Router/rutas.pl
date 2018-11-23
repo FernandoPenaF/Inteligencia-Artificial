@@ -316,8 +316,7 @@ rutas(A, B):-
 % i: Estación B
 escribe_rutas(A, B) :-
     open('file.txt', write, Stream),
-    ( ruta(A, B, X, L), write(Stream, X), write(Stream," "),
-      write(Stream, L), nl(Stream), fail; true ),
+    ( ruta(A, B, X, L), write(Stream, X), write(Stream,"."), nl(Stream), fail; true ),
     close(Stream).
 
 % estacion_a_menor_distancia(i,o,o).
