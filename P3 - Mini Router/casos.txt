@@ -1,0 +1,5 @@
+[barranca_del_muerto,mixcoac,san_antonio,san_pedro_de_los_pinos,tacubaya,constituyentes,auditorio,polanco,san_joaquin,tacuba,refineria,camarones,aquiles_serdan,el_rosario,tezozomoc,azcapotzalco].
+[azcapotzalco,tezozomoc,el_rosario,aquiles_serdan,camarones,refineria,tacuba,san_joaquin,polanco,auditorio,constituyentes,tacubaya].
+[tacubaya,juanacatlan,chapultepec,sevilla,insurgentes,cuauhtemoc,balderas,salto_del_agua,isabel_la_catolica,pino_suarez,zocalo].
+[zocalo,pino_suarez,merced,candelaria,san_lazaro,moctezuma,balbuena,boulevard_puerto_aereo,gomez_farias,zaragoza,pantitlan,agricola_oriental,canal_de_san_juan,tepalcates,guelatao,peñon_viejo,acatitla,santa_marta,los_reyes,la_paz].
+[bellas_artes,allende,zocalo].
