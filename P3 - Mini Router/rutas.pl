@@ -241,8 +241,6 @@ inserta_aux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],Cola
 %
 % i: Lista
 imprime([]) :-!.
-imprime([Ultimo]) :-
-       write(Ultimo).
 imprime([Cabeza|Resto]) :-
        write(Cabeza),
        nl,
@@ -316,52 +314,51 @@ rutas(A, B):-
 % i: Estaci贸n B
 escribe_rutas(A, B) :-
     open('file.txt', write, Stream),
-    ( ruta(A, B, X, L), write(Stream, X), write(Stream,"."), nl(Stream), fail; true ),
+    ( ruta(A, B, X, _), write(Stream, X), write(Stream,"."), nl(Stream), fail; true ),
     close(Stream).
 
-% estacion_a_menor_distancia(i,o,o).
-% El siguiente predicado regresa la estaci贸n adyacente, seg煤n la lista
-% de estaciones adyacentes que recibe,que est谩 a la menor distancia de
-% la estacion dada.
+% escribe_caso(i,i).
+% Escribe en la base de casos la ruta
+% 髉tima, calculada con A*, entre A y B.
 %
-% i: Estacion de la que se quiere obtener la estaci贸n a menor distancia
-% o: Nombre de la estacion adyacente a distancia menor
-% o: Distancia a dicha estacion adyacente
-estacion_a_menor_distancia(EstacionInicio,EstacionResultado,Distancia):-
-       estaciones_adyacentes(EstacionInicio, ListaAdyacentes),
-       estacion_menor(EstacionInicio,ListaAdyacentes,EstacionResultado,Distancia).
+% i: Estaci贸n A
+% i: Estaci贸n B
+escribe_caso(A, B) :-
+    open('casos.txt', append, Stream),
+    ( calcula_ruta_optima(A, B, X), write(Stream, X), write(Stream,"."), nl(Stream), !; true ),
+    close(Stream).
 
-% estacion_menor(i,i,o,o).
-% Dada una lista de estaciones, regresa la que tenga una
-% distancia menor y dicha distancia.
-%
-% i: Estacion actual
-% i: Lista de estaciones adyacentes
-% o: Nombre de la estacion adyacente a distancia menor
-% o: Distancia a dicha estacion adyacente
-estacion_menor(Inicio,[],Inicio,0):-!.
-estacion_menor(Inicio,[A],A, Dist):-
-       estaciones_conectadas(Inicio,A,Dist),!.
-estacion_menor(Inicio,[Primera|Cola],Estacion,Res):-
-       estacion_menor_aux(Inicio,Primera,Cola,Estacion,Res),!.
+% lee_casos(o).
+% Lee la base de casos y regresa
+% su contenido en una lista.
+% 
+% o: Lista de rutas del metro
+lee_casos(L):-
+  setup_call_cleanup(
+    open('casos.txt', read, In),
+    lee_datos(In, L),
+    close(In)
+  ).
 
-% estacion_menor(i,i,i,o,o).
-% M茅todo auxiliar que compara entre estaciones
-% para encontrar la de menor longitud.
-%
-% i: Estacion actual
-% i: Estacion actual con menor distancia
-% i: Lista de estaciones adyacentes
-% o: Nombre de la estacion adyacente a distancia menor
-% o: Distancia a dicha estacion adyacente
-estacion_menor_aux(EstacionInicial,EstacionMenorActual,[],EstacionMenorActual,Distancia):-
-          estaciones_conectadas(EstacionInicial,EstacionMenorActual,Distancia),!.
-estacion_menor_aux(EstacionInicial,EstacionMenorActual,[EstacionAPrueba|Resto],Estacion,Res):-
-      estaciones_conectadas(EstacionInicial,EstacionMenorActual,J),
-      DistanciaActual is J,
-      estaciones_conectadas(EstacionInicial, EstacionAPrueba,K),
-      DistanciaAComparar is K,
-      (   DistanciaActual > DistanciaAComparar ->
-      estacion_menor_aux(EstacionInicial,EstacionAPrueba,Resto,Estacion,Res);(
-      estacion_menor_aux(EstacionInicial,EstacionMenorActual,Resto,Estacion,Res)
-                              )).
+% lee_datos(i,o).
+% Dado un archivo de entrada lee, l韓ea
+% a l韓ea y hasta el final del archivo,
+% su contenido y regresa su contenido en una
+% lista.
+% 
+% i: Archivo
+% o: Datos leidos
+lee_datos(In, L):-
+  read_term(In, H, []),
+  (   H == end_of_file
+  ->  L = []
+  ;   L = [H|T],
+      lee_datos(In,T)
+  ).
+
+% imprime_casos().
+% Imprime los datos leidos de 
+% lee_casos(o).
+imprime_casos():-
+  lee_casos(L),
+  imprime(L).
