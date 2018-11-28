@@ -331,7 +331,7 @@ escribe_caso(A, B) :-
 % lee_casos(o).
 % Lee la base de casos y regresa
 % su contenido en una lista.
-% 
+%
 % o: Lista de rutas del metro
 lee_casos(L):-
   setup_call_cleanup(
@@ -345,7 +345,7 @@ lee_casos(L):-
 % a línea y hasta el final del archivo,
 % su contenido y regresa su contenido en una
 % lista.
-% 
+%
 % i: Archivo
 % o: Datos leidos
 lee_datos(In, L):-
@@ -357,8 +357,33 @@ lee_datos(In, L):-
   ).
 
 % imprime_casos().
-% Imprime los datos leidos de 
+% Imprime los datos leidos de
 % lee_casos(o).
 imprime_casos():-
   lee_casos(L),
   imprime(L).
+
+
+
+hay_caso(Estacion1,Estacion2,Caso):-
+       lee_casos(ListaDeCasos),
+       aux_hay_caso(Estacion1,Estacion2,ListaDeCasos,Caso).
+
+
+aux_hay_caso(_,_,[],[]).
+aux_hay_caso(Estacion1, Estacion2,[CasoActual|CasosSobrantes],Caso):-
+       (member(Estacion1,CasoActual),member(Estacion2,CasoActual) ->
+       Caso = CasoActual       );
+       aux_hay_caso(Estacion1, Estacion2,CasosSobrantes,Caso),!.
+
+
+limpia_caso(Estacion1,Estacion2,Caso,Res):-
+       encuentraInicial(Estacion1,Estacion2,Caso,Res1),
+       reverse(Res1,Res2),
+       encuentraInicial(Estacion1,Estacion2,Res2,Res).
+
+encuentraInicial(_,_,[],[]):-!.
+encuentraInicial(Est1,_,[Est1|Resto],[Est1|Resto]):-!.
+encuentraInicial(_,Est2,[Est2|Resto],[Est2|Resto]):-!.
+encuentraInicial(Est1,Est2,[_|Resto],Res):-
+       encuentraInicial(Est1,Est2,Resto,Res).
