@@ -306,6 +306,16 @@ rutas(A, B):-
       nl,
       fail.
 
+% escribe_a_archivo(i).
+% Escribe en la base de
+% casos una lista dada.
+%
+% i: Lista
+escribe_a_archivo(L) :-
+    open('casos.txt', append, Stream),
+    ( write(Stream, L), write(Stream,"."), nl(Stream), !; true ),
+    close(Stream).
+
 % escribe_rutas(i,i).
 % Escribe en un archivo todas
 % las rutas entre A y B.
@@ -313,9 +323,9 @@ rutas(A, B):-
 % i: Estaci贸n A
 % i: Estaci贸n B
 escribe_rutas(A, B) :-
-    open('file.txt', write, Stream),
-    ( ruta(A, B, X, _), write(Stream, X), write(Stream,"."), nl(Stream), fail; true ),
-    close(Stream).
+    ruta(A, B, X, _),
+    escribe_a_archivo(X),
+    fail.
 
 % escribe_caso(i,i).
 % Escribe en la base de casos la ruta
@@ -324,9 +334,20 @@ escribe_rutas(A, B) :-
 % i: Estaci贸n A
 % i: Estaci贸n B
 escribe_caso(A, B) :-
-    open('casos.txt', append, Stream),
-    ( calcula_ruta_optima(A, B, X), write(Stream, X), write(Stream,"."), nl(Stream), !; true ),
-    close(Stream).
+    calcula_ruta_optima(A, B, X),
+    escribe_a_archivo(X).
+
+% escribe_subrutas(i).
+% Escribe en la base de casos todas
+% las subrutas de una ruta dada.
+%
+% i: Ruta
+escribe_subrutas(Ruta) :-
+    sublistas(Ruta, L),
+    largo_ruta(L, Len),
+    Len > 0,
+    escribe_a_archivo(L),
+    fail.
 
 % lee_casos(o).
 % Lee la base de casos y regresa
@@ -359,16 +380,22 @@ lee_datos(In, L):-
 % imprime_casos().
 % Imprime los datos leidos de
 % lee_casos(o).
+% (Usar bajo su propio riesgo)
 imprime_casos():-
   lee_casos(L),
   imprime(L).
 
-
-
+% hay_caso(i,i,o).
+% Dadas dos estaciones verifica si en
+% la base de casos existe uno que
+% contenga una ruta o subruta entre ambas.
+%
+% i: Estaci髇 1
+% i: Estaci髇 2
+% o: Ruta (Vac韆 en caso de no existir)
 hay_caso(Estacion1,Estacion2,Caso):-
        lee_casos(ListaDeCasos),
        aux_hay_caso(Estacion1,Estacion2,ListaDeCasos,Caso).
-
 
 aux_hay_caso(_,_,[],[]).
 aux_hay_caso(Estacion1, Estacion2,[CasoActual|CasosSobrantes],Caso):-
@@ -376,14 +403,50 @@ aux_hay_caso(Estacion1, Estacion2,[CasoActual|CasosSobrantes],Caso):-
        Caso = CasoActual       );
        aux_hay_caso(Estacion1, Estacion2,CasosSobrantes,Caso),!.
 
-
+% limpia_caso(i,i,i,o).
+% Dadas dos estaciones y una ruta que
+% contenga ambas, acota dicha ruta para
+% que empiece en alguna de las estaciones
+% dadas y termina en la otra estaci髇 dada.
+%
+% i: Estaci髇 1
+% i: Estaci髇 2
+% i: Ruta que contenga ambas estaciones
+% o: Ruta que empiece en una estaci髇 y termine en la otra
 limpia_caso(Estacion1,Estacion2,Caso,Res):-
-       encuentraInicial(Estacion1,Estacion2,Caso,Res1),
+       encuentra_inicial(Estacion1,Estacion2,Caso,Res1),
        reverse(Res1,Res2),
-       encuentraInicial(Estacion1,Estacion2,Res2,Res).
+       encuentra_inicial(Estacion1,Estacion2,Res2,Res).
 
-encuentraInicial(_,_,[],[]):-!.
-encuentraInicial(Est1,_,[Est1|Resto],[Est1|Resto]):-!.
-encuentraInicial(_,Est2,[Est2|Resto],[Est2|Resto]):-!.
-encuentraInicial(Est1,Est2,[_|Resto],Res):-
-       encuentraInicial(Est1,Est2,Resto,Res).
+encuentra_inicial(_,_,[],[]):-!.
+encuentra_inicial(Est1,_,[Est1|Resto],[Est1|Resto]):-!.
+encuentra_inicial(_,Est2,[Est2|Resto],[Est2|Resto]):-!.
+encuentra_inicial(Est1,Est2,[_|Resto],Res):-
+       encuentra_inicial(Est1,Est2,Resto,Res).
+
+% subcaminos(i).
+% Dada una ruta imprime todas las posibles
+% subrutas v醠idas que tengan m醩 de una
+% estaci髇.
+% 
+% i: Lista de rutas
+subcaminos(Ruta):-
+  sublistas(Ruta, L),
+  largo_ruta(L, Len),
+  Len > 0,
+  write(L),
+  nl,
+  fail.
+
+% sublistas(i, o).
+% Dada una lista regresa todas las
+% 2^n sublistas distinas.
+% (n es el tama駉 de la lista)
+% 
+% i: Lista
+% o: Sublista correspondiente
+sublistas([],[]):-!.
+sublistas([E|Resto], [E|N]):-
+  sublistas(Resto, N).
+sublistas([_|Resto], N):-
+  sublistas(Resto, N).
