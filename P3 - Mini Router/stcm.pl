@@ -11,196 +11,196 @@
 % Contiene sus estaciones y sus conexiones
 
 % Las estaciones son representadas como:
-%	estacion(nombre,latitud,longitud).
+%	estacion(nombre,latitud,longitud,región).
 % Las conexiones son representadas como:
 %	conexion(estacionA,estacionB,distancia).
 
 %Línea 1
-estacion(observatorio,19.39833333,-99.20027778).
-estacion(tacubaya,19.40333333,-99.18722222).
-estacion(juanacatlan,19.41277778,-99.18222222).
-estacion(chapultepec,19.42083333,-99.17638889).
-estacion(sevilla,19.42194444,-99.17055556).
-estacion(insurgentes,19.42333333,-99.16305556).
-estacion(cuauhtemoc,19.42583333,-99.15472222).
-estacion(balderas,19.4275,-99.14916667).
-estacion(salto_del_agua,19.42694444,-99.14222222).
-estacion(isabel_la_catolica,19.42666667,-99.13777778).
-estacion(pino_suarez,19.42527778,-99.13305556).
-estacion(merced,19.42555556,-99.12472222).
-estacion(candelaria,19.42888889,-99.11944444).
-estacion(san_lazaro,19.43027778,-99.11472222).
-estacion(moctezuma,19.42722222,-99.11027778).
-estacion(balbuena,19.42333333,-99.10222222).
-estacion(boulevard_puerto_aereo,19.41972222,-99.09583333).
-estacion(gomez_farias,19.41638889,-99.09027778).
-estacion(zaragoza,19.41222222,-99.0825).
-estacion(pantitlan,19.41527778,-99.07222222).
+estacion(observatorio,19.39833333,-99.20027778,6).
+estacion(tacubaya,19.40333333,-99.18722222,6).
+estacion(juanacatlan,19.41277778,-99.18222222,6).
+estacion(chapultepec,19.42083333,-99.17638889,6).
+estacion(sevilla,19.42194444,-99.17055556,6).
+estacion(insurgentes,19.42333333,-99.16305556,5).
+estacion(cuauhtemoc,19.42583333,-99.15472222,5).
+estacion(balderas,19.4275,-99.14916667,5).
+estacion(salto_del_agua,19.42694444,-99.14222222,5).
+estacion(isabel_la_catolica,19.42666667,-99.13777778,5).
+estacion(pino_suarez,19.42527778,-99.13305556,5).
+estacion(merced,19.42555556,-99.12472222,5).
+estacion(candelaria,19.42888889,-99.11944444,5).
+estacion(san_lazaro,19.43027778,-99.11472222,5).
+estacion(moctezuma,19.42722222,-99.11027778,5).
+estacion(balbuena,19.42333333,-99.10222222,3).
+estacion(boulevard_puerto_aereo,19.41972222,-99.09583333,3).
+estacion(gomez_farias,19.41638889,-99.09027778,3).
+estacion(zaragoza,19.41222222,-99.0825,3).
+estacion(pantitlan,19.41527778,-99.07222222,3).
 
 %Línea 2
-estacion(cuatro_caminos,19.45972222,-99.21583333).
-estacion(panteones,19.45888889,-99.20305556).
-estacion(tacuba,19.45944444,-99.18916667).
-estacion(cuitlahuac,19.4575,-99.18194444).
-estacion(popotla,19.45222222,-99.17472222).
-estacion(colegio_militar,19.44944444,-99.17222222).
-estacion(normal,19.44444444,-99.1675).
-estacion(san_cosme,19.44166667,-99.16111111).
-estacion(revolucion,19.43944444,-99.15555556).
-estacion(hidalgo,19.43722222,-99.14722222).
-estacion(bellas_artes,19.43611111,-99.14194444).
-estacion(allende,19.43555556,-99.1375).
-estacion(zocalo,19.43333333,-99.13277778).
-estacion(san_antonio_abad,19.41861111,-99.13416667).
-estacion(chabacano,19.40833333,-99.13583333).
-estacion(viaducto,19.40083333,-99.13694444).
-estacion(xola,19.39527778,-99.13777778).
-estacion(villa_de_cortes,19.3875,-99.13888889).
-estacion(nativitas,19.37944444,-99.14027778).
-estacion(portales,19.36972222,-99.14166667).
-estacion(ermita,19.36194444,-99.14305556).
-estacion(general_anaya,19.35333333,-99.145).
-estacion(tasqueña,19.34416667,-99.14277778).
+estacion(cuatro_caminos,19.45972222,-99.21583333,4).
+estacion(panteones,19.45888889,-99.20305556,4).
+estacion(tacuba,19.45944444,-99.18916667,4).
+estacion(cuitlahuac,19.4575,-99.18194444,4).
+estacion(popotla,19.45222222,-99.17472222,4).
+estacion(colegio_militar,19.44944444,-99.17222222,4).
+estacion(normal,19.44444444,-99.1675,5).
+estacion(san_cosme,19.44166667,-99.16111111,5).
+estacion(revolucion,19.43944444,-99.15555556,5).
+estacion(hidalgo,19.43722222,-99.14722222,5).
+estacion(bellas_artes,19.43611111,-99.14194444,5).
+estacion(allende,19.43555556,-99.1375,5).
+estacion(zocalo,19.43333333,-99.13277778,5).
+estacion(san_antonio_abad,19.41861111,-99.13416667,5).
+estacion(chabacano,19.40833333,-99.13583333,5).
+estacion(viaducto,19.40083333,-99.13694444,7).
+estacion(xola,19.39527778,-99.13777778,7).
+estacion(villa_de_cortes,19.3875,-99.13888889,7).
+estacion(nativitas,19.37944444,-99.14027778,7).
+estacion(portales,19.36972222,-99.14166667,7).
+estacion(ermita,19.36194444,-99.14305556,7).
+estacion(general_anaya,19.35333333,-99.145,7).
+estacion(tasqueña,19.34416667,-99.14277778,7).
 
 %Línea 3
-estacion(indios_verdes,19.49527778,-99.11944444).
-estacion(deportivo_18_de_marzo,19.48361111,-99.12666667).
-estacion(potrero,19.47694444,-99.13222222).
-estacion(la_raza,19.47027778,-99.13694444).
-estacion(tlatelolco,19.455,-99.14277778).
-estacion(guerrero,19.44527778,-99.14527778).
-estacion(juarez,19.43305556,-99.14777778).
-estacion(niños_heroes,19.41944444,-99.15055556).
-estacion(hospital_general,19.41361111,-99.15388889).
-estacion(centro_medico,19.40666667,-99.15583333).
-estacion(etiopia,19.39555556,-99.15638889).
-estacion(eugenia,19.38555556,-99.1575).
-estacion(division_del_norte,19.38,-99.15888889).
-estacion(zapata,19.37083333,-99.165).
-estacion(coyoacan,19.36138889,-99.17083333).
-estacion(viveros,19.35361111,-99.17611111).
-estacion(miguel_angel_de_quevedo,19.34638889,-99.18111111).
-estacion(copilco,19.33583333,-99.17666667).
-estacion(universidad,19.32444444,-99.17388889).
+estacion(indios_verdes,19.49527778,-99.11944444,2).
+estacion(deportivo_18_de_marzo,19.48361111,-99.12666667,2).
+estacion(potrero,19.47694444,-99.13222222,2).
+estacion(la_raza,19.47027778,-99.13694444,2).
+estacion(tlatelolco,19.455,-99.14277778,2).
+estacion(guerrero,19.44527778,-99.14527778,5).
+estacion(juarez,19.43305556,-99.14777778,5).
+estacion(niños_heroes,19.41944444,-99.15055556,5).
+estacion(hospital_general,19.41361111,-99.15388889,5).
+estacion(centro_medico,19.40666667,-99.15583333,5).
+estacion(etiopia,19.39555556,-99.15638889,7).
+estacion(eugenia,19.38555556,-99.1575,7).
+estacion(division_del_norte,19.38,-99.15888889,7).
+estacion(zapata,19.37083333,-99.165,7).
+estacion(coyoacan,19.36138889,-99.17083333,7).
+estacion(viveros,19.35361111,-99.17611111, 7).
+estacion(miguel_angel_de_quevedo,19.34638889,-99.18111111,7).
+estacion(copilco,19.33583333,-99.17666667,7).
+estacion(universidad,19.32444444,-99.17388889,7).
 
 %Línea 4
-estacion(martin_carrera,19.485,-99.10444444).
-estacion(talisman,19.47416667,-99.10805556).
-estacion(bondojito,19.46472222,-99.11194444).
-estacion(consulado,19.45777778,-99.11388889).
-estacion(canal_del_norte,19.44916667,-99.11638889).
-estacion(morelos,19.44916667,-99.11638889).
-estacion(fray_servando,19.42166667,-99.12055556).
-estacion(jamaica,19.40888889,-99.12222222).
-estacion(santa_anita,19.40277778,-99.12166667).
+estacion(martin_carrera,19.485,-99.10444444,2).
+estacion(talisman,19.47416667,-99.10805556,2).
+estacion(bondojito,19.46472222,-99.11194444,2).
+estacion(consulado,19.45777778,-99.11388889,2).
+estacion(canal_del_norte,19.44916667,-99.11638889,2).
+estacion(morelos,19.44916667,-99.11638889,5).
+estacion(fray_servando,19.42166667,-99.12055556,5).
+estacion(jamaica,19.40888889,-99.12222222,5).
+estacion(santa_anita,19.40277778,-99.12166667,5).
 
 %Línea 5
-estacion(politecnico,19.50083333,-99.14916667).
-estacion(instituto_del_petroleo,19.48944444,-99.14527778).
-estacion(autobuses_del_norte,19.47888889,-99.14055556).
-estacion(misterios,19.46333333,-99.13083333).
-estacion(valle_gomez,19.45861111,-99.11916667).
-estacion(eduardo_molina,19.45138889,-99.10555556).
-estacion(aragon,19.45111111,-99.09583333).
-estacion(oceania,19.44555556,-99.08722222).
-estacion(terminal_aerea,19.43361111,-99.08777778).
-estacion(hangares,19.42416667,-99.0875).
+estacion(politecnico,19.50083333,-99.14916667,2).
+estacion(instituto_del_petroleo,19.48944444,-99.14527778,2).
+estacion(autobuses_del_norte,19.47888889,-99.14055556,2).
+estacion(misterios,19.46333333,-99.13083333,2).
+estacion(valle_gomez,19.45861111,-99.11916667,2).
+estacion(eduardo_molina,19.45138889,-99.10555556,3).
+estacion(aragon,19.45111111,-99.09583333,3).
+estacion(oceania,19.44555556,-99.08722222,3).
+estacion(terminal_aerea,19.43361111,-99.08777778,3).
+estacion(hangares,19.42416667,-99.0875,3).
 
 %Línea 6
-estacion(el_rosario,19.50444444,-99.2).
-estacion(tezozomoc,19.495,-99.19638889).
-estacion(azcapotzalco,19.49111111,-99.18638889).
-estacion(ferreria,19.49083333,-99.17388889).
-estacion(norte_45,19.48861111,-99.16277778).
-estacion(vallejo,19.49055556,-99.15583333).
-estacion(lindavista,19.48777778,-99.13472222).
-estacion(la_villa_basilica,19.48138889,-99.11805556).
+estacion(el_rosario,19.50444444,-99.2,1).
+estacion(tezozomoc,19.495,-99.19638889,1).
+estacion(azcapotzalco,19.49111111,-99.18638889,1).
+estacion(ferreria,19.49083333,-99.17388889,1).
+estacion(norte_45,19.48861111,-99.16277778,1).
+estacion(vallejo,19.49055556,-99.15583333,1).
+estacion(lindavista,19.48777778,-99.13472222,2).
+estacion(la_villa_basilica,19.48138889,-99.11805556,2).
 
 %Línea 7
-estacion(aquiles_serdan,19.49055556,-99.195).
-estacion(camarones,19.47916667,-99.19).
-estacion(refineria,19.47,-99.19055556).
-estacion(san_joaquin,19.44583333,-99.19194444).
-estacion(polanco,19.43361111,-99.19111111).
-estacion(auditorio,19.42555556,-99.19194444).
-estacion(constituyentes,19.41194444,-99.19138889).
-estacion(san_pedro_de_los_pinos,19.39138889,-99.18611111).
-estacion(san_antonio,19.38472222,-99.18638889).
-estacion(mixcoac,19.37583333,-99.1875).
-estacion(barranca_del_muerto,19.36055556,-99.19027778).
+estacion(aquiles_serdan,19.49055556,-99.195,1).
+estacion(camarones,19.47916667,-99.19,1).
+estacion(refineria,19.47,-99.19055556,1).
+estacion(san_joaquin,19.44583333,-99.19194444,4).
+estacion(polanco,19.43361111,-99.19111111,4).
+estacion(auditorio,19.42555556,-99.19194444,6).
+estacion(constituyentes,19.41194444,-99.19138889,6).
+estacion(san_pedro_de_los_pinos,19.39138889,-99.18611111,6).
+estacion(san_antonio,19.38472222,-99.18638889,6).
+estacion(mixcoac,19.37583333,-99.1875,6).
+estacion(barranca_del_muerto,19.36055556,-99.19027778,6).
 
 %Línea 8
-estacion(garibaldi_lagunilla,19.44444444,-99.13972222).
-estacion(san_juan_de_letran,19.43138889,-99.14166667).
-estacion(doctores,19.42166667,-99.14333333).
-estacion(obrera,19.41361111,-99.14416667).
-estacion(la_viga,19.40638889,-99.12611111).
-estacion(coyuya,19.39861111,-99.11361111).
-estacion(iztacalco,19.38861111,-99.11222222).
-estacion(apatlaco,19.37916667,-99.10972222).
-estacion(aculco,19.37416667,-99.10805556).
-estacion(escuadron_201,19.365,-99.10944444).
-estacion(atlalilco,19.35611111,-99.10138889).
-estacion(iztapalapa,19.35777778,-99.09333333).
-estacion(cerro_de_la_estrella,19.35611111,-99.08555556).
-estacion(uamI,19.35111111,-99.07472222).
-estacion(constitucion_de_1917,19.34583333,-99.06388889).
+estacion(garibaldi_lagunilla,19.44444444,-99.13972222,5).
+estacion(san_juan_de_letran,19.43138889,-99.14166667,5).
+estacion(doctores,19.42166667,-99.14333333,5).
+estacion(obrera,19.41361111,-99.14416667,5).
+estacion(la_viga,19.40638889,-99.12611111,5).
+estacion(coyuya,19.39861111,-99.11361111,8).
+estacion(iztacalco,19.38861111,-99.11222222,8).
+estacion(apatlaco,19.37916667,-99.10972222,8).
+estacion(aculco,19.37416667,-99.10805556,8).
+estacion(escuadron_201,19.365,-99.10944444,8).
+estacion(atlalilco,19.35611111,-99.10138889,8).
+estacion(iztapalapa,19.35777778,-99.09333333,8).
+estacion(cerro_de_la_estrella,19.35611111,-99.08555556,8).
+estacion(uamI,19.35111111,-99.07472222,8).
+estacion(constitucion_de_1917,19.34583333,-99.06388889,8).
 
 %Línea 9
-estacion(puebla,19.40722222,-99.0825).
-estacion(ciudad_deportiva,19.40833333,-99.09111111).
-estacion(velodromo,19.40861111,-99.10305556).
-estacion(mixiuhca,19.40861111,-99.11277778).
-estacion(lazaro_cardenas,19.40694444,-99.145).
-estacion(chilpancingo,19.40583333,-99.16861111).
-estacion(patriotismo,19.40611111,-99.17888889).
+estacion(puebla,19.40722222,-99.0825,3).
+estacion(ciudad_deportiva,19.40833333,-99.09111111,3).
+estacion(velodromo,19.40861111,-99.10305556,3).
+estacion(mixiuhca,19.40861111,-99.11277778,5).
+estacion(lazaro_cardenas,19.40694444,-99.145,5).
+estacion(chilpancingo,19.40583333,-99.16861111,6).
+estacion(patriotismo,19.40611111,-99.17888889,6).
 
 %Línea A
-estacion(agricola_oriental,19.40472222,-99.07).
-estacion(canal_de_san_juan,19.39861111,-99.05944444).
-estacion(tepalcates,19.39138889,-99.04638889).
-estacion(guelatao,19.38527778,-99.03583333).
-estacion(peñon_viejo,19.37333333,-99.01722222).
-estacion(acatitla,19.36472222,-99.00583333).
-estacion(santa_marta,19.36,-98.995).
-estacion(los_reyes,19.35888889,-98.97694444).
-estacion(la_paz,19.35055556,-98.96083333).
+estacion(agricola_oriental,19.40472222,-99.07,3).
+estacion(canal_de_san_juan,19.39861111,-99.05944444,3).
+estacion(tepalcates,19.39138889,-99.04638889,3).
+estacion(guelatao,19.38527778,-99.03583333,3).
+estacion(peñon_viejo,19.37333333,-99.01722222,3).
+estacion(acatitla,19.36472222,-99.00583333,3).
+estacion(santa_marta,19.36,-98.995,3).
+estacion(los_reyes,19.35888889,-98.97694444,3).
+estacion(la_paz,19.35055556,-98.96083333,3).
 
 %Línea B
-estacion(buenavista,19.44666667,-99.15333333).
-estacion(lagunilla,19.44333333,-99.13138889).
-estacion(tepito,19.4425,-99.12333333).
-estacion(flores_magon,19.43666667,-99.10361111).
-estacion(romero_rubio,19.44083333,-99.09444444).
-estacion(deportivo_oceania,19.45111111,-99.07916667).
-estacion(bosque_de_aragon,19.45805556,-99.06916667).
-estacion(villa_de_aragon,19.46166667,-99.06166667).
-estacion(nezahualcoyotl,19.47305556,-99.05444444).
-estacion(impulsora,19.48583333,-99.04888889).
-estacion(rio_de_los_remedios,19.49083333,-99.04666667).
-estacion(muzquiz,19.50166667,-99.04194444).
-estacion(ecatepec,19.51527778,-99.03611111).
-estacion(olimpica,19.52138889,-99.03333333).
-estacion(plaza_aragon,19.52833333,-99.03).
-estacion(ciudad_azteca,19.53472222,-99.0275).
+estacion(buenavista,19.44666667,-99.15333333,5).
+estacion(lagunilla,19.44333333,-99.13138889,5).
+estacion(tepito,19.4425,-99.12333333,5).
+estacion(flores_magon,19.43666667,-99.10361111,3).
+estacion(romero_rubio,19.44083333,-99.09444444,3).
+estacion(deportivo_oceania,19.45111111,-99.07916667,3).
+estacion(bosque_de_aragon,19.45805556,-99.06916667,3).
+estacion(villa_de_aragon,19.46166667,-99.06166667,3).
+estacion(nezahualcoyotl,19.47305556,-99.05444444,3).
+estacion(impulsora,19.48583333,-99.04888889,3).
+estacion(rio_de_los_remedios,19.49083333,-99.04666667,3).
+estacion(muzquiz,19.50166667,-99.04194444,3).
+estacion(ecatepec,19.51527778,-99.03611111,3).
+estacion(olimpica,19.52138889,-99.03333333,3).
+estacion(plaza_aragon,19.52833333,-99.03,3).
+estacion(ciudad_azteca,19.53472222,-99.0275,3).
 
 %Línea 12
-estacion(insurgentes_sur,19.37361111,-99.17888889).
-estacion(hospital_20_de_noviembre,19.37194444,-99.17111111).
-estacion(parque_de_los_venados,19.37083333,-99.15861111).
-estacion(eje_central,19.36138889,-99.15138889).
-estacion(mexicaltzingo,19.35777778,-99.12166667).
-estacion(culhuacan,19.33694444,-99.10888889).
-estacion(san_andres_tomatlan,19.32833333,-99.105).
-estacion(lomas_estrella,19.32222222,-99.09611111).
-estacion(calle_11,19.32055556,-99.08583333).
-estacion(periferico_oriente,19.31777778,-99.07472222).
-estacion(tezonco,19.30611111,-99.065).
-estacion(olivos,19.30416667,-99.05972222).
-estacion(nopalera,19.3,-99.04666667).
-estacion(zapotitlan,19.29666667,-99.03444444).
-estacion(tlaltenco,19.29416667,-99.02388889).
-estacion(tlahuac,19.28638889,-99.01416667).
+estacion(insurgentes_sur,19.37361111,-99.17888889,6).
+estacion(hospital_20_de_noviembre,19.37194444,-99.17111111,7).
+estacion(parque_de_los_venados,19.37083333,-99.15861111,7).
+estacion(eje_central,19.36138889,-99.15138889,7).
+estacion(mexicaltzingo,19.35777778,-99.12166667,8).
+estacion(culhuacan,19.33694444,-99.10888889,8).
+estacion(san_andres_tomatlan,19.32833333,-99.105,8).
+estacion(lomas_estrella,19.32222222,-99.09611111,8).
+estacion(calle_11,19.32055556,-99.08583333,8).
+estacion(periferico_oriente,19.31777778,-99.07472222,8).
+estacion(tezonco,19.30611111,-99.065,8).
+estacion(olivos,19.30416667,-99.05972222,8).
+estacion(nopalera,19.3,-99.04666667,8).
+estacion(zapotitlan,19.29666667,-99.03444444,8).
+estacion(tlaltenco,19.29416667,-99.02388889,8).
+estacion(tlahuac,19.28638889,-99.01416667,8).
 
 %Línea 1
 conexion(observatorio, tacubaya,1.46).%rosa
