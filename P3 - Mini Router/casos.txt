@@ -22,3 +22,6 @@
 [tacuba,refineria,camarones].
 [tacuba,refineria].
 [refineria,camarones].
+[barranca_del_muerto,mixcoac,insurgentes_sur,hospital_20_de_noviembre,zapata,coyoacan,viveros,miguel_angel_de_quevedo,copilco,universidad].
+[popotla,colegio_militar,normal,san_cosme,revolucion,hidalgo,guerrero,tlatelolco,la_raza,potrero,deportivo_18_de_marzo,la_villa_basilica,martin_carrera].
+[la_paz,los_reyes,santa_marta,acatitla,peñon_viejo,guelatao].
