@@ -26,12 +26,21 @@
 estaciones_conectadas(X,Y,L) :- conexion(X,Y,L).
 estaciones_conectadas(X,Y,L) :- conexion(Y,X,L).
 
+% region(i,o).
+% Regresa una lista con las estaciones 
+% pertenecientes a una región de dada, X.
+%
+% i: Región X
+% o: Lista de estaciones en la región X
+region(X, Z) :-
+       findall(Y, estacion(Y, _, _, X), Z).
+
 % estaciones_adyacentes(i,o).
 % Regresa una lista con las estaciones adyacentes
 % de una estación dada, X.
 %
-% i: Estación A
-% o: Lista de estaciones adyacentes a A
+% i: Estación X
+% o: Lista de estaciones adyacentes a X
 estaciones_adyacentes(X, Z) :-
        findall(Y, estaciones_conectadas(X, Y,_), Z).
 
@@ -148,8 +157,8 @@ heuristica(Destino, [EstacionActual|CaminoRecorrido], ValorCalculado) :-
 % i: Estación destino
 % o: Valor heurístico geográfico
 heuristica_geografica(EstacionOrigen,EstacionDestino,Resultado) :-
-       estacion(EstacionOrigen,Coord1,Coord12),
-       estacion(EstacionDestino,Coord2,Coord22),
+       estacion(EstacionOrigen,Coord1,Coord12,_),
+       estacion(EstacionDestino,Coord2,Coord22,_),
        calcula_distancia(Coord1,Coord12,Coord2,Coord22,Resultado).
 
 % calcula_distancia(i,i,i,i,o).
@@ -173,8 +182,8 @@ calcula_distancia(Ll1,Ln1,Ll2,Ln2,Res) :-
 % i: Estacion destino
 % o: Ruta entre estación origen y estación destino
 ruta_Aestrella(Origen,Destino,Ruta) :-
-       estacion(Origen,_,_),
-       estacion(Destino,_,_),
+       estacion(Origen,_,_,_),
+       estacion(Destino,_,_,_),
        recorre_Aestrella(Destino,[Origen],[],Ruta).
 
 % recorre_Aestrella(i,i,i,o).
