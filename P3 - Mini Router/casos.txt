@@ -1,7 +1,7 @@
 [barranca_del_muerto,mixcoac,san_antonio,san_pedro_de_los_pinos,tacubaya,constituyentes,auditorio,polanco,san_joaquin,tacuba,refineria,camarones,aquiles_serdan,el_rosario,tezozomoc,azcapotzalco].
 [azcapotzalco,tezozomoc,el_rosario,aquiles_serdan,camarones,refineria,tacuba,san_joaquin,polanco,auditorio,constituyentes,tacubaya].
 [tacubaya,juanacatlan,chapultepec,sevilla,insurgentes,cuauhtemoc,balderas,salto_del_agua,isabel_la_catolica,pino_suarez,zocalo].
-[zocalo,pino_suarez,merced,candelaria,san_lazaro,moctezuma,balbuena,boulevard_puerto_aereo,gomez_farias,zaragoza,pantitlan,agricola_oriental,canal_de_san_juan,tepalcates,guelatao,peñon_viejo,acatitla,santa_marta,los_reyes,la_paz].
+[zocalo,pino_suarez,merced,candelaria,san_lazaro,moctezuma,balbuena,boulevard_puerto_aereo,gomez_farias,zaragoza,pantitlan,agricola_oriental,canal_de_san_juan,tepalcates,guelatao,peÃ±on_viejo,acatitla,santa_marta,los_reyes,la_paz].
 [bellas_artes,allende,zocalo].
 [mixcoac,san_antonio,san_pedro_de_los_pinos,tacubaya,juanacatlan,chapultepec,sevilla,insurgentes,cuauhtemoc,balderas,juarez,hidalgo,guerrero].
 [barranca_del_muerto,mixcoac,san_antonio,san_pedro_de_los_pinos,tacubaya,constituyentes].
@@ -21,7 +21,3 @@
 [tacubaya,constituyentes].
 [tacuba,refineria,camarones].
 [tacuba,refineria].
-[refineria,camarones].
-[barranca_del_muerto,mixcoac,insurgentes_sur,hospital_20_de_noviembre,zapata,coyoacan,viveros,miguel_angel_de_quevedo,copilco,universidad].
-[popotla,colegio_militar,normal,san_cosme,revolucion,hidalgo,guerrero,tlatelolco,la_raza,potrero,deportivo_18_de_marzo,la_villa_basilica,martin_carrera].
-[la_paz,los_reyes,santa_marta,acatitla,peñon_viejo,guelatao].

@@ -352,10 +352,11 @@ escribe_caso(A, B) :-
 % las subrutas de una ruta dada.
 %
 % i: Ruta
-escribe_subrutas(Ruta) :-
+escribe_subrutas(Ruta, MinConexiones) :-
+    MinConexiones >= 0,
     sublistas(Ruta, L),
     largo_ruta(L, Len),
-    Len > 0,
+    Len > MinConexiones,
     escribe_a_archivo(L),
     fail.
 
@@ -438,12 +439,13 @@ encuentra_inicial(Est1,Est2,[_|Resto],Res):-
 % Dada una ruta imprime todas las posibles
 % subrutas válidas que tengan más de una
 % estación.
-% 
+%
 % i: Lista de rutas
-subcaminos(Ruta):-
+subcaminos(Ruta, MinConexiones):-
+  MinConexiones >= 0,
   sublistas(Ruta, L),
   largo_ruta(L, Len),
-  Len > 0,
+  Len > MinConexiones,
   write(L),
   nl,
   fail.
@@ -452,7 +454,7 @@ subcaminos(Ruta):-
 % Dada una lista regresa todas las
 % 2^n sublistas distinas.
 % (n es el tamaño de la lista)
-% 
+%
 % i: Lista
 % o: Sublista correspondiente
 sublistas([],[]):-!.
