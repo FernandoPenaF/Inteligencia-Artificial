@@ -244,35 +244,47 @@ inserta_aux(Destino,RutaActual,[CabezaListaAdyacentes|RestoListaAdyacentes],Cola
         inserta_aux(Destino,RutaActual,RestoListaAdyacentes,ColaPrioridad,Resultado)
        ).
 
-% imprime(i).
-% Imprime, l韓ea a l韓ea, el contenido
-% de una lista.
+% calcula_ruta_aEstrella(i,i,o).
+% Calcula una ruta entre dos estaciones dadas 
+% utilizando la b鷖queda heur韘tica A*.
 %
-% i: Lista
-imprime([]) :-!.
-imprime([Cabeza|Resto]) :-
-       write(Cabeza),
-       nl,
-       imprime(Resto).
+% i: Estacion origen
+% i: Estacion destino
+% o: Ruta entre estaci髇 origen y estaci髇 destino
+calcula_ruta_aEstrella(Origen,Destino,RutaDesdeInicio) :-
+       ruta_Aestrella(Origen,Destino,RutaI),!,
+       reverse(RutaI,RutaDesdeInicio).
 
 % calcula_ruta_optima(i,i,o).
 % Calcula una ruta entre dos estaciones dadas.
 % Adem醩 imprime la ruta, su longitud y su
 % n鷐ero de estaciones.
-% Utiliza la b鷖queda heur韘tica A*.
 %
 % i: Estacion origen
 % i: Estacion destino
 % o: Ruta entre estaci髇 origen y estaci髇 destino
-calcula_ruta_optima(Origen,Destino,RutaDesdeInicio) :-
-       ruta_Aestrella(Origen,Destino,RutaI),!,
-       reverse(RutaI,RutaDesdeInicio),
-       longitud_ruta(RutaDesdeInicio,Len),
-       largo_ruta(RutaDesdeInicio,Size),
-       write("Distancia: "), write(Len),nl,
-       write("# estaciones: "), write(Size),nl,
-       %write(RutaDesdeInicio),!.
-       imprime(RutaDesdeInicio),!.
+calcula_ruta_optima(Origen,Destino,Ruta) :-
+       estacion(Origen, _, _, R1),
+       estacion(Destino, _, _, R2),
+       ( R1 =:= R2 ->
+       calcula_ruta_aEstrella(Origen,Destino,Ruta),
+       write("Misma regi髇 -> A*");
+       ( hay_caso(Origen, Destino, Res), list_nonempty(Res) -> 
+        limpia_caso(Origen, Destino, Res, Ruta),
+        write("Caso guardado");
+        calcula_ruta_aEstrella(Origen,Destino,Ruta),
+        write("Distinta regi髇 y no hay caso guardado -> A*"))).
+
+% list_nonempty(i).
+% Regresa verdadero si una lista es
+% no-vac韆, falso en caso de una
+% lista vac韆.
+%
+% i: Lista
+list_nonempty([]):-
+  false.
+list_nonempty([_|_]):-
+  true.
 
 % ruta(i,i,o,o).
 % Encuentra una ruta y la longitud
@@ -304,17 +316,6 @@ recorre(A,B,Visited,Path) :-
        \+member(C,Visited),
        recorre(C,B,[C|Visited],Path).
 
-% rutas(i,i).
-% Imprime todas las rutas entre A y B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-rutas(A, B):-
-      ruta(A, B, X, _),
-      write(X),
-      nl,
-      fail.
-
 % escribe_a_archivo(i).
 % Escribe en la base de
 % casos una lista dada.
@@ -343,7 +344,7 @@ escribe_rutas(A, B) :-
 % i: Estaci贸n A
 % i: Estaci贸n B
 escribe_caso(A, B) :-
-    calcula_ruta_optima(A, B, X),
+    calcula_ruta_aEstrella(A, B, X),
     escribe_a_archivo(X).
 
 % escribe_subrutas(i).
@@ -461,3 +462,14 @@ sublistas([E|Resto], [E|N]):-
   sublistas(Resto, N).
 sublistas([_|Resto], N):-
   sublistas(Resto, N).
+
+% imprime(i).
+% Imprime, l韓ea a l韓ea, el contenido
+% de una lista.
+%
+% i: Lista
+imprime([]) :-!.
+imprime([Cabeza|Resto]) :-
+       write(Cabeza),
+       nl,
+       imprime(Resto).
