@@ -1,4 +1,4 @@
-[barranca_del_muerto,mixcoac,san_antonio,san_pedro_de_los_pinos,tacubaya,constituyentes,auditorio,polanco,san_joaquin,tacuba,refineria,camarones,aquiles_serdan,el_rosario,tezozomoc,azcapotzalco].
+﻿[barranca_del_muerto,mixcoac,san_antonio,san_pedro_de_los_pinos,tacubaya,constituyentes,auditorio,polanco,san_joaquin,tacuba,refineria,camarones,aquiles_serdan,el_rosario,tezozomoc,azcapotzalco].
 [azcapotzalco,tezozomoc,el_rosario,aquiles_serdan,camarones,refineria,tacuba,san_joaquin,polanco,auditorio,constituyentes,tacubaya].
 [tacubaya,juanacatlan,chapultepec,sevilla,insurgentes,cuauhtemoc,balderas,salto_del_agua,isabel_la_catolica,pino_suarez,zocalo].
 [zocalo,pino_suarez,merced,candelaria,san_lazaro,moctezuma,balbuena,boulevard_puerto_aereo,gomez_farias,zaragoza,pantitlan,agricola_oriental,canal_de_san_juan,tepalcates,guelatao,peñon_viejo,acatitla,santa_marta,los_reyes,la_paz].
@@ -21,3 +21,8 @@
 [tacubaya,constituyentes].
 [tacuba,refineria,camarones].
 [tacuba,refineria].
+[tlahuac,tlaltenco,zapotitlan,nopalera,olivos,tezonco,periferico_oriente,calle_11,lomas_estrella,san_andres_tomatlan,culhuacan,atlalilco,escuadron_201,aculco,apatlaco,iztacalco,coyuya,santa_anita,la_viga,chabacano,obrera,doctores,salto_del_agua,san_juan_de_letran,bellas_artes,hidalgo,revolucion,san_cosme,normal,colegio_militar,popotla,cuitlahuac,tacuba].
+[revolucion,hidalgo,bellas_artes,allende,zocalo,pino_suarez,merced,candelaria,san_lazaro,flores_magon,romero_rubio,oceania,deportivo_oceania,bosque_de_aragon,villa_de_aragon,nezahualcoyotl,impulsora,rio_de_los_remedios,muzquiz,ecatepec,olimpica,plaza_aragon,ciudad_azteca].
+[lazaro_cardenas,chabacano,la_viga,santa_anita,coyuya,iztacalco,apatlaco,aculco,escuadron_201,atlalilco,culhuacan,san_andres_tomatlan,lomas_estrella,calle_11].
+[tasquena,general_anaya,ermita,eje_central,parque_de_los_venados,zapata,division_del_norte,eugenia,etiopia,centro_medico,hospital_general,ninos_heroes].
+[tasquena,general_anaya,ermita,portales,nativitas,villa_de_cortes,xola,viaducto,chabacano,obrera,doctores,salto_del_agua,san_juan_de_letran,bellas_artes,hidalgo,revolucion].

@@ -271,9 +271,11 @@ calcula_ruta_optima(Origen,Destino,Ruta) :-
        write("Misma región -> A*");
        ( hay_caso(Origen, Destino, Res), list_nonempty(Res) -> 
         limpia_caso(Origen, Destino, Res, Ruta),
-        write("Caso guardado");
+        write("Caso leído de base de casos");
         calcula_ruta_aEstrella(Origen,Destino,Ruta),
-        write("Distinta región y no hay caso guardado -> A*"))).
+        escribe_a_archivo(Ruta),
+        write("Distinta región y no hay caso guardado -> A*\n"),
+        write("La ruta ha sido guardada en la base de casos"))).
 
 % list_nonempty(i).
 % Regresa verdadero si una lista es
@@ -336,16 +338,6 @@ escribe_rutas(A, B) :-
     ruta(A, B, X, _),
     escribe_a_archivo(X),
     fail.
-
-% escribe_caso(i,i).
-% Escribe en la base de casos la ruta
-% óptima, calculada con A*, entre A y B.
-%
-% i: EstaciÃ³n A
-% i: EstaciÃ³n B
-escribe_caso(A, B) :-
-    calcula_ruta_aEstrella(A, B, X),
-    escribe_a_archivo(X).
 
 % escribe_subrutas(i).
 % Escribe en la base de casos todas
@@ -411,7 +403,7 @@ hay_caso(Estacion1,Estacion2,Caso):-
 aux_hay_caso(_,_,[],[]).
 aux_hay_caso(Estacion1, Estacion2,[CasoActual|CasosSobrantes],Caso):-
        (member(Estacion1,CasoActual),member(Estacion2,CasoActual) ->
-       Caso = CasoActual       );
+       Caso = CasoActual);
        aux_hay_caso(Estacion1, Estacion2,CasosSobrantes,Caso),!.
 
 % limpia_caso(i,i,i,o).
