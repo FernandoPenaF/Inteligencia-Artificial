@@ -288,36 +288,6 @@ list_nonempty([]):-
 list_nonempty([_|_]):-
   true.
 
-% ruta(i,i,o,o).
-% Encuentra una ruta y la longitud
-% de dicho ruta entre dos estaciones
-% dadas, A y B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-% o: Ruta de A a B
-% o: Longitud de la ruta de A a B
-ruta(A,B,Path,Len) :-
-       recorre(A,B,[A],Q),
-       reverse(Q,Path),
-       longitud_ruta(Path,Len).
-
-% recorre(i,i,i,o).
-% Aplica b煤squeda en profundidad para
-% encontrar un camino de A a B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-% i: Lista de estaciones visitadas
-% o: Ruta de A a B
-recorre(A,B,P,[B|P]) :-
-       estaciones_conectadas(A,B,_).
-recorre(A,B,Visited,Path) :-
-       estaciones_conectadas(A,C,_),
-       C \== B,
-       \+member(C,Visited),
-       recorre(C,B,[C|Visited],Path).
-
 % escribe_a_archivo(i).
 % Escribe en la base de
 % casos una lista dada.
@@ -327,30 +297,6 @@ escribe_a_archivo(L) :-
     open('casos.txt', append, Stream),
     ( write(Stream, L), write(Stream,"."), nl(Stream), !; true ),
     close(Stream).
-
-% escribe_rutas(i,i).
-% Escribe en un archivo todas
-% las rutas entre A y B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-escribe_rutas(A, B) :-
-    ruta(A, B, X, _),
-    escribe_a_archivo(X),
-    fail.
-
-% escribe_subrutas(i).
-% Escribe en la base de casos todas
-% las subrutas de una ruta dada.
-%
-% i: Ruta
-escribe_subrutas(Ruta, MinConexiones) :-
-    MinConexiones >= 0,
-    sublistas(Ruta, L),
-    largo_ruta(L, Len),
-    Len > MinConexiones,
-    escribe_a_archivo(L),
-    fail.
 
 % lee_casos(o).
 % Lee la base de casos y regresa
@@ -426,34 +372,6 @@ encuentra_inicial(Est1,_,[Est1|Resto],[Est1|Resto]):-!.
 encuentra_inicial(_,Est2,[Est2|Resto],[Est2|Resto]):-!.
 encuentra_inicial(Est1,Est2,[_|Resto],Res):-
        encuentra_inicial(Est1,Est2,Resto,Res).
-
-% subcaminos(i).
-% Dada una ruta imprime todas las posibles
-% subrutas v醠idas que tengan m醩 de una
-% estaci髇.
-%
-% i: Lista de rutas
-subcaminos(Ruta, MinConexiones):-
-  MinConexiones >= 0,
-  sublistas(Ruta, L),
-  largo_ruta(L, Len),
-  Len > MinConexiones,
-  write(L),
-  nl,
-  fail.
-
-% sublistas(i, o).
-% Dada una lista regresa todas las
-% 2^n sublistas distinas.
-% (n es el tama駉 de la lista)
-%
-% i: Lista
-% o: Sublista correspondiente
-sublistas([],[]):-!.
-sublistas([E|Resto], [E|N]):-
-  sublistas(Resto, N).
-sublistas([_|Resto], N):-
-  sublistas(Resto, N).
 
 % imprime(i).
 % Imprime, l韓ea a l韓ea, el contenido
