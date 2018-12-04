@@ -1,4 +1,4 @@
---(Archivo de casos en blanco)
+﻿--(Archivo de casos en blanco)
 region(1,X).
 region(51,X).
 
@@ -24,13 +24,12 @@ calcula_ruta_optima(cuatro_caminos,constitucion_de_1917,Ruta),nl,write(Ruta).
 calcula_ruta_aEstrella(tlahuac,el_rosario,Ruta),nl,write(Ruta).
 calcula_ruta_optima(tlahuac,el_rosario,Ruta),nl,write(Ruta).
 
-
+calcula_ruta_optima(barranca_del_muerto,camarones,R),nl,write(R).
 
 --(Generar archivo de casos totales)
 --(Cambiar base de conocimiento a la de casos totales)
 escribe_rutas(barranca_del_muerto,ciudad_azteca).
 calcula_ruta_optima(barranca_del_muerto,camarones,R),nl,write(R).
-calcula_ruta_optima(hidalgo,chabacano,Ruta),nl,write(Ruta).
 calcula_ruta_optima(politecnico,la_paz,Ruta),nl,write(Ruta).
 calcula_ruta_optima(xola,puebla,Ruta),nl,write(Ruta).
 calcula_ruta_optima(xola,puebla,Ruta),nl,write(Ruta).
