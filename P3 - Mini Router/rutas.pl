@@ -346,6 +346,15 @@ hay_caso(Estacion1,Estacion2,Caso):-
        lee_casos(ListaDeCasos),
        aux_hay_caso(Estacion1,Estacion2,ListaDeCasos,Caso).
 
+% aux:hay_caso(i,i,i,o).
+% Dadas dos estaciones verifica si en
+% la estación actual es alguna de las dos
+% estaciones dadas.
+%
+% i: Estación 1
+% i: Estación 2
+% i: Ruta visitada
+% o: Ruta (Vacía en caso de no existir)
 aux_hay_caso(_,_,[],[]).
 aux_hay_caso(Estacion1, Estacion2,[CasoActual|CasosSobrantes],Caso):-
        (member(Estacion1,CasoActual),member(Estacion2,CasoActual) ->
@@ -367,6 +376,16 @@ limpia_caso(Estacion1,Estacion2,Caso,Res):-
        reverse(Res1,Res2),
        encuentra_inicial(Estacion1,Estacion2,Res2,Res).
 
+% encuentra_inicial(i,i,i,o).
+% Dadas dos estaciones y una ruta que
+% contenga ambas, verifica si la primera
+% estación es alguna de las dos dadas, en caso
+% de serlo, procede a buscar la otra.
+%
+% i: Estación 1
+% i: Estación 2
+% i: Ruta que contenga ambas estaciones
+% o: Ruta que empiece en una estación y termine en la otra
 encuentra_inicial(_,_,[],[]):-!.
 encuentra_inicial(Est1,_,[Est1|Resto],[Est1|Resto]):-!.
 encuentra_inicial(_,Est2,[Est2|Resto],[Est2|Resto]):-!.
