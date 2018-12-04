@@ -56,9 +56,10 @@ recorre(A,B,Visited,Path) :-
 % i: EstaciÃ³n A
 % i: EstaciÃ³n B
 escribe_rutas(A, B) :-
-    ruta(A, B, X, _),
-    escribe_a_archivo(X),
-    fail.
+    open('file.txt', write, Stream),
+    ( ruta(A, B, X, _), write(Stream, X), 
+      write(Stream,"."), nl(Stream), fail; true ),
+    close(Stream).
 
 % escribe_subrutas(i).
 % Escribe en la base de casos todas
