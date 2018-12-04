@@ -271,9 +271,11 @@ calcula_ruta_optima(Origen,Destino,Ruta) :-
        write("Misma regi髇 -> A*");
        ( hay_caso(Origen, Destino, Res), list_nonempty(Res) -> 
         limpia_caso(Origen, Destino, Res, Ruta),
-        write("Caso guardado");
+        write("Caso le韉o de base de casos");
         calcula_ruta_aEstrella(Origen,Destino,Ruta),
-        write("Distinta regi髇 y no hay caso guardado -> A*"))).
+        escribe_a_archivo(Ruta),
+        write("Distinta regi髇 y no hay caso guardado -> A*\n"),
+        write("La ruta ha sido guardada en la base de casos"))).
 
 % list_nonempty(i).
 % Regresa verdadero si una lista es
@@ -286,36 +288,6 @@ list_nonempty([]):-
 list_nonempty([_|_]):-
   true.
 
-% ruta(i,i,o,o).
-% Encuentra una ruta y la longitud
-% de dicho ruta entre dos estaciones
-% dadas, A y B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-% o: Ruta de A a B
-% o: Longitud de la ruta de A a B
-ruta(A,B,Path,Len) :-
-       recorre(A,B,[A],Q),
-       reverse(Q,Path),
-       longitud_ruta(Path,Len).
-
-% recorre(i,i,i,o).
-% Aplica b煤squeda en profundidad para
-% encontrar un camino de A a B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-% i: Lista de estaciones visitadas
-% o: Ruta de A a B
-recorre(A,B,P,[B|P]) :-
-       estaciones_conectadas(A,B,_).
-recorre(A,B,Visited,Path) :-
-       estaciones_conectadas(A,C,_),
-       C \== B,
-       \+member(C,Visited),
-       recorre(C,B,[C|Visited],Path).
-
 % escribe_a_archivo(i).
 % Escribe en la base de
 % casos una lista dada.
@@ -325,40 +297,6 @@ escribe_a_archivo(L) :-
     open('casos.txt', append, Stream),
     ( write(Stream, L), write(Stream,"."), nl(Stream), !; true ),
     close(Stream).
-
-% escribe_rutas(i,i).
-% Escribe en un archivo todas
-% las rutas entre A y B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-escribe_rutas(A, B) :-
-    ruta(A, B, X, _),
-    escribe_a_archivo(X),
-    fail.
-
-% escribe_caso(i,i).
-% Escribe en la base de casos la ruta
-% 髉tima, calculada con A*, entre A y B.
-%
-% i: Estaci贸n A
-% i: Estaci贸n B
-escribe_caso(A, B) :-
-    calcula_ruta_aEstrella(A, B, X),
-    escribe_a_archivo(X).
-
-% escribe_subrutas(i).
-% Escribe en la base de casos todas
-% las subrutas de una ruta dada.
-%
-% i: Ruta
-escribe_subrutas(Ruta, MinConexiones) :-
-    MinConexiones >= 0,
-    sublistas(Ruta, L),
-    largo_ruta(L, Len),
-    Len > MinConexiones,
-    escribe_a_archivo(L),
-    fail.
 
 % lee_casos(o).
 % Lee la base de casos y regresa
@@ -408,10 +346,19 @@ hay_caso(Estacion1,Estacion2,Caso):-
        lee_casos(ListaDeCasos),
        aux_hay_caso(Estacion1,Estacion2,ListaDeCasos,Caso).
 
+% aux:hay_caso(i,i,i,o).
+% Dadas dos estaciones verifica si en
+% la estaci髇 actual es alguna de las dos
+% estaciones dadas.
+%
+% i: Estaci髇 1
+% i: Estaci髇 2
+% i: Ruta visitada
+% o: Ruta (Vac韆 en caso de no existir)
 aux_hay_caso(_,_,[],[]).
 aux_hay_caso(Estacion1, Estacion2,[CasoActual|CasosSobrantes],Caso):-
        (member(Estacion1,CasoActual),member(Estacion2,CasoActual) ->
-       Caso = CasoActual       );
+       Caso = CasoActual);
        aux_hay_caso(Estacion1, Estacion2,CasosSobrantes,Caso),!.
 
 % limpia_caso(i,i,i,o).
@@ -429,39 +376,21 @@ limpia_caso(Estacion1,Estacion2,Caso,Res):-
        reverse(Res1,Res2),
        encuentra_inicial(Estacion1,Estacion2,Res2,Res).
 
+% encuentra_inicial(i,i,i,o).
+% Dadas dos estaciones y una ruta que
+% contenga ambas, verifica si la primera
+% estaci髇 es alguna de las dos dadas, en caso
+% de serlo, procede a buscar la otra.
+%
+% i: Estaci髇 1
+% i: Estaci髇 2
+% i: Ruta que contenga ambas estaciones
+% o: Ruta que empiece en una estaci髇 y termine en la otra
 encuentra_inicial(_,_,[],[]):-!.
 encuentra_inicial(Est1,_,[Est1|Resto],[Est1|Resto]):-!.
 encuentra_inicial(_,Est2,[Est2|Resto],[Est2|Resto]):-!.
 encuentra_inicial(Est1,Est2,[_|Resto],Res):-
        encuentra_inicial(Est1,Est2,Resto,Res).
-
-% subcaminos(i).
-% Dada una ruta imprime todas las posibles
-% subrutas v醠idas que tengan m醩 de una
-% estaci髇.
-%
-% i: Lista de rutas
-subcaminos(Ruta, MinConexiones):-
-  MinConexiones >= 0,
-  sublistas(Ruta, L),
-  largo_ruta(L, Len),
-  Len > MinConexiones,
-  write(L),
-  nl,
-  fail.
-
-% sublistas(i, o).
-% Dada una lista regresa todas las
-% 2^n sublistas distinas.
-% (n es el tama駉 de la lista)
-%
-% i: Lista
-% o: Sublista correspondiente
-sublistas([],[]):-!.
-sublistas([E|Resto], [E|N]):-
-  sublistas(Resto, N).
-sublistas([_|Resto], N):-
-  sublistas(Resto, N).
 
 % imprime(i).
 % Imprime, l韓ea a l韓ea, el contenido
