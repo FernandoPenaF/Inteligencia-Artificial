@@ -1,0 +1,31 @@
+-- Archivo de casos en blanco
+
+region(1,X).
+region(51,X).
+
+escribe_a_archivo([consulado,canal_del_norte,morelos,candelaria,merced,pino_suarez,san_antonio_abad,chabacano,viaducto,xola,villa_de_cortes,nativitas,portales,ermita]).
+
+hay_caso(morelos,xola,Ruta),write(Ruta).
+
+limpia_caso(morelos,xola,[consulado,canal_del_norte,morelos,candelaria,merced,pino_suarez,san_antonio_abad,chabacano,viaducto,xola,villa_de_cortes,nativitas,portales,ermita],Ruta).
+
+escribe_subrutas([xola, viaducto, chabacano, san_antonio_abad, pino_suarez, merced, candelaria, morelos],1).
+
+-- Archivo de casos de Demo
+
+calcula_ruta_optima(hidalgo,chabacano,Ruta),nl,write(Ruta).
+calcula_ruta_optima(politecnico,la_paz,Ruta),nl,write(Ruta).
+calcula_ruta_optima(xola,puebla,Ruta),nl,write(Ruta).
+calcula_ruta_optima(xola,puebla,Ruta),nl,write(Ruta).
+
+--(Puede tardar un poco)
+calcula_ruta_aEstrella(cuatro_caminos,constitucion_de_1917,Ruta),nl,write(Ruta).
+calcula_ruta_optima(cuatro_caminos,constitucion_de_1917,Ruta),nl,write(Ruta).
+
+calcula_ruta_aEstrella(tlahuac,el_rosario,Ruta),nl,write(Ruta).
+calcula_ruta_optima(tlahuac,el_rosario,Ruta),nl,write(Ruta).
+
+--Conclusión
+
+calcula_ruta_optima(barranca_del_muerto,camarones,R),nl,write(R).
+calcula_ruta_optima(refineria,san_pedro_de_los_pinos,R),nl,write(R).
